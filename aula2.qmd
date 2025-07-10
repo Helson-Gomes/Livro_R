@@ -1,0 +1,7 @@
+# Indexação, operações indexadas e outras operações com objetos
+
+Nesse módulo estão expressos os detalhes básicos acerca de operações fundamentais com diferentes tipos de objetos. O módulo ainda apresenta os conceitos e as normas básicas sobre posições de elementos em um objeto (indexação) e também mostra as operações que usam essa indexação e que podem ser úteis na análise de dados.
+
+## Operações com matrizes
+
+### Soma de matrizes
