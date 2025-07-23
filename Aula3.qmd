@@ -1,0 +1,5 @@
+# Classes de elementos
+
+Os dados podem assumir diversos formatos, por exemplo, números, textos, imagens, etc. A depender da ocasião, o usuário precisará lidar com um tipo de dado específico. Por exemplo, um economista prevendo preços no mercado de ações utilizará objetos numéricos para representar o preço dos ativos. Um técnico em radiologia coleta informações em imagem de um paciente. Um especialista em análise de sentimento em redes sociais coleta os textos das postagens para extrair delas informações úteis. Cada tipo de informação tem uma utilidade e um propósito e cada tipo de informação possui propriedades que o analista de dados precisa conhecer.
+
+Um objeto criado possui múltiplos elementos e esses elementos podem ser de diferentes tipos. Esses *"tipos"* de elementos recebem o nome de *classe*. Existem operações que são aplicadas adequadamente a uma classe de elementos específica, por exemplo, é possível somar dois elementos numéricos mas é estranho pensar em somar duas palavras. Nesse capítulo vamos conhecer as principais classes de dados, suas características e as principais operações que podem ser realizadas com cada classe.

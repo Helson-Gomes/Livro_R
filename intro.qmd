@@ -4,7 +4,7 @@
 
 Imagine que o computador é uma empresa que realiza diferentes tarefas e que nessa empresa existem funcionários de várias partes do mundo. Cada funcionário realiza as mesmas tarefas, porém, falando diferentes idiomas. Assim, se você quer que um funcionário americano realize uma tarefa, terá que ordenar que ele a faça em inglês; se você quer que um funcionário italiano realize a mesma tarefa, terá de fazer o pedido para ele falando italiano, e assim sucessivamente. No computador, os funcionários são as linguagens de programação e o idioma é o vocabulário da linguagem (ou a maneira de escrever os comandos em cada linguagem). Resumidamente e exemplificadamente, você pode executar uma tarefa usando R ou pode executar essa mesma tarefa usando Python ou qualquer outra linguagem de programação pois a lógica de comunicação com o computador será a mesma, porém, os comandos para execuar a mesma tarefa podem ser diferentes em cada linguagem. Como consequência, o primeiro passo para dominar as linguagens de programação é desenvolver uma lógica de programação.
 
-A lógica de programação é um raciocínio sobre como se comunicar com o computador para realizar tarefas. Seguindo o exemplo da empresa citado no parágrafo anterior, se você precisa de um relatório umpresso, terá de falar o seguinte *"eu preciso que você imprima esse relatório"*. Porém, como os funcionários falam diferentes idiomas, você precisa fazer esse pedido em uma linguagem diferente a depender do funcionário responsável pela impressão. A maneira como você faz o pedido (*"eu preciso que você imprima esse relatório")* não vai mudar independente do funcionário que receberá a ordem, o que muda é apenas o idioma em que a ordem será feita. No computador, essa maneira como você faz o pedido é a lógica de programação, ela será a mesma para qualquer linguagem de programação, que no caso do exemplo corresponde ao idioma falado.
+A lógica de programação é um raciocínio sobre como se comunicar com o computador para realizar tarefas. Seguindo o exemplo da empresa citado no parágrafo anterior, se você precisa de um relatório impresso, terá de falar o seguinte *"eu preciso que você imprima esse relatório"*. Porém, como os funcionários falam diferentes idiomas, você precisa fazer esse pedido em uma linguagem diferente a depender do funcionário responsável pela impressão. A maneira como você faz o pedido (*"eu preciso que você imprima esse relatório")* não vai mudar independente do funcionário que receberá a ordem, o que muda é apenas o idioma em que a ordem será feita. No computador, essa maneira como você faz o pedido é a lógica de programação, ela será a mesma para qualquer linguagem de programação, que no caso do exemplo corresponde ao idioma falado.
 
 O primeiro passo para desenvolver uma lógica de programação é entender as operações fundamentais de uma **linguagem de programação**. Uma linguagem de programação é nada mais do que uma maneira de se comunicar com o computador para ordenar que ele execute tarefas automáticas. As linguagens são configuradas em sistemas binários (negação e afirmação). Cada linguagem de programação possui o seu **vocabulário**, porém, todas as linguagens partem dos mesmos princípios e das mesmas lógicas fundamentais. **Exemplos**: JavaScript, R, Python, Julia, Ruby, Scala...
 
@@ -334,6 +334,89 @@ Caso o elemento de fato seja uma matriz, o output obtido será *TRUE*, do contr�
 ```{r}
 sq = as.matrix(1:10)
 print(sq)
+```
+
+#### Operações com matrizes
+
+##### Soma de matrizes
+
+A soma de matrizes em *R* não apresenta diferenças das operações convencionais de soma, ou seja, é feita usando o operador de soma "+". Para exemplificar, considere as dias matrizes a seguir:
+
+$$ matriz1 = \left[ \begin{array}{cc} 0 & 2 \\ 3 & 1 \end{array} \right] \quad \quad \quad \quad matiz2 = \left[ \begin{array}{cc} 5 & 3\\7 & 0 \end{array} \right] $$
+
+Para gerar uma nova matriz de nome *matriz3* contendo a soma da matriz 1 com a matriz 2, basta proceder conforme a seguir:
+
+```{r}
+matriz1 = matrix(c(0,2,3,1), nrow = 2, ncol = 2, byrow = TRUE)
+matriz2 = matrix(c(5,3,7,0), nrow = 2, ncol = 2, byrow = TRUE)
+matriz3 = matriz1 + matriz2
+print(matriz3)
+```
+
+##### Subtração de matrizes
+
+De maneira análoga à operação de soma, a subtração de matrizes é feita usando o operador de subtração "-". Nesse caso, os elementos de cada posição das matries são subtraídos. Para exemplificar, considere subtrair a matriz 1 da matriz 2, procedendo de acordo com o código a seguir:
+
+```{r}
+matriz3 = matriz1 - matriz2
+print(matriz3)
+```
+
+É importante ressaltar que a soma e a subtração de matrizes só podem ser feitas com matrizes de mesma dimensão.
+
+##### Multiplicação de matrizes
+
+Na multiplicação, não é correto utilizar o asterisco como operador de multiplicação dado que multiplicar os termos de mesma posição de duas matrizes não é a maneira correta de efetuar o produto de matrizes. Para essa tarefa, o operador de multiplicação agora é $\%*\%$ . Para exemplificar, considere multiplicarr a matriz 1 pela matriz 2.
+
+```{r}
+matriz3 = matriz1 %*% matriz2
+print(matriz3)
+```
+
+##### Matriz transposta
+
+A transposta de uma matriz nada mais é do que reorganizar as linhas como colunas e as colunas como linhas. Para obter a transposta de uma matriz em *R* basta usar a função *t()*, indicando entre parêntesis o nome da matriz que se deseja transpor. Para exemplificar, considere transpor a matriz 1. Nesse caso, deve-se proceder conforme a seguir:
+
+```{r}
+t(matriz1)
+```
+
+##### Matriz inversa
+
+Uma matriz $M$ pode ser invertida em *R* para obter $M^{-1}$ usando o comando *solve()* e indicando dentro do parêntesis a matriz que se deseja inverter. Para exemplificar, considere obter a inversa da matriz 1. Nesse caso, deve-se proceder conforme a seguir:
+
+```{r}
+solve(matriz1)
+```
+
+##### Exemplo de operações com matrizes: O estimador de mínimos quadrados ordinários
+
+Na estatística, os coeficientes lineares de uma equação linear com múltiplos argumentos podem ser calculados por meio do método de mínimos quadrados ordinários. Se essa equação é:
+
+$$ y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_n x_n $$
+
+Um termo de erro $\varepsilon$ é adicionado e a relação anterior pode ser escrita matricialmente como:
+
+$$ \textbf{y} = \textbf{x} \beta + \varepsilon $$
+
+Mininiando a soma dos erros quadráticos, o vetor $\beta$ de parâmetros estimados é:
+
+$$ \beta = (\textbf{x}^\prime \textbf{x})^{-1}\textbf{x}^\prime \textbf{y} $$
+
+Para exemplificar, considere usar a base natova sobre automóveis *mtcars* e suponha que estejamos interessados em saber a relação entre o consumo do automóvel (mpg) e as variáveis peso (wt) e número de cilindros (cyl). Nesse caso, a matriz *y* são os valores da coluna mpg e a matriz x é composta pelas colunas wt e cyl. O vetor de parâmetros estimados pode ser calculado de acordo com o seguinte processo:
+
+```{r}
+y = matrix(mtcars$mpg, ncol = 1) # matriz y
+x = matrix(c(rep(1,nrow(mtcars)), mtcars$wt, mtcars$cyl), ncol = 3) # matriz x
+tx = t(x) # transposta da matriz x
+beta = solve(tx%*%x)%*%tx%*%y
+print(beta)
+```
+
+Isso é o mesmo que fazer:
+
+```{r}
+summary(lm(mtcars$mpg ~ 1 + mtcars$wt + mtcars$cyl))
 ```
 
 ### Arrays

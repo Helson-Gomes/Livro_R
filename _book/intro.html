@@ -184,7 +184,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./aula2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação, operações indexadas e outras operações com objetos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -271,7 +271,7 @@ window.Quarto = {
 <section id="a-lógica-de-programação" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="a-lógica-de-programação"><span class="header-section-number">1.1</span> A lógica de programação</h2>
 <p>Imagine que o computador é uma empresa que realiza diferentes tarefas e que nessa empresa existem funcionários de várias partes do mundo. Cada funcionário realiza as mesmas tarefas, porém, falando diferentes idiomas. Assim, se você quer que um funcionário americano realize uma tarefa, terá que ordenar que ele a faça em inglês; se você quer que um funcionário italiano realize a mesma tarefa, terá de fazer o pedido para ele falando italiano, e assim sucessivamente. No computador, os funcionários são as linguagens de programação e o idioma é o vocabulário da linguagem (ou a maneira de escrever os comandos em cada linguagem). Resumidamente e exemplificadamente, você pode executar uma tarefa usando R ou pode executar essa mesma tarefa usando Python ou qualquer outra linguagem de programação pois a lógica de comunicação com o computador será a mesma, porém, os comandos para execuar a mesma tarefa podem ser diferentes em cada linguagem. Como consequência, o primeiro passo para dominar as linguagens de programação é desenvolver uma lógica de programação.</p>
-<p>A lógica de programação é um raciocínio sobre como se comunicar com o computador para realizar tarefas. Seguindo o exemplo da empresa citado no parágrafo anterior, se você precisa de um relatório umpresso, terá de falar o seguinte <em>“eu preciso que você imprima esse relatório”</em>. Porém, como os funcionários falam diferentes idiomas, você precisa fazer esse pedido em uma linguagem diferente a depender do funcionário responsável pela impressão. A maneira como você faz o pedido (<em>“eu preciso que você imprima esse relatório”)</em> não vai mudar independente do funcionário que receberá a ordem, o que muda é apenas o idioma em que a ordem será feita. No computador, essa maneira como você faz o pedido é a lógica de programação, ela será a mesma para qualquer linguagem de programação, que no caso do exemplo corresponde ao idioma falado.</p>
+<p>A lógica de programação é um raciocínio sobre como se comunicar com o computador para realizar tarefas. Seguindo o exemplo da empresa citado no parágrafo anterior, se você precisa de um relatório impresso, terá de falar o seguinte <em>“eu preciso que você imprima esse relatório”</em>. Porém, como os funcionários falam diferentes idiomas, você precisa fazer esse pedido em uma linguagem diferente a depender do funcionário responsável pela impressão. A maneira como você faz o pedido (<em>“eu preciso que você imprima esse relatório”)</em> não vai mudar independente do funcionário que receberá a ordem, o que muda é apenas o idioma em que a ordem será feita. No computador, essa maneira como você faz o pedido é a lógica de programação, ela será a mesma para qualquer linguagem de programação, que no caso do exemplo corresponde ao idioma falado.</p>
 <p>O primeiro passo para desenvolver uma lógica de programação é entender as operações fundamentais de uma <strong>linguagem de programação</strong>. Uma linguagem de programação é nada mais do que uma maneira de se comunicar com o computador para ordenar que ele execute tarefas automáticas. As linguagens são configuradas em sistemas binários (negação e afirmação). Cada linguagem de programação possui o seu <strong>vocabulário</strong>, porém, todas as linguagens partem dos mesmos princípios e das mesmas lógicas fundamentais. <strong>Exemplos</strong>: JavaScript, R, Python, Julia, Ruby, Scala…</p>
 </section>
 <section id="como-usar-a-linguagem-de-programação" class="level2" data-number="1.2">
@@ -658,6 +658,125 @@ Sex         60       155</code></pre>
 [10,]   10</code></pre>
 </div>
 </div>
+<section id="operações-com-matrizes" class="level4" data-number="1.8.2.1">
+<h4 data-number="1.8.2.1" class="anchored" data-anchor-id="operações-com-matrizes"><span class="header-section-number">1.8.2.1</span> Operações com matrizes</h4>
+<section id="soma-de-matrizes" class="level5" data-number="1.8.2.1.1">
+<h5 data-number="1.8.2.1.1" class="anchored" data-anchor-id="soma-de-matrizes"><span class="header-section-number">1.8.2.1.1</span> Soma de matrizes</h5>
+<p>A soma de matrizes em <em>R</em> não apresenta diferenças das operações convencionais de soma, ou seja, é feita usando o operador de soma “+”. Para exemplificar, considere as dias matrizes a seguir:</p>
+<p><span class="math display">\[ matriz1 = \left[ \begin{array}{cc} 0 &amp; 2 \\ 3 &amp; 1 \end{array} \right] \quad \quad \quad \quad matiz2 = \left[ \begin{array}{cc} 5 &amp; 3\\7 &amp; 0 \end{array} \right] \]</span></p>
+<p>Para gerar uma nova matriz de nome <em>matriz3</em> contendo a soma da matriz 1 com a matriz 2, basta proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>matriz1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>matriz2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">0</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>matriz3 <span class="ot">=</span> matriz1 <span class="sc">+</span> matriz2</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    5    5
+[2,]   10    1</code></pre>
+</div>
+</div>
+</section>
+<section id="subtração-de-matrizes" class="level5" data-number="1.8.2.1.2">
+<h5 data-number="1.8.2.1.2" class="anchored" data-anchor-id="subtração-de-matrizes"><span class="header-section-number">1.8.2.1.2</span> Subtração de matrizes</h5>
+<p>De maneira análoga à operação de soma, a subtração de matrizes é feita usando o operador de subtração “-”. Nesse caso, os elementos de cada posição das matries são subtraídos. Para exemplificar, considere subtrair a matriz 1 da matriz 2, procedendo de acordo com o código a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>matriz3 <span class="ot">=</span> matriz1 <span class="sc">-</span> matriz2</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   -5   -1
+[2,]   -4    1</code></pre>
+</div>
+</div>
+<p>É importante ressaltar que a soma e a subtração de matrizes só podem ser feitas com matrizes de mesma dimensão.</p>
+</section>
+<section id="multiplicação-de-matrizes" class="level5" data-number="1.8.2.1.3">
+<h5 data-number="1.8.2.1.3" class="anchored" data-anchor-id="multiplicação-de-matrizes"><span class="header-section-number">1.8.2.1.3</span> Multiplicação de matrizes</h5>
+<p>Na multiplicação, não é correto utilizar o asterisco como operador de multiplicação dado que multiplicar os termos de mesma posição de duas matrizes não é a maneira correta de efetuar o produto de matrizes. Para essa tarefa, o operador de multiplicação agora é <span class="math inline">\(\%*\%\)</span> . Para exemplificar, considere multiplicarr a matriz 1 pela matriz 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>matriz3 <span class="ot">=</span> matriz1 <span class="sc">%*%</span> matriz2</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   14    0
+[2,]   22    9</code></pre>
+</div>
+</div>
+</section>
+<section id="matriz-transposta" class="level5" data-number="1.8.2.1.4">
+<h5 data-number="1.8.2.1.4" class="anchored" data-anchor-id="matriz-transposta"><span class="header-section-number">1.8.2.1.4</span> Matriz transposta</h5>
+<p>A transposta de uma matriz nada mais é do que reorganizar as linhas como colunas e as colunas como linhas. Para obter a transposta de uma matriz em <em>R</em> basta usar a função <em>t()</em>, indicando entre parêntesis o nome da matriz que se deseja transpor. Para exemplificar, considere transpor a matriz 1. Nesse caso, deve-se proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(matriz1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    0    3
+[2,]    2    1</code></pre>
+</div>
+</div>
+</section>
+<section id="matriz-inversa" class="level5" data-number="1.8.2.1.5">
+<h5 data-number="1.8.2.1.5" class="anchored" data-anchor-id="matriz-inversa"><span class="header-section-number">1.8.2.1.5</span> Matriz inversa</h5>
+<p>Uma matriz <span class="math inline">\(M\)</span> pode ser invertida em <em>R</em> para obter <span class="math inline">\(M^{-1}\)</span> usando o comando <em>solve()</em> e indicando dentro do parêntesis a matriz que se deseja inverter. Para exemplificar, considere obter a inversa da matriz 1. Nesse caso, deve-se proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(matriz1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]      [,2]
+[1,] -0.1666667 0.3333333
+[2,]  0.5000000 0.0000000</code></pre>
+</div>
+</div>
+</section>
+<section id="exemplo-de-operações-com-matrizes-o-estimador-de-mínimos-quadrados-ordinários" class="level5" data-number="1.8.2.1.6">
+<h5 data-number="1.8.2.1.6" class="anchored" data-anchor-id="exemplo-de-operações-com-matrizes-o-estimador-de-mínimos-quadrados-ordinários"><span class="header-section-number">1.8.2.1.6</span> Exemplo de operações com matrizes: O estimador de mínimos quadrados ordinários</h5>
+<p>Na estatística, os coeficientes lineares de uma equação linear com múltiplos argumentos podem ser calculados por meio do método de mínimos quadrados ordinários. Se essa equação é:</p>
+<p><span class="math display">\[ y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_n x_n \]</span></p>
+<p>Um termo de erro <span class="math inline">\(\varepsilon\)</span> é adicionado e a relação anterior pode ser escrita matricialmente como:</p>
+<p><span class="math display">\[ \textbf{y} = \textbf{x} \beta + \varepsilon \]</span></p>
+<p>Mininiando a soma dos erros quadráticos, o vetor <span class="math inline">\(\beta\)</span> de parâmetros estimados é:</p>
+<p><span class="math display">\[ \beta = (\textbf{x}^\prime \textbf{x})^{-1}\textbf{x}^\prime \textbf{y} \]</span></p>
+<p>Para exemplificar, considere usar a base natova sobre automóveis <em>mtcars</em> e suponha que estejamos interessados em saber a relação entre o consumo do automóvel (mpg) e as variáveis peso (wt) e número de cilindros (cyl). Nesse caso, a matriz <em>y</em> são os valores da coluna mpg e a matriz x é composta pelas colunas wt e cyl. O vetor de parâmetros estimados pode ser calculado de acordo com o seguinte processo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">matrix</span>(mtcars<span class="sc">$</span>mpg, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="co"># matriz y</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(mtcars)), mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>cyl), <span class="at">ncol =</span> <span class="dv">3</span>) <span class="co"># matriz x</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>tx <span class="ot">=</span> <span class="fu">t</span>(x) <span class="co"># transposta da matriz x</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> <span class="fu">solve</span>(tx<span class="sc">%*%</span>x)<span class="sc">%*%</span>tx<span class="sc">%*%</span>y</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]
+[1,] 39.686261
+[2,] -3.190972
+[3,] -1.507795</code></pre>
+</div>
+</div>
+<p>Isso é o mesmo que fazer:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(mtcars<span class="sc">$</span>mpg <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> mtcars<span class="sc">$</span>wt <span class="sc">+</span> mtcars<span class="sc">$</span>cyl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mtcars$mpg ~ 1 + mtcars$wt + mtcars$cyl)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.2893 -1.5512 -0.4684  1.5743  6.1004 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  39.6863     1.7150  23.141  &lt; 2e-16 ***
+mtcars$wt    -3.1910     0.7569  -4.216 0.000222 ***
+mtcars$cyl   -1.5078     0.4147  -3.636 0.001064 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.568 on 29 degrees of freedom
+Multiple R-squared:  0.8302,    Adjusted R-squared:  0.8185 
+F-statistic: 70.91 on 2 and 29 DF,  p-value: 6.809e-12</code></pre>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="arrays" class="level3" data-number="1.8.3">
 <h3 data-number="1.8.3" class="anchored" data-anchor-id="arrays"><span class="header-section-number">1.8.3</span> Arrays</h3>
@@ -691,15 +810,15 @@ Familia 2 &amp; 2 &amp; 3\\
 \]</span></p>
 <p>Em <em>R</em> isso equivale a:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>consumo <span class="ot">=</span> <span class="fu">array</span>(</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>, <span class="co"># Ano 1</span></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>, <span class="co"># Ano 2</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span> <span class="co"># ano 3</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(consumo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>consumo <span class="ot">=</span> <span class="fu">array</span>(</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>, <span class="co"># Ano 1</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>, <span class="co"># Ano 2</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span> <span class="co"># ano 3</span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(consumo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
 
@@ -722,7 +841,7 @@ Familia 2 &amp; 2 &amp; 3\\
 </div>
 <p>Para checar se um objeto é um array, use a função <em>is.array()</em>. Caso o objeto de fato seja um array, o output obtido será <em>TRUE</em>, do contrário o output será <em>FALSE</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.array</span>(consumo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.array</span>(consumo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -732,18 +851,18 @@ Familia 2 &amp; 2 &amp; 3\\
 <h3 data-number="1.8.4" class="anchored" data-anchor-id="listas"><span class="header-section-number">1.8.4</span> Listas</h3>
 <p>As listas são objetos ideais para guardar informações em múltiplas dimensões, isto é, informações que possuam múltiplas linhas, múltiplas colunas e múltiplas planilhas. As listas podem armazenar diversos outros objetos, incluindo outras listas. Por exemplo, uma lista pode conter um vetor e uma matriz ou múltiplos vetores e múltiplas matrizes. Para criar uma lista, o usuário deve usar a função <em>list()</em> indicando dentro do parêntesis os objetos que irão compor a lista. Por exemplo, vamos criar uma lista contendo os as matrizes de consumo do array anterior e vamos chamar essa lista de <em>lista1</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>ano1 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>ano2 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>ano3 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
-<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>lista1 <span class="ot">=</span> <span class="fu">list</span>(ano1, ano2, ano3)</span>
-<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lista1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>ano1 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>ano2 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>ano3 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a>lista1 <span class="ot">=</span> <span class="fu">list</span>(ano1, ano2, ano3)</span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lista1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
      [,1] [,2]
@@ -763,7 +882,7 @@ Familia 2 &amp; 2 &amp; 3\\
 </div>
 <p>Para checar se um objeto é uma lista, use a função <em>is.list()</em>. Caso o elemento de fato seja uma lista, o output obtido será <em>TRUE</em>, do contrário o output será <em>FALSE</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(lista1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(lista1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -773,12 +892,12 @@ Familia 2 &amp; 2 &amp; 3\\
 <h3 data-number="1.8.5" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">1.8.5</span> Data frames</h3>
 <p>Os data frames - ou quadro de dados - são objetos que possuem utilidade semelhante às matrizes, isto é, são ideais para armazenar informações bidimensionais. No entanto, nos data frames não é possível realizar operações algébricas como nas matrizes. Os data frames são exatamente iguais às planilhas do excel, onde cada coluna é uma variável com valores distribuídos entre as linhas. Essa estrutura de dados é inserida em <em>R</em> usando a função <em>data.frame(),</em> de tal modo que o usuário precisa indicar o nome de cada coluna precedida pelos seus valores em um vetor. Por exemplo, se usarmos o exemplo anterior do salário de dois empregos e quisermos colocar as informações dos ganhos em um data frame de nome <em>salario_diario</em>, devemos proceder conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>salario_diario <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">emprego1 =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">52</span>,<span class="dv">55</span>,<span class="dv">48</span>,<span class="dv">60</span>),</span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">emprego2 =</span> <span class="fu">c</span>(<span class="dv">140</span>,<span class="dv">160</span>,<span class="dv">165</span>,<span class="dv">150</span>,<span class="dv">155</span>)</span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>salario_diario <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">emprego1 =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">52</span>,<span class="dv">55</span>,<span class="dv">48</span>,<span class="dv">60</span>),</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">emprego2 =</span> <span class="fu">c</span>(<span class="dv">140</span>,<span class="dv">160</span>,<span class="dv">165</span>,<span class="dv">150</span>,<span class="dv">155</span>)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  emprego1 emprego2
 1       50      140
@@ -790,8 +909,8 @@ Familia 2 &amp; 2 &amp; 3\\
 </div>
 <p>Você pode mudar os nomes das colunas dos data frames usando a função <em>colnames()</em>. Por exemplo, se quisermos alterar o nome das colunas para <em>trabalho1</em> e <em>trabalho2</em>, devemos proceder conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(salario_diario) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"trabalho1"</span>, <span class="st">"trabalho2"</span>)</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(salario_diario) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"trabalho1"</span>, <span class="st">"trabalho2"</span>)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  trabalho1 trabalho2
 1        50       140
@@ -803,8 +922,8 @@ Familia 2 &amp; 2 &amp; 3\\
 </div>
 <p>Já os nomes das linhas podem ser alterados por meio da função <em>rownames()</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(salario_diario) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Seg"</span>, <span class="st">"Ter"</span>, <span class="st">"Quar"</span>, <span class="st">"Qui"</span>, <span class="st">"Sex"</span>)</span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(salario_diario) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Seg"</span>, <span class="st">"Ter"</span>, <span class="st">"Quar"</span>, <span class="st">"Qui"</span>, <span class="st">"Sex"</span>)</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     trabalho1 trabalho2
 Seg         50       140
@@ -816,7 +935,7 @@ Sex         60       155</code></pre>
 </div>
 <p>Para checar se um objeto é um data frame, o usuário deve usar a função <em>is.data.frame()</em> indicando o nome do objeto dentro do parêntesis. Caso o objeto de fato seja um data frame, o output obtido será <em>TRUE</em>, do contrário o output será <em>FALSE</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -1314,8 +1433,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./aula2.html" class="pagination-link" aria-label="Indexação, operações indexadas e outras operações com objetos">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação, operações indexadas e outras operações com objetos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./aula2.html" class="pagination-link" aria-label="Indexação e operações indexadas">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
