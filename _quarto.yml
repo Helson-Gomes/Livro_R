@@ -10,7 +10,7 @@ book:
     - index.qmd
     - intro.qmd
     - aula2.qmd
-    - aula3.qmd
+    - Aula3.qmd
     - references.qmd
 
 bibliography: references.bib
