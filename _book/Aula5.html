@@ -194,6 +194,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#o-problema-da-memória" id="toc-o-problema-da-memória" class="nav-link active" data-scroll-target="#o-problema-da-memória"><span class="header-section-number">5.1</span> O problema da memória</a></li>
   <li><a href="#arquivos-nativos-da-linguagem-r" id="toc-arquivos-nativos-da-linguagem-r" class="nav-link" data-scroll-target="#arquivos-nativos-da-linguagem-r"><span class="header-section-number">5.2</span> Arquivos nativos da linguagem <em>R</em></a></li>
+  <li><a href="#arquivos-em-formato-.csv" id="toc-arquivos-em-formato-.csv" class="nav-link" data-scroll-target="#arquivos-em-formato-.csv"><span class="header-section-number">5.3</span> Arquivos em formato <em>.csv</em></a>
+  <ul class="collapse">
+  <li><a href="#exemplo-importando-dados-via-link-url" id="toc-exemplo-importando-dados-via-link-url" class="nav-link" data-scroll-target="#exemplo-importando-dados-via-link-url"><span class="header-section-number">5.3.1</span> Exemplo: Importando dados via link url</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -256,8 +260,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readRDS</span>(<span class="st">"base1.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="arquivos-em-formato-.csv" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="arquivos-em-formato-.csv"><span class="header-section-number">5.3</span> Arquivos em formato <em>.csv</em></h2>
+<p>Os arquivos <em>.csv</em> geralmente são utilizados para guardar informações textuais, ou seja, são ideais para armazenar textos. Assim, um arquivo nessa extensão sempre terá uma única coluna, podendo conter, entretanto, múltiplas linhas. No entanto, esse tipo de arquivo pode ser utilizado para armazenar informações em múltiplas colunas desde que essas colunas estejam dispersas em uma única coluna comum sendo separadas por um separador. Por exemplo, considere a tabela a seguir:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Nome</th>
+<th>Idade</th>
+<th>Sexo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>João</td>
+<td>28</td>
+<td>M</td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td>26</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>Ana</td>
+<td>21</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>Em uma estrutura de texto, todas essas informações estariam unidas na mesma coluna, isto é:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>NomeIdadeSexo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>João28M</td>
+</tr>
+<tr class="even">
+<td>Maria26F</td>
+</tr>
+<tr class="odd">
+<td>Ana21F</td>
+</tr>
+</tbody>
+</table>
+<p>Em uma estrutura do tipo <em>.csv</em> todas as informações também estarão na mesma coluna, porém, o final de cada coluna pode ser identificado por um separador de colunas. Para exemplificar, suponha que no caso do exemplo anterior esse separador seja a vírgula. Nesse caso, a tabela anterior passa a ser escrita como:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Nome,Idade,Sexo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>João,28,M</td>
+</tr>
+<tr class="even">
+<td>Maria,26,F</td>
+</tr>
+<tr class="odd">
+<td>Ana,21,F</td>
+</tr>
+</tbody>
+</table>
+<p>Como esse separador de colunas éconhecido, então fica fácil reconhecer as informações armazenadas nesse arquivo de texto.</p>
+<p>Em <em>R</em>, a leitura de arquivos no formato <em>.csv</em> pode ser feita de diferentes maneiras. Uma das formas mais comuns de executar essa tarefa é por meio do uso da função <em>read.csv</em> que é uma função nativa e não necessita de instalação. O uso da função deve obedecer a seguinte forma funcional:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Endereço/nome do arquivo.csv"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># TRUE se a primeira linha indica o nome das colunas e FALSE caso contrário</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span> <span class="co"># aqui o separador de colunas deve ser indicado entre aspas</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="exemplo-importando-dados-via-link-url" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="exemplo-importando-dados-via-link-url"><span class="header-section-number">5.3.1</span> Exemplo: Importando dados via link url</h3>
+<p>Para exemplificar, considere a planilha de registros fictícios de clientes disponível no endereço <a href="https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&amp;export=download" class="uri">https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&amp;export=download</a>. A planilha possui 100 linhas, cada uma delas correspondendo às informações de um cliente específico. Caso o usuário baixe esse arquivo em sua máquina e abra esse arquivo em um editor de texto, notará que as colunas estão delimitadas por uma vírgula. Vamos importar esse arquivo no formato de um data frame nomeando-o de <em>“clientes”</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>clientes <span class="ot">=</span> <span class="fu">read.csv</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&amp;export=download"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># indicando que a primeira linha contém o nome das colunas</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span>, <span class="co"># indicando que as colunas estão separadas por vírgula</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec =</span> <span class="st">"."</span> <span class="co">#indicando que o separador decimal é o ponto</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clientes) <span class="co"># mostra as primeiras linhas da planilha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Caso esse arquivo esteja em uma pasta do seu computador em vez de um link url, etão no parâmetro <em>file</em> você deverá proceder como <em>file = Endereço da pasta que contém o arquivo/nome do arquivo.csv”</em>.</p>
+<p>Agora considere essa mesma planilha disponível no endereço <a href="https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&amp;export=downloa">https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&amp;export=download</a>. Note que se replicarmos o script anterior alterando o endereço para esse link um erro será reportado. Isso ocorre porque nesse caso há um cabeçalho na planilha, isto é, existem linhas na parte superior da planilha que não possuem as mesmas especificações textuais do restante do csv e devem ser desconsideradas no ato da importação. Em outras palavras, as linhas do cabeçalho precisam ser <em>“puladas”</em>. Isso é feito por meio do parâmetro <em>skip</em> dentro da função <em>read.csv</em>. Esse parâmetro recebe a quantidade de linhas que precisam ser puladas. Como o cabeçalho desse exemplo possui duas linhas, então deve-se adicionar <em>skip = 2</em> no comando, ou seja:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clientes <span class="ot">=</span> <span class="fu">read.csv</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&amp;export=download"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># indicando que a primeira linha contém o nome das colunas</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span>, <span class="co"># indicando que as colunas estão separadas por vírgula</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec =</span> <span class="st">"."</span>, <span class="co">#indicando que o separador decimal é o ponto</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">2</span> <span class="co"># Pula as duas primeiras linhas da planilha</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clientes) <span class="co"># mostra as primeiras linhas da planilha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>O usuário pode testar que quando <em>skip &lt; 2</em>, o erro será reportado mesmo assim, ao passo que quando <em>skip &gt; 2</em>, a importação funciona, porém, ajustes precisam ser feitos para que o nome das colunas apareça de maneira correta no data frame.</p>
+<p>É importante ressaltar que a função <em>read.csv</em> possui vários outros parâmetros além desses aqui especificados. O usuário pode checar as demais possibilidades de uso de parâmetros da função executando o comando <em>?read.csv</em>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -53,3 +53,76 @@ Uma vez que o objeto está salvo com a extensão *.rds* na sua máquina, para im
 ```{r, eval=FALSE}
 readRDS("base1.rds")
 ```
+
+## Arquivos em formato *.csv*
+
+Os arquivos *.csv* geralmente são utilizados para guardar informações textuais, ou seja, são ideais para armazenar textos. Assim, um arquivo nessa extensão sempre terá uma única coluna, podendo conter, entretanto, múltiplas linhas. No entanto, esse tipo de arquivo pode ser utilizado para armazenar informações em múltiplas colunas desde que essas colunas estejam dispersas em uma única coluna comum sendo separadas por um separador. Por exemplo, considere a tabela a seguir:
+
+| Nome  | Idade | Sexo |
+|-------|-------|------|
+| João  | 28    | M    |
+| Maria | 26    | F    |
+| Ana   | 21    | F    |
+
+Em uma estrutura de texto, todas essas informações estariam unidas na mesma coluna, isto é:
+
+| NomeIdadeSexo |
+|---------------|
+| João28M       |
+| Maria26F      |
+| Ana21F        |
+
+Em uma estrutura do tipo *.csv* todas as informações também estarão na mesma coluna, porém, o final de cada coluna pode ser identificado por um separador de colunas. Para exemplificar, suponha que no caso do exemplo anterior esse separador seja a vírgula. Nesse caso, a tabela anterior passa a ser escrita como:
+
+| Nome,Idade,Sexo |
+|-----------------|
+| João,28,M       |
+| Maria,26,F      |
+| Ana,21,F        |
+
+Como esse separador de colunas éconhecido, então fica fácil reconhecer as informações armazenadas nesse arquivo de texto.
+
+Em *R*, a leitura de arquivos no formato *.csv* pode ser feita de diferentes maneiras. Uma das formas mais comuns de executar essa tarefa é por meio do uso da função *read.csv* que é uma função nativa e não necessita de instalação. O uso da função deve obedecer a seguinte forma funcional:
+
+```{r, eval=FALSE}
+read.csv(
+  "Endereço/nome do arquivo.csv",
+  header = TRUE, # TRUE se a primeira linha indica o nome das colunas e FALSE caso contrário
+  sep = "," # aqui o separador de colunas deve ser indicado entre aspas
+)
+```
+
+### Exemplo: Importando dados via link url
+
+Para exemplificar, considere a planilha de registros fictícios de clientes disponível no endereço <https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download>. A planilha possui 100 linhas, cada uma delas correspondendo às informações de um cliente específico. Caso o usuário baixe esse arquivo em sua máquina e abra esse arquivo em um editor de texto, notará que as colunas estão delimitadas por uma vírgula. Vamos importar esse arquivo no formato de um data frame nomeando-o de *"clientes"*.
+
+```{r, eval=FALSE}
+clientes = read.csv(
+  file = "https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download",
+  header = TRUE, # indicando que a primeira linha contém o nome das colunas
+  sep = ",", # indicando que as colunas estão separadas por vírgula
+  dec = "." #indicando que o separador decimal é o ponto
+)
+
+head(clientes) # mostra as primeiras linhas da planilha
+```
+
+Caso esse arquivo esteja em uma pasta do seu computador em vez de um link url, etão no parâmetro *file* você deverá proceder como *file = Endereço da pasta que contém o arquivo/nome do arquivo.csv"*.
+
+Agora considere essa mesma planilha disponível no endereço [https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&export=download](https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&export=downloa). Note que se replicarmos o script anterior alterando o endereço para esse link um erro será reportado. Isso ocorre porque nesse caso há um cabeçalho na planilha, isto é, existem linhas na parte superior da planilha que não possuem as mesmas especificações textuais do restante do csv e devem ser desconsideradas no ato da importação. Em outras palavras, as linhas do cabeçalho precisam ser *"puladas"*. Isso é feito por meio do parâmetro *skip* dentro da função *read.csv*. Esse parâmetro recebe a quantidade de linhas que precisam ser puladas. Como o cabeçalho desse exemplo possui duas linhas, então deve-se adicionar *skip = 2* no comando, ou seja:
+
+```{r, eval=FALSE}
+clientes = read.csv(
+  file = "https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&export=download",
+  header = TRUE, # indicando que a primeira linha contém o nome das colunas
+  sep = ",", # indicando que as colunas estão separadas por vírgula
+  dec = ".", #indicando que o separador decimal é o ponto
+  skip = 2 # Pula as duas primeiras linhas da planilha
+)
+
+head(clientes) # mostra as primeiras linhas da planilha
+```
+
+O usuário pode testar que quando *skip \< 2*, o erro será reportado mesmo assim, ao passo que quando *skip \> 2*, a importação funciona, porém, ajustes precisam ser feitos para que o nome das colunas apareça de maneira correta no data frame.
+
+É importante ressaltar que a função *read.csv* possui vários outros parâmetros além desses aqui especificados. O usuário pode checar as demais possibilidades de uso de parâmetros da função executando o comando *?read.csv*.
