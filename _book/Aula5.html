@@ -383,28 +383,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Tendo instalado a biblioteca, o próximo passo é liberá-la para o uso. Isso é feito por meio da função <em>library()</em>, indicando dentro do parênteses e entre aspas o nome da biblioteca que se deseja liberar para o uso. Nesse caso, deve-se proceder conforme a seguir:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'openxlsx' was built under R version 4.1.3</code></pre>
-</div>
 </div>
 <p>Para abrir um arquivo com extensão <em>.xlsx</em> com a biblioteca <em>openxlsx</em>, deve-se usar a função <em>read.xlsx</em>. O usuário pode consultar as instruções de uso dessa função executando o comando <em>?openxlsx</em>. Basicamente, essa função tem a seguinte estrutura de uso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlsxFile =</span> <span class="st">"endereço do arquivo/nome do arquivo.xlsx"</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="st">"Número da linha em que começa a planilha"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Número ou nome da planilha contida no arquivo"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="st">"TRUE se a primeira linha mostra os nomes das colunas e FALSE caso contrário"</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlsxFile =</span> <span class="st">"endereço do arquivo/nome do arquivo.xlsx"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="st">"Número da linha em que começa a planilha"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Número ou nome da planilha contida no arquivo"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="st">"TRUE se a primeira linha mostra os nomes das colunas e FALSE caso contrário"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para demonstrar, considere que precisamos importar uma planilha com os valores nominais do PIB dos estados do Brasil desde 2002 até 2021 e que essa tabela está disponível no endereço <a href="https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&amp;export=download" class="uri">https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&amp;export=download</a>. As primeiras três linhas da planilha compõem o cabeçalho e devem ser desconsideradas, isto é, a planilha só inicia de fato na linha 4. Assim, a importação deve ser feita conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pib <span class="ot">=</span> <span class="fu">read.xlsx</span>(</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlsxFile =</span> <span class="st">"https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&amp;export=download"</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="dv">4</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pib <span class="ot">=</span> <span class="fu">read.xlsx</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlsxFile =</span> <span class="st">"https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&amp;export=download"</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="dv">4</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

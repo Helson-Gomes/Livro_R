@@ -147,7 +147,7 @@ install.packages("openxlsx")
 
 Tendo instalado a biblioteca, o próximo passo é liberá-la para o uso. Isso é feito por meio da função *library()*, indicando dentro do parênteses e entre aspas o nome da biblioteca que se deseja liberar para o uso. Nesse caso, deve-se proceder conforme a seguir:
 
-```{r}
+```{r, eval=FALSE}
 library(openxlsx)
 ```
 
