@@ -1,0 +1,3265 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Introdução à Programação e à Ciência de Dados},
+  pdfauthor={Prof.~Dr.~Helson Gomes de Souza},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Introdução à Programação e à Ciência de Dados}
+\author{Prof.~Dr.~Helson Gomes de Souza}
+\date{2025-07-07}
+
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Prefácio}\label{prefuxe1cio}
+\addcontentsline{toc}{chapter}{Prefácio}
+
+\markboth{Prefácio}{Prefácio}
+
+Esse é um material construído para auxiliar os discentes do curso de
+Ciências Econômicas da Universidade Regional do Cariri no decorrer da
+disciplina de \emph{Introdução à programação e à ciência de dados,}
+ministrada no terceiro período do curso. O material possui os
+instrumentos básicos para o acompanhamento do curso, incluindo
+explicações, comandos e exercícios. O material está organizado na ordem
+cronológica dos conteúdos repassados na disciplina de tal modo que essa
+ordem tem o intúito de conduzir o discente no aprendizado da programação
+computacional aplicada à economia em um cronograma planejado de acordo
+com as boas práticas do aprendizado da programação, evitando que o
+discente comece os estudos por conteúdos inadequados para os iniciantes
+nessa área.
+
+O foco do material é a linguagem R, a mesma utilizada como objeto
+central da disciplina. Contudo, os métodos de aprendizado também podem
+ser expandidos para outras linguagens, desde que as devidas adaptações
+de vocabulário sejam consideradas. O material também possui um foco na
+análise de dados, desviando-se da programação computacional
+\emph{``bruta''} devido a necessidade do curso e dos economistas em
+dominar os fundamentos básicos da utilização de dados.
+
+\bookmarksetup{startatroot}
+
+\chapter{Introdução}\label{introduuxe7uxe3o}
+
+\section{A lógica de
+programação}\label{a-luxf3gica-de-programauxe7uxe3o}
+
+Imagine que o computador é uma empresa que realiza diferentes tarefas e
+que nessa empresa existem funcionários de várias partes do mundo. Cada
+funcionário realiza as mesmas tarefas, porém, falando diferentes
+idiomas. Assim, se você quer que um funcionário americano realize uma
+tarefa, terá que ordenar que ele a faça em inglês; se você quer que um
+funcionário italiano realize a mesma tarefa, terá de fazer o pedido para
+ele falando italiano, e assim sucessivamente. No computador, os
+funcionários são as linguagens de programação e o idioma é o vocabulário
+da linguagem (ou a maneira de escrever os comandos em cada linguagem).
+Resumidamente e exemplificadamente, você pode executar uma tarefa usando
+R ou pode executar essa mesma tarefa usando Python ou qualquer outra
+linguagem de programação pois a lógica de comunicação com o computador
+será a mesma, porém, os comandos para execuar a mesma tarefa podem ser
+diferentes em cada linguagem. Como consequência, o primeiro passo para
+dominar as linguagens de programação é desenvolver uma lógica de
+programação.
+
+A lógica de programação é um raciocínio sobre como se comunicar com o
+computador para realizar tarefas. Seguindo o exemplo da empresa citado
+no parágrafo anterior, se você precisa de um relatório impresso, terá de
+falar o seguinte \emph{``eu preciso que você imprima esse relatório''}.
+Porém, como os funcionários falam diferentes idiomas, você precisa fazer
+esse pedido em uma linguagem diferente a depender do funcionário
+responsável pela impressão. A maneira como você faz o pedido (\emph{``eu
+preciso que você imprima esse relatório'')} não vai mudar independente
+do funcionário que receberá a ordem, o que muda é apenas o idioma em que
+a ordem será feita. No computador, essa maneira como você faz o pedido é
+a lógica de programação, ela será a mesma para qualquer linguagem de
+programação, que no caso do exemplo corresponde ao idioma falado.
+
+O primeiro passo para desenvolver uma lógica de programação é entender
+as operações fundamentais de uma \textbf{linguagem de programação}. Uma
+linguagem de programação é nada mais do que uma maneira de se comunicar
+com o computador para ordenar que ele execute tarefas automáticas. As
+linguagens são configuradas em sistemas binários (negação e afirmação).
+Cada linguagem de programação possui o seu \textbf{vocabulário}, porém,
+todas as linguagens partem dos mesmos princípios e das mesmas lógicas
+fundamentais. \textbf{Exemplos}: JavaScript, R, Python, Julia, Ruby,
+Scala\ldots{}
+
+\section{Como usar a linguagem de
+programação}\label{como-usar-a-linguagem-de-programauxe7uxe3o}
+
+O primeiro paso para se comunicar com o computador por meio de uma
+linguagem de programação é informar à máquina a sua intenção de usar o
+vocabulário da linguagem. Em outras palavras, é preciso ``instalar'' a
+linguagem em sua máquina. Na analogia da empresa anteriormente
+mencionada, instalar a linguagem de programação seria como fazer um
+curso de idiomas e receber um manual de instruções de gramática para
+falar com os empregados.
+
+Nesse material, utilizaremos a linguagem R. Seguindo o primeiro passo, a
+instalação da linguagem deve ser feita antes de qualquer outro
+procedimento. Os métodos de instalação variam de acordo com o sistema
+operacional do usuário. Nesse material, vamos supor que o aluno dispõe
+de uma máquina com sistema operacional windows. Nesse caso, o usuário
+deve baixar os componentes da linguagem
+\href{https://cran.r-project.org/bin/windows/base/}{nesse endereço}
+Tendo feito isso, o usuário deve executar o arquivo baixado e instalar
+normalmente como qualquer instalação convencional no sistema windows.
+
+O segundo passo é adotar um \textbf{ambiente de execução}. Esses
+ambientes são softwares também conhecidos como \emph{\textbf{ambiente de
+desenvolvimento integrado} (IDE) -} Exemplos: Rstudio, Pycharm, Google
+Colaboratory, StataMP-. De forma geral, o IDE é uma plataforma onde você
+escreve as ordens que deseja que o computador execute em uma determinada
+linguagem. Especificando com outras palavras, o ambiente de execução é
+um software usado para escrever as ordens ao computador por meio do
+vocabulário da linguagem. Como vamos usar a linguagem R nesse material,
+temos que adotar um IDE que execute ordens nessa linguagem. É
+recomendado que o usuário utilize o Rstudio apesar de existirem diversas
+outras ferramentas com esse mesmo propósito. Para tanto, é preciso
+baixar o programa
+\href{https://posit.co/download/rstudio-desktop/?cmplz-force-reload=1751898658132}{nesse
+endereço} e proceder com com os procedimentos padrões de instalação de
+softwares no sistema windows.
+
+É importante ressaltar que uma linguagem de programação não é um
+software, por exemplo, é errôneo se referir à linguagem R como
+\emph{``software R''}, assim como é equivocado se referir à linguagem
+\emph{stata} como \emph{``software stata''}, e assim sucessivamente.
+Também é importante destacar que os IDEs não são linguagens de
+programação, eles apenas transferem para o computador uma ordem para ser
+executado em uma determinada linguagem. Com isso, é errôneo afirmar que
+uma dada tarefa foi \emph{``executada pelo software Rstudio''}.
+
+Ao instalar o Rstudio, o usuário irá se deparar com a tela ilustrada na
+imagem a seguir. Note que o IDE é formado por quatro painéis, cada um
+deles com a sua funcionalidade. O painel 1 é conhecido como \emph{input}
+ou painel de entrada. Nesse painel o usuário irá abrir e manipular os
+arquivos de entrada como scripts e códigos de programação em R. Outros
+arquivos de entrada também são suportados como arquivos \emph{html,
+markdown}, dentre outros. Mas essas extensões adicionais não são o foco
+do curso. Para gerar um arquivo de entrada onde serão escritos os
+comandos da linguagem R, pressione \emph{Ctrl Shift n} ou vá na parte
+superior esquerda, na barra de tarefas do IDE em \emph{file, new file, r
+script}.
+
+O painel 2 é conhecido como \emph{console}. Nesse painel serão expostos
+os resultados das tarefas executadas nos comandos escritos no painel 1.
+O usuário também pode escrever e executar os comandos diretamente no
+console, com a diferença de que no \emph{r script} os códigos podem ser
+salvos para o uso posterior ao contrário do console.
+
+O painel 3 é conhecido como ambiente de trabalho ou \emph{working
+environment}. Ele é dividido em quatro abas que podem ser acessadas
+separadamente, sendo: o \emph{Environment} onde são expostos todos os
+objetos criados, o histórico \emph{(history)} onde os últimos comandos
+ficam armazenados numa espécie de breve histórico de comandos, as
+conecções \emph{(Connectione)} onde são expostas as ferramentas
+conectadas a linguagem R e ao Rstudio para executar tarefas, e a aba de
+tutoriais, onde o usuário pode acessar um breve guia sobre como usar o
+Rstudio. Versões mais recentes também disponibilizam abas adicionais
+sobre controle de versionamento no ambiente de trabalho, mas por
+enquanto esse não é o foco do curso.
+
+O painel 4 é conhecido como \emph{output} ou painel de saída. Nele o
+usuário pode visualizar os produtos gerados com os comandos e navegar
+pelo diretório de trabalho. O painel é dividido em cinco abas, sendo: a
+aba de arquivos \emph{(files)}, onde o usuário pode navegar pela pasta
+que está usando; a aba \emph{plots}, onde o usuário pode visualizar
+gráficos e figuras geradas com os comandos escritos no painel 1; a aba
+de bibliotecas \emph{(packages)} onde o usuário pode acessar as
+bibliotecas instaladas na linguagem; a aba de ajuda \emph{(Help)}, onde
+o usuário pode consultar manuais de instrução sobre diferentes comandos
+e bibliotecas; e por fim a aba de visualização \emph{(View)}, onde o
+usuário pode visualizar objetos dinâmicos ou estáticos criados com
+alguma ferramenta adicional auxiliar à linguagem R como páginas web,
+arquivos pdf, etc.
+
+\section{Comandos}\label{comandos}
+
+Os ambientes de execução podem operar em ordens diretas (cliques) ou
+comunicação agrupada \emph{(comandos)}. Os ambientes de execução
+sugeridos nesta disciplina operam com \emph{linhas de comando}. Nas
+linhas de comando, o operador (aluno) escreve uma ordem que o ambiente
+de execução entende como um comando para executar uma tarefa. Esses
+comandos são escritos individualmente em cada linha, isto é, cada linha
+escrita só agrupa um único comando. Ao escrever uma linha de comando no
+Rstudio, você poderá executar essse comando posicionando o cursor na
+linha (ou selecionando as linhas de interesse) e em seguida pressionando
+\emph{``Ctrl Enter''}.
+
+Alguns comandos já estão pré-programados no vocabulário das linguagens.
+Porém outros comandos precisam ser elaborados pelo próprio usuário
+usando os comandos pré-progamados e as demais ferramentas próprias do
+vocabulário da linguagem. Por exemplo, se você quer somar dois números
+quaisquer a e b, você pode fazer isso com uma operação de soma que já é
+automaticamente reconhecida pela linguagem R. Mas se você quer somar
+\(a + b\) apenas se \(a > b\), então você precisa usar a lógica de
+programação para programar esse comando.
+
+\section{Bibliotecas}\label{bibliotecas}
+
+O usuário pode ordenar que o computador execute uma tarefa por meio de
+comandos. Além disso, o usuário também pode unir vários comandos em uma
+função para executar uma tarefa de interesse. Muitas funções já estão
+disponíveis na própria linguagem nativa, por exemplo, caso o usuário
+queira gerar um gráfico ele pode usar o comando \emph{plot()} que é uma
+função que usa vários comandos nativos da linguagem \emph{R} para gerar
+uma figura. Assim como a função \emph{plot}, muitas outras funções já
+estão disponíveis e prontas para o acesso no ato da instalação da
+linguagem. Porém, existem funções que são criadas por terceiros e que
+precisam ser instaladas para que possam ser usadas. Por exemplo, em vez
+de elaborar um gráfico com a função \emph{plot}, o usuário pode usar a
+função \emph{ggplot}. No entanto, essa função só pode ser usada caso a
+biblioteca \emph{ggplo2} esteja instalada. O usuário pode verificar se
+uma determinada biblioteca está instalada navegando pelo painel inferior
+direito, na aba \emph{Packages}, digitando o nome da biblioteca na guia
+de busca. Caso a biblioteca esteja instalada, então a busca retornará um
+indicativo com o nome da biblioteca, do contrário, o resultado da busca
+será vazio.
+
+Para instalar uma biblioteca o usuário deve usar o comando
+\emph{install.packages()} posicionando no parêntesis o nome da
+biblioteca entre aspas. Por exemplo, para instalar a biblioteca
+\emph{ggplot2}, o usuário deve executar o comando
+\emph{install.packages(``ggplot2'')}. Feito isso, a biblioteca estará
+disponível na lista de bibliotecas instaladas da aba \emph{Packages} do
+painel inferior direito. Uma vez instalada, a instalação não precisa ser
+refeita, exceto em caso de atualização para uma nova versão.
+
+No entanto, não basta instalar a biblioteca para usufruir de suas
+funções. Sempre que o Rstudio for reiniciado ou sempre que uma nova
+seção for iniciada no Rstudio é necessário \textbf{\emph{liberar a
+biblioteca para o uso}}. Isso é feito por meio do comando
+\emph{library()} ou \emph{require()} sempre posicionando entre
+parêntesis o nome da biblioteca desejada, dessa vez, sem aspas. Por
+exemplo, para liberar a biblioteca \emph{ggplot2} para o uso, proceda
+conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Operações fundamentais em
+R}\label{operauxe7uxf5es-fundamentais-em-r}
+
+\subsection{Soma}\label{soma}
+
+Para efetuar uma soma, você deve utilizar o operador de adição
+\emph{``+''}. Por exemplo, para somar \(1 + 1\) proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{+}\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+\subsection{Subtração}\label{subtrauxe7uxe3o}
+
+Para efetuar uma subtração, você deve utilizar o traço simples
+\emph{``-''} como operador de subtração. Por exemplo, para subtrair
+\(1 - 1\) proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1{-}1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
+\subsection{Multiplicação}\label{multiplicauxe7uxe3o}
+
+Para efetuar uma multiplicação, você deve utilizar o asterisco
+\emph{``}*'' como operador de multiplicação. Por exemplo, para somar
+\(1\) x \(1\) proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{*}\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\subsection{Divisão}\label{divisuxe3o}
+
+Para efetuar uma divisão, você deve utilizar a barra simples
+\emph{``}/'' como operador de divisão. Por exemplo, para dividr 4 por 2,
+proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4}\SpecialCharTok{/}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+\subsection{Potência}\label{potuxeancia}
+
+Para efetuar uma potenciação, você deve utilizar o circunflexo
+\emph{``}\^{}'' ou o duplo asterisco ``**'' como operador de
+multiplicação. Por exemplo, para calcular \(2^3\) proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\SpecialCharTok{\^{}}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 8
+\end{verbatim}
+
+O que também pode ser feito da seguinte maneira:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\SpecialCharTok{**}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 8
+\end{verbatim}
+
+\subsection{Raíz quadrada}\label{rauxedz-quadrada}
+
+Para efetuar uma radiciação, você deve utilizar o comando \emph{sqrt}
+posisionando o número em prêntesis. Por exemplo, para calcular
+\(\sqrt{16}\) proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{16}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 4
+\end{verbatim}
+
+\subsection{Logaritmo}\label{logaritmo}
+
+Para calcular o logaritmo de um número, você deve utilizar ocomando
+\emph{log10} posisionando o número em prêntesis. Por exemplo, para
+calcular \(log(2)\) proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{log10}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.30103
+\end{verbatim}
+
+\subsection{Logaritmo natural}\label{logaritmo-natural}
+
+Para calcular o logaritmo natural de um número, você deve utilizar
+ocomando \emph{log} posisionando o número em prêntesis. Por exemplo,
+para calcular \(ln(2)\) proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{log}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.6931472
+\end{verbatim}
+
+\subsection{Seno}\label{seno}
+
+Para calcular o seno de um número, você deve utilizar ocomando
+\emph{sin} posisionando o número em prêntesis. Por exemplo, para
+calcular o seno de 90 proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sin}\NormalTok{(}\DecValTok{90}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.8939967
+\end{verbatim}
+
+\subsection{Cosseno}\label{cosseno}
+
+Para calcular o cosseno de um número, você deve utilizar ocomando
+\emph{cos} posisionando o número em prêntesis. Por exemplo, para
+calcular o cosseno de 90 proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cos}\NormalTok{(}\DecValTok{90}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -0.4480736
+\end{verbatim}
+
+\subsection{Tangente}\label{tangente}
+
+Para calcular a tangente de um número, você deve utilizar ocomando
+\emph{tan} posisionando o número em prêntesis. Por exemplo, para
+calcular a tangente de 90 proceda como a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tan}\NormalTok{(}\DecValTok{90}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -1.9952
+\end{verbatim}
+
+\subsection{Divisão inteira}\label{divisuxe3o-inteira}
+
+Algumas divisões resultam em números não inteiros, de tal modo que o
+resultado é composto por um número inteiro aderido de um ``resto''. Para
+calcular a divisão sem o resto você deve usar o operador \emph{\%/\%}.
+Por exemplo, uma divisão inteira de cinco por dois deve resultar em dois
+e pode ser feita da seguinte maneira:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \SpecialCharTok{\%/\%} \DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+\subsection{Resto da divisão}\label{resto-da-divisuxe3o}
+
+Porém, se o usuário estiver interessado em obter apenas o resto da
+divisão, pode usar o operador \emph{\%\%}. No caso do exemplo anterior,
+o resto da divisão é um e pode ser obtido da seguinte maneira:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \SpecialCharTok{\%\%} \DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\section{Operadores lógicos}\label{operadores-luxf3gicos}
+
+Os operadores lógicos são usados para comparar valores. O principal
+operador lógico de uma linguagem de programação é o operador de
+afirmação ou negação. Sempre que houver uma afirmação, a lingaugem
+retornará um sinal de verdadeiro (TRUE) e sempre que houver uma negação,
+a lingaugem retornará um sinal de falso (FALSE). Nos comandos, o TRUE
+pode ser substituído pelo T, enquanto o FALSE pode ser substituído pelo
+F. A linguagem R atribui o valor zero para as negações e o valor um para
+as afirmações. Assim, \emph{TRUE = 1} e \emph{FALSE = 0} sempre
+ocorrerá.
+
+\subsection{Igualdade}\label{igualdade}
+
+Para checar uma condição de igualdade, você deve usar o operador
+``\emph{==}''. Por exemplo, para checar se dois é igual a três, você
+deve proceder como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{==} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\subsection{Desigualdade maior que}\label{desigualdade-maior-que}
+
+Para checar uma condição de desigualdade na forma de maior que, isto é,
+para verificar se um valor é maior que outro, você deve usar o operador
+``\emph{\textgreater{}}''. Por exemplo, para checar se dois é maior que
+três, você deve proceder como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{\textgreater{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\subsection{Desigualdade menor que}\label{desigualdade-menor-que}
+
+Para checar uma condição de desigualdade na forma de menor que, isto é,
+para verificar se um valor é menor que outro, você deve usar o operador
+``\emph{\textless{}}''. Por exemplo, para checar se dois é menor que
+três, você deve proceder como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{\textless{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\subsection{Desigualdade maior ou
+igual}\label{desigualdade-maior-ou-igual}
+
+Para checar uma condição de desigualdade na forma de maior ou igual a,
+isto é, para verificar se um valor é maior ou igual outro, você deve
+usar o operador ``\emph{\textgreater=}''. Por exemplo, para checar se
+dois é maior ou igual a três, você deve proceder como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{\textgreater{}=} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\subsection{Desigualdade menor ou
+igual}\label{desigualdade-menor-ou-igual}
+
+Para checar uma condição de desigualdade na forma de menor ou igual a,
+isto é, para verificar se um valor é menor ou igual outro, você deve
+usar o operador ``\emph{\textless=}''. Por exemplo, para checar se dois
+é menor ou igual a três, você deve proceder como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{\textless{}=} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\subsection{Diferente de}\label{diferente-de}
+
+Para checar se um valor é diferente de outro, você deve usar o operador
+``!=''. Por exemplo, para checar se dois é diferente de três, você deve
+proceder como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{!=} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\section{Objetos}\label{objetos}
+
+As linguagens de programação geralmente são identificadas ao objeto,
+isto é, é possível criar um objeto que representa algum ítem ou valor.
+Em R, os objetos devem ser criados om um indicativo de igualdade ``=''.
+Por exemplo, imagine que precisamos criar um objeto com o nome ``idade''
+contendo a idade de uma pessoa em anos. Este procedimento é feito
+informando o comando ``nome do objeto = valor do objeto'' conforme
+demonstrado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idade }\OtherTok{=} \DecValTok{18}
+\end{Highlighting}
+\end{Shaded}
+
+Ao executar esse comando, um novo objeto surgirá na aba
+\emph{Environment} do painel 3. Esse objeto tem o nome ``idade'' e
+recebe um valor de 18. Para visualizar o valor do objeto, o usuário pode
+usar a função \emph{print} que imprimirá no painel 2 (console) o valor
+referente ao objeto mencionado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(idade)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 18
+\end{verbatim}
+
+Tendo feito isso, e dado que o objeto de nome \emph{idade} e valor 18
+está no \emph{Environment}, cada vez que esse objeto for mencionado a
+linguagem R reconhecerá que se trata do número 18. Para exemplificar,
+suponha que uma pessoa é considerada idosa a partir dos 60 anos e
+suponha que você precise descobrir quantos anos ainda restam para que
+essa pessoa com idade = 18 se torne idosa. Nesse caso, você deve
+proceder como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{60} \SpecialCharTok{{-}}\NormalTok{ idade}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 42
+\end{verbatim}
+
+\section{Tipos de objetos}\label{tipos-de-objetos}
+
+Os objetos são maneiras de armazenar informações em um dado arranjo. Em
+R, essas informações podem ser arranjadas em funções, vetores, matrizes,
+listas, arrays ou quadros de dados (\emph{data frames}). Cada objeto tem
+a sua função específica e deve ser usado conforme a necessidade. Por
+exemplo, uma matriz é ideal para armazenar objetos com duas dimensões
+(linha e coluna) mas não é adequada para agrupar objetos com três
+dimensões, nesse caso melhor seria usar um array ou uma lista.
+
+\subsection{Vetores}\label{vetores}
+
+Os vetores são objetos que servem para guardar informações
+unidimensionais, isto é, informações que podem ser escritas em uma única
+linha ou coluna. Por exemplo, imagine que você trabalhou cinco dias em
+um emprego e notou em uma planilha o seu salário de cada dia. Suponha
+que os seus ganhos dia após dia em reais foram 50.00, 52.00, 55.00,
+48.00, 60.00. Se você anotou essas informações em uma linha de uma
+planilha, então você tem um vetor linha. Analogamente, se as informações
+foram anotadas em uma coluna de uma planilha, tem-se um vetor coluna. Se
+você chamou essa planilha de ``salario'', então isso é o mesmo que:
+
+\[
+salario = [50.00, 52.00, 55.00,48.00,60.00]
+\]
+
+Para digitar esse vetor em \emph{R} deve-se usar o operador de vetores
+\emph{c()}, sempre colocando os valores dentro do parêntesis separando
+cada valor por uma vírgula. Lembre-se que o separador decimal da
+linguagem \emph{R} é o ponto e que a vírgula é um separador de valores.
+Com isso, o vetor anterior deve ser escrito como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salario }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\FloatTok{50.00}\NormalTok{, }\FloatTok{52.00}\NormalTok{, }\FloatTok{55.00}\NormalTok{, }\FloatTok{48.00}\NormalTok{, }\FloatTok{60.00}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Feito isso, um objeto de nome \emph{salario} irá aparecer no ambiente de
+trabalho. Note que o nome do objeto é sucedido do termo \emph{num
+{[}1:5{]}}, isso indica que se trata de um vetor numérico com cinco
+elementos. Um detalhe importante a ser mencionado é o fato de que
+valores não numéricos também podem ser armazenados em vetores, por
+exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"João"}\NormalTok{, }\StringTok{"Maria"}\NormalTok{, }\StringTok{"José"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Note que \textbf{os valores não numéricos sempre devem estar entre
+aspas}. Para checar se um dado objeto é um vetor, o usuário pode usar a
+função \emph{is.vector()} indicando o nome do objeto entre parêntesis.
+Por exemplo, para checar se o objeto \emph{salario} é um vetor, proceda
+conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.vector}\NormalTok{(salario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+Caso o elemento de fato seja um vetor, o output obtido será \emph{TRUE},
+do contrário o output será \emph{FALSE}. Para transformar um determinado
+objeto em um vetor, o usuário pode usar a função \emph{as.vector(),}
+indicando o nome do objeto entre parêntesis. Por exemplo, para
+transformar uma sequência de 1 a 10 em um vetor, proceda conforme a
+seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sq }\OtherTok{=} \FunctionTok{as.vector}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Matrizes}\label{matrizes}
+
+As matrizes são objetos que servem para guardar informações
+bidimensionais, isto é, informações que podem ser escritas em um
+múltiplas linhas e múltiplas colunas, desde que o usuário precise
+realizar operações algébricas com esses valores. Para exemplificar,
+considere o exemplo anterior do salário. Considere agora que você
+trabalhou cinco dias da semana não em um mas em dois empregos. Agora
+você vai atribuir um diasda semana para cada linha e vai anotar os
+ganhos de cada emprego em colunas diferentes. Suponha agora que os
+ganhos do emprego 2 foram de 140.00, 160.00, 165.00, 150.00 e 155.00.
+Isso equivale a:
+
+\[
+salario = \left[
+\begin{array}{cc}
+Emprego 1 & Emprego 2\\ \hline
+50.00 & 140.00\\
+52.00 & 160.00\\
+55.00 & 165.00\\
+48.00 & 150.00\\
+60.00 & 155.00 \\
+\end{array}
+\right]
+\]
+
+Agora a planilha de ganhos possui dois vetores coluna de cinco elementos
+cada ou cinco vetores linha de dois elementos cada. Para informar essa
+planilha como matriz no \emph{R}, o usuário deve usar a função
+\emph{matrix}. Nessa função o usuário deve digitar os elementos da
+planilha linha por linha em um único vetor e indicar isso com o
+parâmetro \emph{by.row = TRUE.} Ou se preferir o usuário pode digitar os
+elementos da planilha coluna por coluna em um único vetor e indicar isso
+com o parâmetro \emph{by.row = FALSE.} O usuário também deve informar o
+número de linhas da matriz com o parâmetro \emph{nrow} e o número de
+colunas com o parâmetro \emph{ncol}. Para repassar a planilha anterior
+em \emph{R} na forma de matriz, proceda conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salario }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{,}\DecValTok{140}\NormalTok{,}\DecValTok{52}\NormalTok{,}\DecValTok{160}\NormalTok{,}\DecValTok{55}\NormalTok{,}\DecValTok{165}\NormalTok{,}\DecValTok{48}\NormalTok{,}\DecValTok{150}\NormalTok{,}\DecValTok{60}\NormalTok{,}\DecValTok{155}\NormalTok{),}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{ncol =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{nrow =} \DecValTok{5}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(salario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]   50  140
+[2,]   52  160
+[3,]   55  165
+[4,]   48  150
+[5,]   60  155
+\end{verbatim}
+
+Isso é o mesmo que fazer:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salario }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{,}\DecValTok{52}\NormalTok{,}\DecValTok{55}\NormalTok{,}\DecValTok{48}\NormalTok{,}\DecValTok{60}\NormalTok{,}\DecValTok{140}\NormalTok{,}\DecValTok{160}\NormalTok{,}\DecValTok{165}\NormalTok{,}\DecValTok{150}\NormalTok{,}\DecValTok{155}\NormalTok{),}
+  \AttributeTok{byrow =} \ConstantTok{FALSE}\NormalTok{, }\CommentTok{\# agrupamento por coluna}
+  \AttributeTok{ncol =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{nrow =} \DecValTok{5}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(salario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]   50  140
+[2,]   52  160
+[3,]   55  165
+[4,]   48  150
+[5,]   60  155
+\end{verbatim}
+
+Para dar nomes às linhas de uma matriz, use a função \emph{rownames(),}
+indicando o nome da matriz entre o parêntesis e informando os nomes das
+linhas em um vetor. Por exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(salario) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Seg"}\NormalTok{, }\StringTok{"Ter"}\NormalTok{, }\StringTok{"Quar"}\NormalTok{, }\StringTok{"Qui"}\NormalTok{, }\StringTok{"Sex"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(salario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+Seg    50  140
+Ter    52  160
+Quar   55  165
+Qui    48  150
+Sex    60  155
+\end{verbatim}
+
+Para dar nomes às colunas de uma matriz, use a função \emph{colnames(),}
+indicando o nome da matriz entre o parêntesis e informando os nomes das
+colunas em um vetor. Por exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(salario) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Emprego 1"}\NormalTok{,}\StringTok{"Emprego 2"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(salario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     Emprego 1 Emprego 2
+Seg         50       140
+Ter         52       160
+Quar        55       165
+Qui         48       150
+Sex         60       155
+\end{verbatim}
+
+Para verificar se um determinado objeto é uma matriz, use a função
+\emph{is.matrix(),} indicando o nome do objeto entre o parêntesis, por
+exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.matrix}\NormalTok{(salario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+Caso o elemento de fato seja uma matriz, o output obtido será
+\emph{TRUE}, do contrário o output será \emph{FALSE}. Para transformar
+um determinado objeto em uma matriz, o usuário pode usar a função
+\emph{as.matrix(),} indicando o nome do objeto entre parêntesis. Por
+exemplo, para transformar uma sequência de 1 a 10 em uma matriz, proceda
+conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sq }\OtherTok{=} \FunctionTok{as.matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(sq)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      [,1]
+ [1,]    1
+ [2,]    2
+ [3,]    3
+ [4,]    4
+ [5,]    5
+ [6,]    6
+ [7,]    7
+ [8,]    8
+ [9,]    9
+[10,]   10
+\end{verbatim}
+
+\subsubsection{Operações com
+matrizes}\label{operauxe7uxf5es-com-matrizes}
+
+\paragraph{Soma de matrizes}\label{soma-de-matrizes}
+
+A soma de matrizes em \emph{R} não apresenta diferenças das operações
+convencionais de soma, ou seja, é feita usando o operador de soma ``+''.
+Para exemplificar, considere as dias matrizes a seguir:
+
+\[ matriz1 = \left[ \begin{array}{cc} 0 & 2 \\ 3 & 1 \end{array} \right] \quad \quad \quad \quad matiz2 = \left[ \begin{array}{cc} 5 & 3\\7 & 0 \end{array} \right] \]
+
+Para gerar uma nova matriz de nome \emph{matriz3} contendo a soma da
+matriz 1 com a matriz 2, basta proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matriz1 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{matriz2 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{0}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{matriz3 }\OtherTok{=}\NormalTok{ matriz1 }\SpecialCharTok{+}\NormalTok{ matriz2}
+\FunctionTok{print}\NormalTok{(matriz3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]    5    5
+[2,]   10    1
+\end{verbatim}
+
+\paragraph{Subtração de matrizes}\label{subtrauxe7uxe3o-de-matrizes}
+
+De maneira análoga à operação de soma, a subtração de matrizes é feita
+usando o operador de subtração ``-''. Nesse caso, os elementos de cada
+posição das matries são subtraídos. Para exemplificar, considere
+subtrair a matriz 1 da matriz 2, procedendo de acordo com o código a
+seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matriz3 }\OtherTok{=}\NormalTok{ matriz1 }\SpecialCharTok{{-}}\NormalTok{ matriz2}
+\FunctionTok{print}\NormalTok{(matriz3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]   -5   -1
+[2,]   -4    1
+\end{verbatim}
+
+É importante ressaltar que a soma e a subtração de matrizes só podem ser
+feitas com matrizes de mesma dimensão.
+
+\paragraph{Multiplicação de
+matrizes}\label{multiplicauxe7uxe3o-de-matrizes}
+
+Na multiplicação, não é correto utilizar o asterisco como operador de
+multiplicação dado que multiplicar os termos de mesma posição de duas
+matrizes não é a maneira correta de efetuar o produto de matrizes. Para
+essa tarefa, o operador de multiplicação agora é \(\%*\%\) . Para
+exemplificar, considere multiplicarr a matriz 1 pela matriz 2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matriz3 }\OtherTok{=}\NormalTok{ matriz1 }\SpecialCharTok{\%*\%}\NormalTok{ matriz2}
+\FunctionTok{print}\NormalTok{(matriz3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]   14    0
+[2,]   22    9
+\end{verbatim}
+
+\paragraph{Matriz transposta}\label{matriz-transposta}
+
+A transposta de uma matriz nada mais é do que reorganizar as linhas como
+colunas e as colunas como linhas. Para obter a transposta de uma matriz
+em \emph{R} basta usar a função \emph{t()}, indicando entre parêntesis o
+nome da matriz que se deseja transpor. Para exemplificar, considere
+transpor a matriz 1. Nesse caso, deve-se proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t}\NormalTok{(matriz1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]    0    3
+[2,]    2    1
+\end{verbatim}
+
+\paragraph{Matriz inversa}\label{matriz-inversa}
+
+Uma matriz \(M\) pode ser invertida em \emph{R} para obter \(M^{-1}\)
+usando o comando \emph{solve()} e indicando dentro do parêntesis a
+matriz que se deseja inverter. Para exemplificar, considere obter a
+inversa da matriz 1. Nesse caso, deve-se proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(matriz1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+           [,1]      [,2]
+[1,] -0.1666667 0.3333333
+[2,]  0.5000000 0.0000000
+\end{verbatim}
+
+\paragraph{Exemplo de operações com matrizes: O estimador de mínimos
+quadrados
+ordinários}\label{exemplo-de-operauxe7uxf5es-com-matrizes-o-estimador-de-muxednimos-quadrados-ordinuxe1rios}
+
+Na estatística, os coeficientes lineares de uma equação linear com
+múltiplos argumentos podem ser calculados por meio do método de mínimos
+quadrados ordinários. Se essa equação é:
+
+\[ y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_n x_n \]
+
+Um termo de erro \(\varepsilon\) é adicionado e a relação anterior pode
+ser escrita matricialmente como:
+
+\[ \textbf{y} = \textbf{x} \beta + \varepsilon \]
+
+Mininiando a soma dos erros quadráticos, o vetor \(\beta\) de parâmetros
+estimados é:
+
+\[ \beta = (\textbf{x}^\prime \textbf{x})^{-1}\textbf{x}^\prime \textbf{y} \]
+
+Para exemplificar, considere usar a base natova sobre automóveis
+\emph{mtcars} e suponha que estejamos interessados em saber a relação
+entre o consumo do automóvel (mpg) e as variáveis peso (wt) e número de
+cilindros (cyl). Nesse caso, a matriz \emph{y} são os valores da coluna
+mpg e a matriz x é composta pelas colunas wt e cyl. O vetor de
+parâmetros estimados pode ser calculado de acordo com o seguinte
+processo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(mtcars}\SpecialCharTok{$}\NormalTok{mpg, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{) }\CommentTok{\# matriz y}
+\NormalTok{x }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FunctionTok{nrow}\NormalTok{(mtcars)), mtcars}\SpecialCharTok{$}\NormalTok{wt, mtcars}\SpecialCharTok{$}\NormalTok{cyl), }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{) }\CommentTok{\# matriz x}
+\NormalTok{tx }\OtherTok{=} \FunctionTok{t}\NormalTok{(x) }\CommentTok{\# transposta da matriz x}
+\NormalTok{beta }\OtherTok{=} \FunctionTok{solve}\NormalTok{(tx}\SpecialCharTok{\%*\%}\NormalTok{x)}\SpecialCharTok{\%*\%}\NormalTok{tx}\SpecialCharTok{\%*\%}\NormalTok{y}
+\FunctionTok{print}\NormalTok{(beta)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+          [,1]
+[1,] 39.686261
+[2,] -3.190972
+[3,] -1.507795
+\end{verbatim}
+
+Isso é o mesmo que fazer:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{lm}\NormalTok{(mtcars}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ mtcars}\SpecialCharTok{$}\NormalTok{wt }\SpecialCharTok{+}\NormalTok{ mtcars}\SpecialCharTok{$}\NormalTok{cyl))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = mtcars$mpg ~ 1 + mtcars$wt + mtcars$cyl)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.2893 -1.5512 -0.4684  1.5743  6.1004 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  39.6863     1.7150  23.141  < 2e-16 ***
+mtcars$wt    -3.1910     0.7569  -4.216 0.000222 ***
+mtcars$cyl   -1.5078     0.4147  -3.636 0.001064 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.568 on 29 degrees of freedom
+Multiple R-squared:  0.8302,    Adjusted R-squared:  0.8185 
+F-statistic: 70.91 on 2 and 29 DF,  p-value: 6.809e-12
+\end{verbatim}
+
+\subsection{Arrays}\label{arrays}
+
+O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix
+os elementos são organizados em duas dimensões (linhas e colunas), em um
+array os elementos podem ser organizados em um número arbitrário de
+dimensões. Em \emph{R} um array é definido utilizando a função array().
+O usuário deve informar dentro do parêntesis as informações sempre
+ordenadas coluna a coluna e indicar as dimensões do array com o
+parâmetro \emph{dim}. Por exemplo, imagine que queiramos armazenar o
+consumo de dois bens por duas famílias em três anos, neste caso, teremos
+que criar um array de dimensão 2 x 2 x 3. Para exemplificar, imagine que
+esse consumo seja o demonstrado a seguir:
+
+\[
+\begin{array}{ccc}
+Ano 1 = \left[
+\begin{array}{c|cc}
+& Bem 1 & Bem 2 \\ \hline
+Familia 1 & 0 & 5\\
+Familia 2 & 2 & 3\\
+\end{array}
+\right]
+&
+Ano 2 = \left[
+\begin{array}{c|cc}
+& Bem 1 & Bem 2 \\ \hline
+Familia 1 & 1 & 4\\
+Familia 2 & 3 & 2\\
+\end{array}
+\right]
+&\\
+Ano 3 = \left[
+\begin{array}{c|cc}
+& Bem 1 & Bem 2 \\ \hline
+Familia 1 & 2 & 3\\
+Familia 2 & 2 & 3\\
+\end{array}
+\right]
+\end{array}
+\]
+
+Em \emph{R} isso equivale a:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{consumo }\OtherTok{=} \FunctionTok{array}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}
+    \DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{, }\CommentTok{\# Ano 1}
+    \DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{, }\CommentTok{\# Ano 2}
+    \DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3} \CommentTok{\# ano 3}
+\NormalTok{  ),}
+  \AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(consumo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+, , 1
+
+     [,1] [,2]
+[1,]    0    5
+[2,]    2    3
+
+, , 2
+
+     [,1] [,2]
+[1,]    1    4
+[2,]    3    2
+
+, , 3
+
+     [,1] [,2]
+[1,]    2    3
+[2,]    2    3
+\end{verbatim}
+
+Para checar se um objeto é um array, use a função \emph{is.array()}.
+Caso o objeto de fato seja um array, o output obtido será \emph{TRUE},
+do contrário o output será \emph{FALSE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.array}\NormalTok{(consumo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\subsection{Listas}\label{listas}
+
+As listas são objetos ideais para guardar informações em múltiplas
+dimensões, isto é, informações que possuam múltiplas linhas, múltiplas
+colunas e múltiplas planilhas. As listas podem armazenar diversos outros
+objetos, incluindo outras listas. Por exemplo, uma lista pode conter um
+vetor e uma matriz ou múltiplos vetores e múltiplas matrizes. Para criar
+uma lista, o usuário deve usar a função \emph{list()} indicando dentro
+do parêntesis os objetos que irão compor a lista. Por exemplo, vamos
+criar uma lista contendo os as matrizes de consumo do array anterior e
+vamos chamar essa lista de \emph{lista1}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ano1 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{), }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}
+\NormalTok{)}
+\NormalTok{ano2 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}
+\NormalTok{)}
+\NormalTok{ano3 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{), }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}
+\NormalTok{)}
+
+\NormalTok{lista1 }\OtherTok{=} \FunctionTok{list}\NormalTok{(ano1, ano2, ano3)}
+\FunctionTok{print}\NormalTok{(lista1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[1]]
+     [,1] [,2]
+[1,]    0    5
+[2,]    2    3
+
+[[2]]
+     [,1] [,2]
+[1,]    1    4
+[2,]    3    2
+
+[[3]]
+     [,1] [,2]
+[1,]    2    3
+[2,]    2    3
+\end{verbatim}
+
+Para checar se um objeto é uma lista, use a função \emph{is.list()}.
+Caso o elemento de fato seja uma lista, o output obtido será
+\emph{TRUE}, do contrário o output será \emph{FALSE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.list}\NormalTok{(lista1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\subsection{Data frames}\label{data-frames}
+
+Os data frames - ou quadro de dados - são objetos que possuem utilidade
+semelhante às matrizes, isto é, são ideais para armazenar informações
+bidimensionais. No entanto, nos data frames não é possível realizar
+operações algébricas como nas matrizes. Os data frames são exatamente
+iguais às planilhas do excel, onde cada coluna é uma variável com
+valores distribuídos entre as linhas. Essa estrutura de dados é inserida
+em \emph{R} usando a função \emph{data.frame(),} de tal modo que o
+usuário precisa indicar o nome de cada coluna precedida pelos seus
+valores em um vetor. Por exemplo, se usarmos o exemplo anterior do
+salário de dois empregos e quisermos colocar as informações dos ganhos
+em um data frame de nome \emph{salario\_diario}, devemos proceder
+conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salario\_diario }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{emprego1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{,}\DecValTok{52}\NormalTok{,}\DecValTok{55}\NormalTok{,}\DecValTok{48}\NormalTok{,}\DecValTok{60}\NormalTok{),}
+  \AttributeTok{emprego2 =} \FunctionTok{c}\NormalTok{(}\DecValTok{140}\NormalTok{,}\DecValTok{160}\NormalTok{,}\DecValTok{165}\NormalTok{,}\DecValTok{150}\NormalTok{,}\DecValTok{155}\NormalTok{)}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(salario\_diario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  emprego1 emprego2
+1       50      140
+2       52      160
+3       55      165
+4       48      150
+5       60      155
+\end{verbatim}
+
+Você pode mudar os nomes das colunas dos data frames usando a função
+\emph{colnames()}. Por exemplo, se quisermos alterar o nome das colunas
+para \emph{trabalho1} e \emph{trabalho2}, devemos proceder conforme a
+seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(salario\_diario) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"trabalho1"}\NormalTok{, }\StringTok{"trabalho2"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(salario\_diario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  trabalho1 trabalho2
+1        50       140
+2        52       160
+3        55       165
+4        48       150
+5        60       155
+\end{verbatim}
+
+Já os nomes das linhas podem ser alterados por meio da função
+\emph{rownames()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(salario\_diario) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Seg"}\NormalTok{, }\StringTok{"Ter"}\NormalTok{, }\StringTok{"Quar"}\NormalTok{, }\StringTok{"Qui"}\NormalTok{, }\StringTok{"Sex"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(salario\_diario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     trabalho1 trabalho2
+Seg         50       140
+Ter         52       160
+Quar        55       165
+Qui         48       150
+Sex         60       155
+\end{verbatim}
+
+Para checar se um objeto é um data frame, o usuário deve usar a função
+\emph{is.data.frame()} indicando o nome do objeto dentro do parêntesis.
+Caso o objeto de fato seja um data frame, o output obtido será
+\emph{TRUE}, do contrário o output será \emph{FALSE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.data.frame}\NormalTok{(salario\_diario)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+Assim como em uma planilha excel, as colunas dos data frames podem
+conter valores numéricos e não numéricos. Maiores detalhes sobre essas
+possibilidades de valores serão vistos posteriormente quando abordarmos
+as classes dos elementos.
+
+\section{Exercício 1}\label{exercuxedcio-1}
+
+(1) Crie um objeto de nome \emph{valor1} com a operação
+\(\left(\frac{5^5}{100}\right)^{0.5}\).
+
+(2) Crie um objeto de nome \emph{valor2} com a operação
+\(\left(\frac{3^8}{100}\right)^{0.5}\).
+
+(3) Cheque se
+\(\left(\frac{5^5}{100}\right)^{0.5} \neq \sqrt{\left(\frac{5^5}{100}\right)}\).
+
+(4) Cheque se
+\(\left(\frac{3^8}{100}\right)^{0.5} \neq \sqrt{\left(\frac{3^8}{100}\right)}\).
+
+(5) Verifique se
+\(\left(\frac{5^5}{100}\right)^{0.5}  >= \left(\frac{3^8}{100}\right)^{0.5}\).
+
+(6) Divida \emph{valor1} por \emph{valor2} e verifique se o resultado é
+maior que 1.
+
+\section{Exercício 2}\label{exercuxedcio-2}
+
+Considere as seguintes planilhas de dados representando os preços das
+ações das empresas Petrobras, Vale e Itau em uma semana de negociações
+na bolsa de valores:
+
+\[
+petrobras = \left[
+\begin{array}{c|ccc}
+Dia & Preco & Maximo & Minimo \\ \hline
+Seg & 34.5 & 34.75 & 33.8\\
+Ter & 34.7 & 35.05 & 34.2\\
+Quar & 34.9 & 35.5 & 34.6\\
+Qui & 34.55 & 34.9 & 34.3\\
+Sex & 34 & 34.55 & 33.6
+\end{array}
+\right]
+\]
+
+\[
+vale = \left[
+\begin{array}{c|ccc}
+Dia & Preco & Maximo & Minimo \\ \hline
+Seg & 55.5 & 55.75 & 55.1\\
+Ter & 56 & 56.6 & 55.5\\
+Quar & 56.5 & 56.75 & 56\\
+Qui & 55.8 & 56 & 55.2\\
+Sex & 55.2 & 55.8 & 55
+\end{array}
+\right]
+\]
+
+\[
+itau = \left[
+\begin{array}{c|ccc}
+Dia & Preco & Maximo & Minimo \\ \hline
+Seg & 28.5 & 28.75 & 28.3\\
+Ter & 28.7 & 29.05 & 28.5\\
+Quar & 28.9 & 29.2 & 28.7\\
+Qui & 28.6 & 28.9 & 28.5\\
+Sex & 28.3 & 28.6 & 28.1
+\end{array}
+\right]
+\]
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  Repasse essas três planilhas para o \emph{R} na forma de matrizes,
+  nomeando-as de \emph{petrobras}, \emph{vale} e \emph{itau}, assim como
+  esboçado na representação das planilhas. Dê nomes às linhas e às
+  colunas.
+\end{enumerate}
+
+(2) Agora repasse as planilhas para o \emph{R} na forma de data frames,
+nomeando-os de \emph{df\_petrobras}, \emph{df\_vale} e \emph{df\_itau}.
+Dê nomes às linhas e às colunas.
+
+(3) Transforme as matrizes \emph{petrobras}, \emph{vale} e \emph{itau}
+em data frames, nomeando-os de \emph{df\_petrobras\_2},
+\emph{df\_vale\_2} e \emph{df\_itau\_2.}
+
+(4) Transforme os data frames \emph{df\_petrobras}, \emph{df\_vale} e
+\emph{df\_itau} em matrizes, nomeando-as de \emph{m\_petrobras},
+\emph{m\_vale} e \emph{m\_itau.}
+
+(5) Cheque se os objetos \emph{petrobras}, \emph{vale} e \emph{itau} são
+matrizes.
+
+(6) Cheque se os objetos \emph{df\_petrobras}, \emph{df\_vale} e
+\emph{df\_itau} são data frames.
+
+(7) Repasse as três planilhas para o R em um array nomeando-o de
+\emph{preco\_acoes}.
+
+(8) Cheque se o objeto criado na questão anterior é um array.
+
+\bookmarksetup{startatroot}
+
+\chapter{Indexação e operações
+indexadas}\label{indexauxe7uxe3o-e-operauxe7uxf5es-indexadas}
+
+Nesse módulo estão expressos os detalhes básicos acerca de operações
+fundamentais com diferentes tipos de objetos. O módulo ainda apresenta
+os conceitos e as normas básicas sobre posições de elementos em um
+objeto (indexação) e também mostra as operações que usam essa indexação
+e que podem ser úteis na análise de dados.
+
+\section{Indexação de objetos}\label{indexauxe7uxe3o-de-objetos}
+
+Os objetos são compostos por elementos e esses elementos ocupam uma
+posição dentro do objeto. Por exemplo, imagine um vetor
+\(x = [Maria, Paulo, Pedro, Ana]\). Esse vetor é composto por quatro
+elementos, maria na posição 1, Paulo na posição 2, Pedro na posição 3 e
+Ana na posição 4. Agora considere que essas mesmas informações estejam
+dispostas em uma matriz.
+
+\[\left[\begin{array}{cc}
+Maria & Paulo\\ Pedro & Ana \end{array}
+\right]
+\]
+
+Agora a posição deve ser visualizada como ``linha por coluna''. Maria
+está na linha 1 e coluna 1 (posição {[}\emph{1, 1{]})}, Paulo está na
+linha 1 e coluna 2 (posição \emph{{[}1, 2{]})}, Pedro está na linha 2 e
+coluna 1 (posição {[}\emph{2, 1{]})} e Ana está na linha 2 e coluna 2
+(posição {[}\emph{2, 2{]})}. A essa posição dá-se o nome de indexação. A
+indexação nada mais é do que a posição de um elemento em um conjunto,
+que nesse caso são os objetos no ambiente de trabalho.
+
+Para verificar qual elemento está em uma determinada posição do objeto,
+deve-se informar o nome do objeto precedido da posição entre colchetes,
+isto é, \emph{nome do objeto{[}posição na linha, posição na coluna{]}}.
+Por exemplo, na matriz anterior, caso queiramos consultar quem está na
+linha 1 da coluna 1, devemos proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Maria"}\NormalTok{, }\StringTok{"Paulo"}\NormalTok{, }\StringTok{"Pedro"}\NormalTok{, }\StringTok{"Ana"}\NormalTok{), }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\NormalTok{nomes[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Maria"
+\end{verbatim}
+
+A lógica é a mesma em um data frame,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{coluna1 =} \FunctionTok{c}\NormalTok{(}\StringTok{"Maria"}\NormalTok{, }\StringTok{"Pedro"}\NormalTok{),}
+  \AttributeTok{coluna2 =} \FunctionTok{c}\NormalTok{(}\StringTok{"Paulo"}\NormalTok{, }\StringTok{"Ana"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{df[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Maria"
+\end{verbatim}
+
+Se quisermos nos referir apenas às linhas, então a posição da coluna
+deve ficar vazia, isto é, \emph{nome do objeto{[}posição na linha,{]}}.
+Seguindo o exemplo anterior, caso queiramos checar quem está na linha 1
+da matriz, devemos proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes[}\DecValTok{1}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Maria" "Paulo"
+\end{verbatim}
+
+A mesma lógica se aplica aos data frames.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[}\DecValTok{1}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  coluna1 coluna2
+1   Maria   Paulo
+\end{verbatim}
+
+Se quisermos nos referir apenas às colunas, então a posição da linha
+deve ficar vazia, isto é, \emph{nome do objeto{[}, posição na
+coluna{]}}. Seguindo o exemplo anterior, caso queiramos checar quem está
+na coluna 1 da matriz, devemos proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes[,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Maria" "Pedro"
+\end{verbatim}
+
+A mesma lógica se aplica aos data frames.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Maria" "Pedro"
+\end{verbatim}
+
+A posição das linhas e colunas também pode ser referenciada de acordo
+com os nomes. Nesse caso, o procedimento é \emph{nome do objeto{[}``nome
+da linha'', ``nome da coluna''{]}}. Para exemplificar, vamos dar nomes
+às linhas e as colunas da matriz e do data frame usados nos exemplos
+anteriores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(nomes) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"linha 1"}\NormalTok{, }\StringTok{"linha 2"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(nomes) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"coluna 1"}\NormalTok{, }\StringTok{"coluna 2"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(nomes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna 1 coluna 2
+linha 1 "Maria"  "Paulo" 
+linha 2 "Pedro"  "Ana"   
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(df) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"linha 1"}\NormalTok{, }\StringTok{"linha 2"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(nomes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna 1 coluna 2
+linha 1 "Maria"  "Paulo" 
+linha 2 "Pedro"  "Ana"   
+\end{verbatim}
+
+Para checar quem está na linha 1, proceda conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes[}\StringTok{"linha 1"}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+coluna 1 coluna 2 
+ "Maria"  "Paulo" 
+\end{verbatim}
+
+E no data frame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[}\StringTok{"linha 1"}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna1 coluna2
+linha 1   Maria   Paulo
+\end{verbatim}
+
+Para checar quem está na coluna 1, proceda conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes[, }\StringTok{"coluna 1"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+linha 1 linha 2 
+"Maria" "Pedro" 
+\end{verbatim}
+
+E no data frame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[, }\StringTok{"coluna1"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Maria" "Pedro"
+\end{verbatim}
+
+Nos data frames, a indexação das colunas pode ser mais simplificada
+devido a possibilidade de referenciar as colunas plo nome usando o
+cifrão ``\$''. Nesse caso, o procedimento a se fazer é \emph{nome do
+objeto\$nome da coluna}. Por exemplo, para se referir a coluna 1 do data
+frame anterior, deve-se proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{coluna1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Maria" "Pedro"
+\end{verbatim}
+
+\section{Adicionando linhas a um data
+frame}\label{adicionando-linhas-a-um-data-frame}
+
+Tendo comopreendido como funciona a indexação, o próximo passo é
+aprender como essa indexação pode ser usada para adicionar, excluir ou
+alterar elementos de um objeto. Caso a intenção seja adicionar uma linha
+em um data frame, então o procedimento a se fazer é \emph{nome do
+objeto{[}número de linhas do objeto + 1,{]}}. Para exemplificar, vamos
+incluir uma linha na data frame de nomes contendo os valores
+\emph{{[}João, Clara{]}}. Esse procedimento deve ser feito conforme
+especificado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[}\DecValTok{3}\NormalTok{,] }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"João"}\NormalTok{, }\StringTok{"Clara"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna1 coluna2
+linha 1   Maria   Paulo
+linha 2   Pedro     Ana
+3          João   Clara
+\end{verbatim}
+
+\section{Adicionando linhas em uma
+matriz}\label{adicionando-linhas-em-uma-matriz}
+
+Para adicionar linhas em uma matriz é preciso usar a função
+\emph{rbind()}. Essa função também funciona perfeitamente para data
+frames. Nesse caso, o procedimento a se fazer é \emph{rbind(nome do
+objeto, vetor com os valores da linha adicionada)}. Por exemplo, para
+adicionar uma linha com os valores \emph{{[}João, Clara{]}} no data
+frame de nomes, deve-se proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes }\OtherTok{=} \FunctionTok{rbind}\NormalTok{(nomes, }\FunctionTok{c}\NormalTok{(}\StringTok{"João"}\NormalTok{, }\StringTok{"Clara"}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(nomes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna 1 coluna 2
+linha 1 "Maria"  "Paulo" 
+linha 2 "Pedro"  "Ana"   
+        "João"   "Clara" 
+\end{verbatim}
+
+A mesma lógica se aplica aos data frames:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rbind}\NormalTok{(df, }\FunctionTok{c}\NormalTok{(}\StringTok{"João"}\NormalTok{, }\StringTok{"Clara"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna1 coluna2
+linha 1   Maria   Paulo
+linha 2   Pedro     Ana
+3          João   Clara
+4          João   Clara
+\end{verbatim}
+
+\section{Removendo linhas de um
+objeto}\label{removendo-linhas-de-um-objeto}
+
+A remoção de linhas de um objeto é feita adicionando um sinal de menos
+antes do número da linha indicado em colchetes. Por exemplo, caso
+queiramos remover a linha 3 da matriz de nomes, devemos proceder
+conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes[}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna 1 coluna 2
+linha 1 "Maria"  "Paulo" 
+linha 2 "Pedro"  "Ana"   
+\end{verbatim}
+
+A mesma lógica se aplica aos data frames:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna1 coluna2
+linha 1   Maria   Paulo
+linha 2   Pedro     Ana
+\end{verbatim}
+
+Caso a intenção seja remover múltiplas linhas, então o número das linhas
+que serão removidas deve ser indicado em um vetor precedido do sinal de
+menos dentro do colchetes. Por exemplo, caso queiramos remover as linhas
+2 e 3 da matriz de nomes, devemos proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+coluna 1 coluna 2 
+ "Maria"  "Paulo" 
+\end{verbatim}
+
+A mesma lógica se aplica aos data frames:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna1 coluna2
+linha 1   Maria   Paulo
+\end{verbatim}
+
+\section{Adicionando colunas em um data
+frame}\label{adicionando-colunas-em-um-data-frame}
+
+Existem várias maneiras de adicionar colunas em um data frame. O usuário
+pode indicar a posição da coluna entre colchetes e em seguida indicar os
+valores, pode indicar o nome da coluna em colchetes e em seguida indicar
+os valores, pode usar o sifrão para indicar o nome da coluna criada,
+\ldots{}
+
+Para exemplificar, suponha que queiramos adicionar uma coluna com os
+valores *{[}pessoa 1, pessoa 2, pessoa 3{]} no dtaframe df. Essa tarefa
+pode ser feita das seguintes maneiras:
+
+\begin{itemize}
+\tightlist
+\item
+  Indicando a posição em colchetes
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[,}\DecValTok{3}\NormalTok{] }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"pessoa 1"}\NormalTok{, }\StringTok{"pessoa 2"}\NormalTok{, }\StringTok{"pessoa 3"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna1 coluna2       V3
+linha 1   Maria   Paulo pessoa 1
+linha 2   Pedro     Ana pessoa 2
+3          João   Clara pessoa 3
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Indicando o nome da coluna no colchetes.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[, }\StringTok{"coluna3"}\NormalTok{] }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"pessoa 1"}\NormalTok{, }\StringTok{"pessoa 2"}\NormalTok{, }\StringTok{"pessoa 3"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna1 coluna2  coluna3
+linha 1   Maria   Paulo pessoa 1
+linha 2   Pedro     Ana pessoa 2
+3          João   Clara pessoa 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\OtherTok{=}\NormalTok{df[,}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Usando o cifrão.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{coluna3 }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"pessoa 1"}\NormalTok{, }\StringTok{"pessoa 2"}\NormalTok{, }\StringTok{"pessoa 3"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna1 coluna2  coluna3
+linha 1   Maria   Paulo pessoa 1
+linha 2   Pedro     Ana pessoa 2
+3          João   Clara pessoa 3
+\end{verbatim}
+
+\section{Adicionando colunas em uma
+matriz}\label{adicionando-colunas-em-uma-matriz}
+
+Para adicionar colunas em uma matriz é preciso usar a função
+\emph{cbind()}. Essa função tem a mesma lógica de uso da função
+\emph{rbind()} apresentada anteriormente, com a diferença de que a
+função \emph{cbind()} posiciona os novos elementos em uma coluna em vez
+de uma linha. Para exemplificar, vamos adicionar a mesma coluna incluída
+no data frame \emph{df} na matriz de nomes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nomes }\OtherTok{=} \FunctionTok{cbind}\NormalTok{(nomes, }\FunctionTok{c}\NormalTok{(}\StringTok{"pessoa 1"}\NormalTok{, }\StringTok{"pessoa 2"}\NormalTok{, }\StringTok{"pessoa 3"}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(nomes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna 1 coluna 2           
+linha 1 "Maria"  "Paulo"  "pessoa 1"
+linha 2 "Pedro"  "Ana"    "pessoa 2"
+        "João"   "Clara"  "pessoa 3"
+\end{verbatim}
+
+A mesma lógica pode ser aplicada aos data frames fazendo \emph{df =
+cbind(df, c(``pessoa 1'', ``pessoa 2'', ``pessoa 3''))}.
+
+\section{Renomeando colunas e linhas
+específicas}\label{renomeando-colunas-e-linhas-especuxedficas}
+
+Como visto no capítulo anterior, a função \emph{colnames()} pode ser
+usada para renomear colunas de uma matriz ou data frame. Porém, caso o
+objetivo seja renomear uma única coluna específica é possível usar a
+indexação para realizar essa tarefa. Por exemplo, considere renomear
+apenas a coluna 3 do data frame de nomes atribuindo a essa coluna o nome
+\emph{``coluna3''}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(nomes)[}\DecValTok{3}\NormalTok{] }\OtherTok{=} \StringTok{"Coluna3"}
+\FunctionTok{print}\NormalTok{(nomes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna 1 coluna 2 Coluna3   
+linha 1 "Maria"  "Paulo"  "pessoa 1"
+linha 2 "Pedro"  "Ana"    "pessoa 2"
+        "João"   "Clara"  "pessoa 3"
+\end{verbatim}
+
+O mesmo pode ser feito para as linhas. Por exemplo, caso queiramos
+renomear apenas a linha 3 do data frame de nomes, podemos proceder
+conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(nomes)[}\DecValTok{3}\NormalTok{] }\OtherTok{=} \StringTok{"linha 3"}
+\FunctionTok{print}\NormalTok{(nomes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+        coluna 1 coluna 2 Coluna3   
+linha 1 "Maria"  "Paulo"  "pessoa 1"
+linha 2 "Pedro"  "Ana"    "pessoa 2"
+linha 3 "João"   "Clara"  "pessoa 3"
+\end{verbatim}
+
+\section{Operações com colunas}\label{operauxe7uxf5es-com-colunas}
+
+Em um data frame novas colunas podem ser geradas por meio de operações
+com colunas existentes. Para exemplificar, considere um dataframe com
+informações sobre medidas de alunos de uma academia.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
+\AttributeTok{nome =} \FunctionTok{c}\NormalTok{(}\StringTok{"Aluno 1"}\NormalTok{, }\StringTok{"Aluno 2"}\NormalTok{, }\StringTok{"Aluno 3"}\NormalTok{),}
+\AttributeTok{peso =} \FunctionTok{c}\NormalTok{(}\DecValTok{65}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{90}\NormalTok{),}
+\AttributeTok{altura =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.60}\NormalTok{, }\FloatTok{1.70}\NormalTok{, }\FloatTok{1.78}\NormalTok{)}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(alunos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     nome peso altura
+1 Aluno 1   65   1.60
+2 Aluno 2   70   1.70
+3 Aluno 3   90   1.78
+\end{verbatim}
+
+Imagine que seja necessário adicionar nesse data frame uma nova coluna
+com o índice de massa corporal dos alunos (IMC). Sabe-se que:
+
+\[
+IMC = \frac{Peso}{Altura^2}
+\]
+
+A nova coluna pode ser adicionada indexando a sua posição:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos[,}\DecValTok{4}\NormalTok{] }\OtherTok{=}\NormalTok{ alunos[,}\DecValTok{2}\NormalTok{]}\SpecialCharTok{/}\NormalTok{(alunos[,}\DecValTok{3}\NormalTok{]}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(alunos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     nome peso altura       V4
+1 Aluno 1   65   1.60 25.39062
+2 Aluno 2   70   1.70 24.22145
+3 Aluno 3   90   1.78 28.40550
+\end{verbatim}
+
+Indexando o nome da coluna:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos[}\StringTok{"imc"}\NormalTok{] }\OtherTok{=}\NormalTok{ alunos[}\StringTok{"peso"}\NormalTok{]}\SpecialCharTok{/}\NormalTok{(alunos[}\StringTok{"altura"}\NormalTok{]}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(alunos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     nome peso altura      imc
+1 Aluno 1   65   1.60 25.39062
+2 Aluno 2   70   1.70 24.22145
+3 Aluno 3   90   1.78 28.40550
+\end{verbatim}
+
+Ou utilizando o cifrão:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos}\SpecialCharTok{$}\NormalTok{imc }\OtherTok{=}\NormalTok{ alunos}\SpecialCharTok{$}\NormalTok{peso}\SpecialCharTok{/}\NormalTok{(alunos}\SpecialCharTok{$}\NormalTok{altura}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(alunos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     nome peso altura      imc
+1 Aluno 1   65   1.60 25.39062
+2 Aluno 2   70   1.70 24.22145
+3 Aluno 3   90   1.78 28.40550
+\end{verbatim}
+
+\subsection{Criando uma nova coluna como recorte de uma coluna
+existente}\label{criando-uma-nova-coluna-como-recorte-de-uma-coluna-existente}
+
+Imagine o caso em que seja preciso criar uma coluna como um recorte de
+valores de uma coluna existente em um data frame. Falando com outras
+palavras, imagine que seja preciso adicionar uma coluna contendo uma
+parte dos valores contidos em outra coluna. Por exemplo, no data frame
+de alunos da academia, imagine que seja preciso mostrar apenas o número
+do aluno em uma nova coluna, isto é, em vez de mostrar o termo ``Aluno
+1'' suponha que seja preciso mostrar apenas o número ``1''.
+
+Esse procedimento pode ser feito usando a função \emph{substr}. Essa
+função é nativa da linguagem \emph{R} e serve para desmembrar valores de
+acordo com a posição dos caracteres desses valores. Exemplificando, o
+termo ``Aluno 1'' tem sete caracteres que correspondem a seis letras, um
+espaço e um número. O número ocupa a sétima posição no termo. Na função
+substr temos que indicar a posição inicial e a posição final do conjunto
+de caracteres que queremos desmembrar do valor objetivo. A maneira
+correta de usar essa função é fazendo \emph{substr(nome do elemento,
+posição inicial, posição final)}. Por exemplo, se fizermos
+\emph{substr(``Aluno 1'', 1, 2)} o resultado será \emph{``Al}'' que
+corresponde aos dois primeiros caracteres do termo utilizado.
+
+No nosso exemplo como o número do aluno inicia e termina na sétima
+posição, então o correto a se fazer é:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos}\SpecialCharTok{$}\NormalTok{num\_aluno }\OtherTok{=} \FunctionTok{substr}\NormalTok{(alunos}\SpecialCharTok{$}\NormalTok{nome, }\DecValTok{7}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(alunos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     nome peso altura      imc num_aluno
+1 Aluno 1   65   1.60 25.39062         1
+2 Aluno 2   70   1.70 24.22145         2
+3 Aluno 3   90   1.78 28.40550         3
+\end{verbatim}
+
+\subsection{Mesclando colunas}\label{mesclando-colunas}
+
+Em vez de separar valores de uma coluna, imagine o caso em que seja
+preciso juntar valores. Em \emph{R} isso pode ser facilmente feito
+usando a função \emph{paste()}. Essa função junta múltiplos valores
+separando-os com um searador indicado pelo usuário. Para usar a função,
+basta indicar entre parênteses os valores que serão unificados e indicar
+o separador com o parâmetro \emph{``sep''}. Por exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nome }\OtherTok{=} \StringTok{"João"}
+\NormalTok{sobrenome }\OtherTok{=} \StringTok{"Silva"}
+\NormalTok{nome\_completo }\OtherTok{=} \FunctionTok{paste}\NormalTok{(nome, sobrenome, }\AttributeTok{sep =} \StringTok{" "}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(nome\_completo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "João Silva"
+\end{verbatim}
+
+Essa função pode ser usada para unir colunas. Para exemploficar,
+considere o novo data frame com as características dos alunos de uma
+academia indicado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos2 }\OtherTok{=}\NormalTok{ alunos}
+\NormalTok{alunos2}\SpecialCharTok{$}\NormalTok{nome }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"João"}\NormalTok{, }\StringTok{"Maria"}\NormalTok{, }\StringTok{"João"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+E imagine que seja preciso criar um código do aluno, unindo o nome e o
+número do aluno separando o nome e um número por um traço. Esse
+procedimento pode ser feito conforme indicado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos2}\SpecialCharTok{$}\NormalTok{cod\_aluno }\OtherTok{=} \FunctionTok{paste}\NormalTok{(alunos2}\SpecialCharTok{$}\NormalTok{nome, alunos2}\SpecialCharTok{$}\NormalTok{num\_aluno, }\AttributeTok{sep =} \StringTok{"{-}"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(alunos2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   nome peso altura      imc num_aluno cod_aluno
+1  João   65   1.60 25.39062         1    João-1
+2 Maria   70   1.70 24.22145         2   Maria-2
+3  João   90   1.78 28.40550         3    João-3
+\end{verbatim}
+
+\section{Reposicionando linhas e
+colunas}\label{reposicionando-linhas-e-colunas}
+
+Conhecendo a posição de cada linha e cada coluna, é possível
+reordená-las de acordo com as necessidades ou preferências do usuário
+usando operações indexadas. Por exemplo, suponha que seja preciso
+reordenar as linhas do data frame de alunos para posicionar o aluno 3 na
+primeira linha, o aluno 2 na segunda linha e o aluno 1 na terceira
+linha. Esse procedimento pode ser feito conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos }\OtherTok{=}\NormalTok{ alunos[}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{),]}
+\FunctionTok{print}\NormalTok{(alunos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     nome peso altura      imc num_aluno
+3 Aluno 3   90   1.78 28.40550         3
+2 Aluno 2   70   1.70 24.22145         2
+1 Aluno 1   65   1.60 25.39062         1
+\end{verbatim}
+
+Agora suponha que seja necessário posicionar o nome do aluno na primeira
+coluna, a altura na segunda coluna, o peso na terceira coluna e o imc na
+última coluna, isto é, suponha que seja preciso inverter a posição do
+peso e da altura no data frame. Esse procedimento pode ser feito
+conforme indicado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alunos }\OtherTok{=}\NormalTok{ alunos[, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{)]}
+\FunctionTok{print}\NormalTok{(alunos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     nome altura peso      imc
+3 Aluno 3   1.78   90 28.40550
+2 Aluno 2   1.70   70 24.22145
+1 Aluno 1   1.60   65 25.39062
+\end{verbatim}
+
+\section{Operações básicas}\label{operauxe7uxf5es-buxe1sicas}
+
+Novas linhas e colunas podem ser adicionadas em um data frame usando
+operações básicas como soma, produto, ou estatísticas básicas. Para
+demonstrar, considere um data frame contendo a idade de cinco pessoas
+conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{pessoa =} \FunctionTok{c}\NormalTok{(}\StringTok{"pessoa1"}\NormalTok{, }\StringTok{"pessoa2"}\NormalTok{, }\StringTok{"pessoa3"}\NormalTok{, }\StringTok{"pessoa4"}\NormalTok{, }\StringTok{"pessoa"}\NormalTok{),}
+  \AttributeTok{idade =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{68}\NormalTok{,}\DecValTok{45}\NormalTok{,}\ConstantTok{NA}\NormalTok{)}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   pessoa idade
+1 pessoa1    25
+2 pessoa2    50
+3 pessoa3    68
+4 pessoa4    45
+5  pessoa    NA
+\end{verbatim}
+
+Note que há um valor faltante, indicado pelo termo \emph{NA} que
+representa a sigla do ``não disponível'' (do inglês \emph{not
+available}). Qualquer operação contendo essa coluna deve indicar que
+esse valor ausente deve ser ignorado. Isso pode ser feito adicionando a
+opção \emph{na.rm = TRUE}.
+
+\subsection{Soma total}\label{soma-total}
+
+Suponha que queiramos encontrar o somatório da idade de todas as pessoas
+contidas no data frame. Isso pode ser facilmente executado usando a
+função \emph{sum()}, conforme indicado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{idade, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 188
+\end{verbatim}
+
+\subsection{Produto total}\label{produto-total}
+
+Caso o objetivo seja encontrar o produto de todos os valores de uma dada
+coluna, então o ideal é usar a função \emph{prod()}, conforme
+demonstrado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{prod}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{idade, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3825000
+\end{verbatim}
+
+\subsection{Média}\label{muxe9dia}
+
+Já a média pode ser obtida com a função \emph{mean()}, conforme
+demonstrado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{idade, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 47
+\end{verbatim}
+
+\subsection{Mínimo}\label{muxednimo}
+
+O valor mínimo de um dado objeto pode ser computado por meio da função
+\emph{min()}, conforme demonstrado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{min}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{idade, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 25
+\end{verbatim}
+
+\subsection{Máximo}\label{muxe1ximo}
+
+O valor máximo de um dado objeto pode ser computado por meio da função
+\emph{max()}, conforme demonstrado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{idade, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 68
+\end{verbatim}
+
+\subsection{Desvio padrão}\label{desvio-padruxe3o}
+
+O desvio padrão de um dado objeto pode ser computado por meio da função
+\emph{sd()}, conforme demonstrado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{idade, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 17.68238
+\end{verbatim}
+
+\subsection{Número de observações}\label{nuxfamero-de-observauxe7uxf5es}
+
+O número de observações - ou comprimento - de um dado objeto pode ser
+verificado com o uso da função \emph{length()}, conforme demonstrado a
+seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{idade)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5
+\end{verbatim}
+
+Note que nesse caso é preciso despresar a omissão dos valores \emph{NA}.
+
+\subsection{Exemplo: Criando uma tabela de estatísticas
+descritivas}\label{exemplo-criando-uma-tabela-de-estatuxedsticas-descritivas}
+
+Uma tabela de estatísticas descritivas mostra o perfil básico de um
+banco de dados e geralmente expressa o número de observações, o valor
+médio, o desvio padrão, o valor máximo e o valor mínimo de cada
+variável. Para representar, considere usar o banco de dados nativo do
+\emph{R} sobre características das flores (\emph{iris).} Esse banco de
+dados possui cinco colunas (\emph{Sepal.Length, Sepal.Width,
+Petal.Length, Petal.Width, Species}) que mostram o comprimento e a
+largura da pétala e da sépala de cada espécie de flor. Elaborar uma
+tabela de estatísticas descritivas dessa base de dados seria o mesmo que
+preencher a seguinte tabela:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2388}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1940}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1045}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2239}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1194}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1194}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Observações
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Máximo
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\emph{Sepal.Length} & & & & & \\
+\emph{Sepal.Width} & & & & & \\
+\emph{Petal.Length} & & & & & \\
+\emph{Petal.Width} & & & & & \\
+\end{longtable}
+
+Para esse propósito, vamos usar a indexação aos nomes das linhas e
+colunas e vamos usar as estatísticas básicas mostradas anteriormente. O
+primeiro passo para tal é criar um data frame vazio com os mesmos
+padrões da tabela anterior:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{est\_desc }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Observacoes =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{4}\NormalTok{)),}
+  \AttributeTok{Media =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{4}\NormalTok{)),}
+  \AttributeTok{Desvio\_Padrao =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{4}\NormalTok{)),}
+  \AttributeTok{Minimo =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{4}\NormalTok{)),}
+  \AttributeTok{Maximo  =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(est\_desc) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal.Length"}\NormalTok{, }\StringTok{"Sepal.Width"}\NormalTok{, }\StringTok{"Petal.Length"}\NormalTok{, }\StringTok{\textquotesingle{}Petal.Width\textquotesingle{}}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(est\_desc)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+             Observacoes Media Desvio_Padrao Minimo Maximo
+Sepal.Length          NA    NA            NA     NA     NA
+Sepal.Width           NA    NA            NA     NA     NA
+Petal.Length          NA    NA            NA     NA     NA
+Petal.Width           NA    NA            NA     NA     NA
+\end{verbatim}
+
+O próximo passo é preencher cada célula do data frame com as
+estatísticas correspondentes. Inicialmente, vamos preencher a coluna
+referente ao número de observações:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{est\_desc[}\StringTok{"Sepal.Length"}\NormalTok{, }\StringTok{"Observacoes"}\NormalTok{] }\OtherTok{=} \FunctionTok{length}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Sepal.Width"}\NormalTok{, }\StringTok{"Observacoes"}\NormalTok{] }\OtherTok{=} \FunctionTok{length}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Width)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Length"}\NormalTok{, }\StringTok{"Observacoes"}\NormalTok{] }\OtherTok{=} \FunctionTok{length}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Width"}\NormalTok{, }\StringTok{"Observacoes"}\NormalTok{] }\OtherTok{=} \FunctionTok{length}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Width)}
+\end{Highlighting}
+\end{Shaded}
+
+Agora vamos preencher a coluna da média:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{est\_desc[}\StringTok{"Sepal.Length"}\NormalTok{, }\StringTok{"Media"}\NormalTok{] }\OtherTok{=} \FunctionTok{mean}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Sepal.Width"}\NormalTok{, }\StringTok{"Media"}\NormalTok{] }\OtherTok{=} \FunctionTok{mean}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Width)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Length"}\NormalTok{, }\StringTok{"Media"}\NormalTok{] }\OtherTok{=} \FunctionTok{mean}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Width"}\NormalTok{, }\StringTok{"Media"}\NormalTok{] }\OtherTok{=} \FunctionTok{mean}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Width)}
+\end{Highlighting}
+\end{Shaded}
+
+Agora vamos preencher a coluna do desvio padrão:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{est\_desc[}\StringTok{"Sepal.Length"}\NormalTok{, }\StringTok{"Desvio\_Padrao"}\NormalTok{] }\OtherTok{=} \FunctionTok{sd}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Sepal.Width"}\NormalTok{, }\StringTok{"Desvio\_Padrao"}\NormalTok{] }\OtherTok{=} \FunctionTok{sd}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Width)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Length"}\NormalTok{, }\StringTok{"Desvio\_Padrao"}\NormalTok{] }\OtherTok{=} \FunctionTok{sd}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Width"}\NormalTok{, }\StringTok{"Desvio\_Padrao"}\NormalTok{] }\OtherTok{=} \FunctionTok{sd}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Width)}
+\end{Highlighting}
+\end{Shaded}
+
+Agora vamos fazer o mesmo para a coluna do valor mínimo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{est\_desc[}\StringTok{"Sepal.Length"}\NormalTok{, }\StringTok{"Minimo"}\NormalTok{] }\OtherTok{=} \FunctionTok{min}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Sepal.Width"}\NormalTok{, }\StringTok{"Minimo"}\NormalTok{] }\OtherTok{=} \FunctionTok{min}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Width)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Length"}\NormalTok{, }\StringTok{"Minimo"}\NormalTok{] }\OtherTok{=} \FunctionTok{min}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Width"}\NormalTok{, }\StringTok{"Minimo"}\NormalTok{] }\OtherTok{=} \FunctionTok{min}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Width)}
+\end{Highlighting}
+\end{Shaded}
+
+Por fim, vamos preencher a coluna do valor máximo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{est\_desc[}\StringTok{"Sepal.Length"}\NormalTok{, }\StringTok{"Maximo"}\NormalTok{] }\OtherTok{=} \FunctionTok{max}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Sepal.Width"}\NormalTok{, }\StringTok{"Maximo"}\NormalTok{] }\OtherTok{=} \FunctionTok{max}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Width)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Length"}\NormalTok{, }\StringTok{"Maximo"}\NormalTok{] }\OtherTok{=} \FunctionTok{max}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Length)}
+\NormalTok{est\_desc[}\StringTok{"Petal.Width"}\NormalTok{, }\StringTok{"Maximo"}\NormalTok{] }\OtherTok{=} \FunctionTok{max}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Width)}
+\end{Highlighting}
+\end{Shaded}
+
+O resultado desse procedimento é o data frame a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(est\_desc, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+             Observacoes Media Desvio_Padrao Minimo Maximo
+Sepal.Length         150 5.843        0.8281    4.3    7.9
+Sepal.Width          150 3.057        0.4359    2.0    4.4
+Petal.Length         150 3.758        1.7653    1.0    6.9
+Petal.Width          150 1.199        0.7622    0.1    2.5
+\end{verbatim}
+
+Existem maneiras mais rápidas e mais eficientes de preparar uma tabela
+de estatísticas descritivas, porém, isso exige artifícios que só serão
+vistos em capítulos posteriores.
+
+\section{Exercício}\label{exercuxedcio}
+
+Considere usar a base de dados nativa sobre carros \emph{mtcars}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{=}\NormalTok{ mtcars}
+\end{Highlighting}
+\end{Shaded}
+
+(1) Remova o carro Fiat X1-9.
+
+(2) Usando o nome das linhas e das colunas, encontre o consumo
+\emph{(mpg)} do Toyota Corolla.
+
+(3) Crie uma nova coluna de nome \emph{difCorolla} mostrando a diferença
+entre o consumo médio de cada carro e o consumo médio do Toyota Corolla.
+
+(4) Crie uma nova coluna de nome \emph{consumo\_peso} mostrando o
+consumo \emph{(mpg)} dos carros para cada tonelada de peso \emph{(wt)}.
+
+(5) Apague os carros de câmbio manual (carros com \emph{am = 0}).
+
+\bookmarksetup{startatroot}
+
+\chapter{Classes de elementos}\label{classes-de-elementos}
+
+Os dados podem assumir diversos formatos, por exemplo, números, textos,
+imagens, etc. A depender da ocasião, o usuário precisará lidar com um
+tipo de dado específico. Por exemplo, um economista prevendo preços no
+mercado de ações utilizará objetos numéricos para representar o preço
+dos ativos. Um técnico em radiologia coleta informações em imagem de um
+paciente. Um especialista em análise de sentimento em redes sociais
+coleta os textos das postagens para extrair delas informações úteis.
+Cada tipo de informação tem uma utilidade e um propósito e cada tipo de
+informação possui propriedades que o analista de dados precisa conhecer.
+
+Um objeto criado possui múltiplos elementos e esses elementos podem ser
+de diferentes tipos. Esses \emph{``tipos''} de elementos recebem o nome
+de \emph{classe}. Existem operações que são aplicadas adequadamente a
+uma classe de elementos específica, por exemplo, é possível somar dois
+elementos numéricos mas é estranho pensar em somar duas palavras. Nesse
+capítulo vamos conhecer as principais classes de dados, suas
+características e as principais operações que podem ser realizadas com
+cada classe.
+
+\section{\texorpdfstring{Elementos textuais:
+(\emph{strings})}{Elementos textuais: (strings)}}\label{elementos-textuais-strings}
+
+Os elementos textuais sempre devem ser declarados entre aspas, sejam
+aspas simples ou duplas, do contrário, a linguagem \emph{R} não
+reconhecerá esse elemento como texto. A linguagem \emph{R} não suporta
+operações matemáticas com elementos textuais, ao contrário de outras
+linguagens como \emph{Python} onde operações matemáticas básicas podem
+ser aplicadas a esses elementos.
+
+Imagine que seja necessário criar um data frame com o nome dos estados e
+os nomes das capitais da região Sul do Brasil. Nesse caso, os elemento
+são textuais e cada nome de estado e capital deve ser informado entre
+aspas conforme demonstrado a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sul }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{estados =} \FunctionTok{c}\NormalTok{(}\StringTok{"Paraná"}\NormalTok{, }\StringTok{"Santa Cararina"}\NormalTok{, }\StringTok{"Rio Grande do Sul"}\NormalTok{),}
+  \AttributeTok{capital =} \FunctionTok{c}\NormalTok{(}\StringTok{"Curitiba"}\NormalTok{, }\StringTok{"Florianópolis"}\NormalTok{, }\StringTok{"Porto Alegre"}\NormalTok{)}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Sul"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Sul"
+\end{verbatim}
+
+Caso os elementos não sejam declarados entre aspas, a execução do
+comando retornará um erro.
+
+É possível checar qual a classe de um dado elemento ou de um dado objeto
+por meio do comando \emph{class()}, informando o nome do objeto entre
+parêntesis. Por exemplo, é possível checar se o objeto criado
+anteriormente com o nome \emph{sul} é um data frame, um vetor, um array,
+etc.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(sul)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "data.frame"
+\end{verbatim}
+
+O comando \emph{class()} também pode ser usado para verificar se um
+objeto possui ou não uma classe textual. Caso se trate de um objeto
+textual, então o comando \emph{class()} retornará o output
+\emph{``character'',} indicando que se trata de um caracter. Por
+exemplo, vamos verificar a classe da coluna de nome \emph{estados} do
+objeto de nome \emph{sul}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{estados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "character"
+\end{verbatim}
+
+Elementos númericos ou outros tipos de elementos muitas vezes podem ser
+reconhecidos, declarados ou transformados em caracteres. Nesse caso,
+cabe ao usuário saber identificar a classe dos elementos e transformá-lo
+na classe desejada. Para exemplificar, considere incluir no data frame
+anterior o código de unidade federativa do ibge:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sul}\SpecialCharTok{$}\NormalTok{codigo\_uf }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{41}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{43}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(sul)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+            estados       capital codigo_uf
+1            Paraná      Curitiba        41
+2    Santa Cararina Florianópolis        42
+3 Rio Grande do Sul  Porto Alegre        43
+\end{verbatim}
+
+Note que os números não estão em aspas, indicando que não são
+caracteres. Abrindo o data frame, o usuário verá facilmente que as duas
+primeiras colunas estão com os valores alinhados à esquerda, enquanto a
+última coluna está alinhada à direita. Nesse caso, apenas visualizando
+esse alinhamento é possível afirmar que as duas primeiras colunas têm
+elementos textuais. No entanto, o usuário pode checar se as colunas são
+de fato \emph{strings} usando o comando \emph{is.character()}, indicando
+o nome do objeto ou elemento no parênteses. Por exemplo, para checar se
+o código do estado é um elemento textual, proceda conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.character}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{codigo\_uf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+Note que o output foi \emph{FALSE}, indicando que não se trata de um
+elemento textual. Caso o usuário precise dessa coluna como um elemento
+de texto, então ele pode usar o comando \emph{as.character()}, indicando
+o nome do objeto ou elemento no parênteses. Nesse caso, o objeto ou
+elemento indicado será transformado forçadamente em um elemento textual.
+Para exemplificar, vamos transformar o código do estado em um caracter:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sul}\SpecialCharTok{$}\NormalTok{codigo\_uf }\OtherTok{=} \FunctionTok{as.character}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{codigo\_uf)}
+\end{Highlighting}
+\end{Shaded}
+
+Checando agora a classe da coluna, nota-se que se trata de um elemento
+textual:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{codigo\_uf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "character"
+\end{verbatim}
+
+Existem operações no âmbito da análise de dados que são usadas com esse
+tipo de elemento. Por exemplo, as análises de sentimento baseiam-se
+fundamentalmente em coletas de dados de texto. Um exemplo factível é a
+mensuração da sensibilidade do mercado financeiro em relação a
+intensidade do texto da ata do banco central. Esse procedimento é feito
+pela contagem de palavras pré-definidas na ata. Para esse tipo de
+operação existem bibliotecas que auxiliam o usuário e que serão vistas
+posteriormente quando estivermos abordando operações com \emph{strings}.
+
+\section{Elementos numéricos}\label{elementos-numuxe9ricos}
+
+Os elementos numéricos são todos os elementos representados na forma de
+números, sejam eles de quaisquer um dos conjuntos numéricos. Por
+exemplo, 2 é um elemento numérico do conjunto dos naturais inteiros, ao
+passo que 2.5 é um elemento numérico do conjunto dos números racionais.
+É possível checar se um elemento é numérico usando o comando
+\emph{class()}, no entanto, é mais adequado usar o \emph{is.numeric()},
+indicando o nome do elemento em parênteses. Para exemplificar, vamos
+checar se a coluna \emph{codigo\_uf} do data frame de nome \emph{sul} é
+numérico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.numeric}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{codigo\_uf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+Note que o resultado é \emph{FALSE}, indicando que não se trata de um
+elemento numérico. Caso o usuário precise transformar essa coluna em um
+elemento numérico, então ele pode usar o comando \emph{as.numeric()},
+indicando o nome do elemento em parêntesis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sul}\SpecialCharTok{$}\NormalTok{codigo\_uf }\OtherTok{=} \FunctionTok{as.numeric}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{codigo\_uf)}
+\end{Highlighting}
+\end{Shaded}
+
+Agora podemos verificar novamente se a coluna é ou não numérica.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.numeric}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{codigo\_uf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+Em um data frame, as colunas numéricas sempre estarão alinhadas à
+direita e o usuário pode checar a classe dessa coluna posicionando o
+cursor sobre o seu nome no data frame.
+
+Existe, contudo, um problema associado ao uso do comando
+\emph{as.numeric()}, dado que a transformação de um elemento não
+numérico para um elemento numérico só funciona perfeitamente caso o
+objeto não numérico seja composto por números declarados como
+caracteres, como é o caso da coluna \emph{codigo\_uf.} Do contrário, o
+resultado pode ser composto por \emph{NAs}. Para exemplificar, vamos
+tentar transformar o nome dos estados em um objeto numérico:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.numeric}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{estados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: NAs introduzidos por coerção
+\end{verbatim}
+
+\begin{verbatim}
+[1] NA NA NA
+\end{verbatim}
+
+Por esse motivo, antes de efetuar qualquer operação com um elemento
+numérico, é fundamental checar a sua classe para garantir que o
+resultado esteja de acordo com o esperado. Por exemplo, imagine o caso
+em que seja preciso calcular o pib per capita de um estado, sendo que o
+pib seja numérico e a população seja um caracter. Nesse caso, se o
+usuário não conhece a classe da população e não a transforma em um
+elemento numérico, o cálculo do pib per capita será feito dividindo um
+número por uma palavra, o que é algo inviável, resultando em um elemento
+do tipo \emph{NA}.
+
+\subsection{\texorpdfstring{Subclasses dos numéricos: inteiros
+\emph{(integer)}}{Subclasses dos numéricos: inteiros (integer)}}\label{subclasses-dos-numuxe9ricos-inteiros-integer}
+
+Como mencionado anteriormente, os elementos numéricos podem estar
+contidos em quaisquer um dos conjuntos numéricos. Uma subclasse bastante
+comum na economia são é a subclasse dos inteiros. Essa subclasse abriga
+os números inteiros positivos ou negativos e se caracteriza por abrigar
+um \emph{L} após o número. Por exemplo, 10 é um elemento da classe
+numérica, mas 10L é um elemento da subclasse dos inteiros pertencente à
+classe dos numéricos.
+
+Para checar se um elemento é inteiro, use o comando \emph{is.integer()},
+indicando o elemento no parêntesis. Por exemplo, vamos checar se 10 é
+inteiro:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.integer}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+Note que o resultado é \emph{FALSE}, indicando que 10 não é inteiro.
+Isso ocore porque os números inteiros devem obrigatoriamente ser
+sucedidos da letra \emph{L}. Informando corretamente tem-se:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.integer}\NormalTok{(}\DecValTok{10}\NormalTok{L)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+Para transformar um elemento numérico na subclasse dos inteiros, basta
+usar a função \emph{as.integer()}, informando o elemento no parênteses.
+Por exemplo, vamos transformar o código do estado no data frame de nome
+\emph{sul} em inteiro.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sul}\SpecialCharTok{$}\NormalTok{codigo\_uf }\OtherTok{=} \FunctionTok{as.integer}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{codigo\_uf)}
+\FunctionTok{print}\NormalTok{(sul)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+            estados       capital codigo_uf
+1            Paraná      Curitiba        41
+2    Santa Cararina Florianópolis        42
+3 Rio Grande do Sul  Porto Alegre        43
+\end{verbatim}
+
+Note que visivelmente não há mudanças nas propriedades da coluna
+modificada, porém agora quando consultarmos se essa coluna pertence ao
+conjunto dos inteiros, o output é verdadeiro:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.integer}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{codigo\_uf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\subsection{\texorpdfstring{Subclasses dos numéricos: racionais
+\emph{(doubles)}}{Subclasses dos numéricos: racionais (doubles)}}\label{subclasses-dos-numuxe9ricos-racionais-doubles}
+
+Os números racionais são declarados como \emph{doubles} na linguagem
+\emph{R}. Esse conjunto abriga também os inteiros e os naturais, isto é,
+um inteiro sempre será um \emph{double,} assim como um natural sempre
+será um \emph{double}. Para checar se um número pertence a essa
+categoria, use a função \emph{is.double()}, indicando o elemento de
+interesse no parênteses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.double}\NormalTok{(}\FloatTok{10.5555}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+De maneira análoga, um elemento numérico declarado como texto pode ser
+trannsformado em racional usando a função \emph{as.double()}, indicando
+o elemento de interesse no parênteses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.double}\NormalTok{(}\StringTok{"10.5"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 10.5
+\end{verbatim}
+
+Em alguns casos, os números racionais possuem múltiplas casas decimais e
+é preciso reduzir essas casas decimais arredondando a última casa. Isso
+pode ser facilmente resolvido usando a função \emph{round()}, que possui
+o seguinte modo de uso: \emph{round(nome do objeto ou elemento, número
+de casas decimais)}. Por exemeplo, imagine que queiramos reduzir o
+número 5.56413 para apenas uma casa decimal. Nesse caso, devemos
+proceder conforme a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FloatTok{5.564132}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5.6
+\end{verbatim}
+
+\section{\texorpdfstring{Elementos lógicos: \emph{(TRUE e
+FALSE)}}{Elementos lógicos: (TRUE e FALSE)}}\label{elementos-luxf3gicos-true-e-false}
+
+Os elementos lógicos podem assumir dois valores, verdadeiro
+\emph{(TRUE)} ou falso \emph{(FALSE)}. Sempre que o elemento lógico for
+verdadeiro, o \emph{R} atribui valor 1 a este elemento, ao passo que
+sempre que o elemento lógico for falso, o \emph{R} atribui valor 0 a
+este elemento. Assim, é possível aplicar operações matemáticas aos
+elementos pertencentes a essa classe. Isso advém da premissa de que as
+linguagens de programação são baseados em sistemas binários de afirmação
+e negação comentada no capítulo 1.
+
+Essa classe de elementos é bastante utilizada na economia para
+representar variáveis binárias onde a categoria de interesse recebe o
+valor unitário. Por exemplo, imagine uma pesquisa com foco no
+diferencial de salário por sexo. Nesse tipo de pesquisa é ideal saber se
+o indivíduo é homem ou mulher. Se a categoria de interesse for o sexo
+masculino, então os homens recebem valor \emph{TRUE} e as mulheres
+recebem vaor \emph{FALSE}. Isso equivale a atribuir 1 para os homens e 0
+para as mulheres.
+
+Para verificar se um elemento pertence a essa categoria, use a função
+\emph{is.logical()}, indicando o nome do elemento entre o parênteses.
+Para exemplificar, vamos criar uma nova coluna no data frame de estados
+da regiao sul com o nome \emph{parana} que identifica se o estado em
+questão é ou não o estado do Paraná.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sul}\SpecialCharTok{$}\NormalTok{parana }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(sul)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+            estados       capital codigo_uf parana
+1            Paraná      Curitiba        41      1
+2    Santa Cararina Florianópolis        42      0
+3 Rio Grande do Sul  Porto Alegre        43      0
+\end{verbatim}
+
+Agora vamos checar se essa coluna é um elemento lógico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.logical}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{parana)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+Note que o output é \emph{FALSE}, indicando que não se trata de um
+elemento lógico, o que é esperado dado que se trata de um elemento
+numérico. Para transformar essa coluna em um elemento lógico, basta usar
+a função \emph{as.logical()}, indicando o nome do elemento de interesse
+no parênteses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sul}\SpecialCharTok{$}\NormalTok{parana }\OtherTok{=} \FunctionTok{as.logical}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{parana)}
+\FunctionTok{print}\NormalTok{(sul)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+            estados       capital codigo_uf parana
+1            Paraná      Curitiba        41   TRUE
+2    Santa Cararina Florianópolis        42  FALSE
+3 Rio Grande do Sul  Porto Alegre        43  FALSE
+\end{verbatim}
+
+Agora vamos checar novamente se essa coluna é um elemento lógico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.logical}\NormalTok{(sul}\SpecialCharTok{$}\NormalTok{parana)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+Note que o output é \emph{TRUE}, indicando que se trata de um elemento
+lógico.
+
+\section{\texorpdfstring{Valores multicategóricos: Fatores
+(\emph{factors})}{Valores multicategóricos: Fatores (factors)}}\label{valores-multicateguxf3ricos-fatores-factors}
+
+Os \emph{factors} são elementos usados para representar valores
+multicategóricos. Por exemplo, imagine uma variável que expressa a
+situação do empregado no mercado de trabalho. Ele pode estar (1) apenas
+trabalhando, (2) apenas estudando, (3) trabalhando e estudando, (4) nem
+trabalhando nem estudando porém procurando emprego, ou (5) nem
+trabalhando nem estudando nem procurando emprego. Note que são cinco
+possibilidades que agora não podem ser representadas pelos elementos
+lógicos.
+
+Para declarar um elemento multicategórico é necessário usar o comando
+\emph{factor()} que tem a seguinte forma de uso: \emph{factor(x =
+elemento, levels = níveis das categorias)}. Para exemplificar, vamos
+criar um objeto de nome \emph{emprego} com as possibilidades indicadas
+no parágrafo anterior e os seus respectivos valores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{emprego }\OtherTok{=} \FunctionTok{factor}\NormalTok{(}
+  \AttributeTok{x =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"apenas trabalhando"}\NormalTok{, }
+    \StringTok{"apenas estudando"}\NormalTok{, }
+    \StringTok{"trabalhando e estudando"}\NormalTok{, }
+    \StringTok{"nem trabalhando nem estudando porém procurando emprego"}\NormalTok{,}
+    \StringTok{"nem trabalhando nem estudando nem procurando emprego"}
+\NormalTok{  ),}
+  \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"apenas trabalhando"}\NormalTok{, }
+    \StringTok{"apenas estudando"}\NormalTok{, }
+    \StringTok{"trabalhando e estudando"}\NormalTok{, }
+    \StringTok{"nem trabalhando nem estudando porém procurando emprego"}\NormalTok{,}
+    \StringTok{"nem trabalhando nem estudando nem procurando emprego"}
+\NormalTok{  )}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(emprego)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] apenas trabalhando                                    
+[2] apenas estudando                                      
+[3] trabalhando e estudando                               
+[4] nem trabalhando nem estudando porém procurando emprego
+[5] nem trabalhando nem estudando nem procurando emprego  
+5 Levels: apenas trabalhando apenas estudando ... nem trabalhando nem estudando nem procurando emprego
+\end{verbatim}
+
+Será atribuído valor 1 para a primeira categoria indicada no vetor de
+níveis \emph{(levels)}, 2 para a segunda categoria e assim
+sucessivamente.
+
+Para checar se um elemento é multicategórico, devs-se usar a função
+\emph{is.factor(),} indicando o nome do elemento no parênteses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.factor}\NormalTok{(emprego)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\section{Exercício 1}\label{exercuxedcio-1-1}
+
+Considere o seguinte data frame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\NormalTok{dados }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{pessoa =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{30}\NormalTok{,}
+  \AttributeTok{idade =} \FunctionTok{sample}\NormalTok{(}\DecValTok{8}\SpecialCharTok{:}\DecValTok{85}\NormalTok{,}\DecValTok{30}\NormalTok{, }\AttributeTok{replace =}\NormalTok{ T),}
+  \AttributeTok{sexo =} \FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{), }\DecValTok{30}\NormalTok{, }\AttributeTok{replace =}\NormalTok{ T),}
+  \AttributeTok{estado\_civil =} \FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Solteiro"}\NormalTok{, }\StringTok{"Casado"}\NormalTok{, }\StringTok{"Viúvo"}\NormalTok{, }\StringTok{"Divorciado"}\NormalTok{), }\DecValTok{30}\NormalTok{, }\AttributeTok{replace =}\NormalTok{ T),}
+  \AttributeTok{salario =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{30}\NormalTok{, }\AttributeTok{mean =} \DecValTok{1200}\NormalTok{, }\AttributeTok{sd =} \DecValTok{300}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+(1) Crie uma variável de nome \emph{sexo2} transformando a variável
+\emph{sexo} em um elemento lógico atribuindo o valor unitário para as
+mulheres.
+
+(2) Crie uma variável de nome \emph{fase\_vida} atribuindo os nomes
+\emph{infância} para as pessoas com menos de 12 anos,
+\emph{adolescência} para as pessoas com idade entre 12 e 18 anos,
+\emph{adulta} para as pessoas com idade entre 18 e 65 anos e
+\emph{velhice} para as pessoas com mais de 65 anos.
+
+(3) Crie uma nova variável de nome \emph{fase\_vida2} transformando a
+variável \emph{fase\_vida} em um factor ordenando as categorias de
+acordo com a fase da vida em ordem crescente.
+
+\section{Exercício 2}\label{exercuxedcio-2-1}
+
+Considere a base de dados sobre carros \emph{mtcars}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros }\OtherTok{=}\NormalTok{ mtcars}
+\end{Highlighting}
+\end{Shaded}
+
+(1) Crie uma coluna de nome \emph{automatico} transformando a coluna
+\emph{am} em um elemento lógico.
+
+(2) Transforme a coluna \emph{cyl} em um factor onde o atributo \emph{x}
+recebe os valores \emph{``4 cilindros'', ``6 cilindore''} e \emph{``8
+cilindros}'' ordenados na forma crescente.
+
+(3) Crie uma nova coluna de nome \emph{carro} contendo o nome dos carros
+indicados nos nomes das linhas do data frame.
+
+(4) Verifique a casse da coluna criada na questão.
+
+(5) Verifique se a coluna criada nas questões 1 e 2 são \emph{factors}.
+
+(6) Verifique se a coluna \emph{mpg} é inteiro e caso não seja
+transforme-a em inteiro.
+
+\bookmarksetup{startatroot}
+
+\chapter*{References}\label{references}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{0}{1}
+\end{CSLReferences}
+
+
+
+
+\end{document}

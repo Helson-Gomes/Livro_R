@@ -1,0 +1,6 @@
+"0","matriz2 = matrix(c(5,3,7,0), nrow = 2, ncol = 2, byrow = TRUE)
+matriz3 = matriz1 + matriz2
+print(matriz3)"
+"2","'""matriz1""' n∆o Ç reconhecido como um comando interno
+ou externo, um programa oper†vel ou um arquivo em lotes.
+"

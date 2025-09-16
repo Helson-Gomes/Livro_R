@@ -1,0 +1,249 @@
+# Classes de elementos
+
+Os dados podem assumir diversos formatos, por exemplo, números, textos, imagens, etc. A depender da ocasião, o usuário precisará lidar com um tipo de dado específico. Por exemplo, um economista prevendo preços no mercado de ações utilizará objetos numéricos para representar o preço dos ativos. Um técnico em radiologia coleta informações em imagem de um paciente. Um especialista em análise de sentimento em redes sociais coleta os textos das postagens para extrair delas informações úteis. Cada tipo de informação tem uma utilidade e um propósito e cada tipo de informação possui propriedades que o analista de dados precisa conhecer.
+
+Um objeto criado possui múltiplos elementos e esses elementos podem ser de diferentes tipos. Esses *"tipos"* de elementos recebem o nome de *classe*. Existem operações que são aplicadas adequadamente a uma classe de elementos específica, por exemplo, é possível somar dois elementos numéricos mas é estranho pensar em somar duas palavras. Nesse capítulo vamos conhecer as principais classes de dados, suas características e as principais operações que podem ser realizadas com cada classe.
+
+## Elementos textuais: (*strings*)
+
+Os elementos textuais sempre devem ser declarados entre aspas, sejam aspas simples ou duplas, do contrário, a linguagem *R* não reconhecerá esse elemento como texto. A linguagem *R* não suporta operações matemáticas com elementos textuais, ao contrário de outras linguagens como *Python* onde operações matemáticas básicas podem ser aplicadas a esses elementos.
+
+Imagine que seja necessário criar um data frame com o nome dos estados e os nomes das capitais da região Sul do Brasil. Nesse caso, os elemento são textuais e cada nome de estado e capital deve ser informado entre aspas conforme demonstrado a seguir:
+
+```{r}
+sul = data.frame(
+  estados = c("Paraná", "Santa Cararina", "Rio Grande do Sul"),
+  capital = c("Curitiba", "Florianópolis", "Porto Alegre")
+)
+print("Sul")
+```
+
+Caso os elementos não sejam declarados entre aspas, a execução do comando retornará um erro.
+
+É possível checar qual a classe de um dado elemento ou de um dado objeto por meio do comando *class()*, informando o nome do objeto entre parêntesis. Por exemplo, é possível checar se o objeto criado anteriormente com o nome *sul* é um data frame, um vetor, um array, etc.
+
+```{r}
+class(sul)
+```
+
+O comando *class()* também pode ser usado para verificar se um objeto possui ou não uma classe textual. Caso se trate de um objeto textual, então o comando *class()* retornará o output *"character",* indicando que se trata de um caracter. Por exemplo, vamos verificar a classe da coluna de nome *estados* do objeto de nome *sul*:
+
+```{r}
+class(sul$estados)
+```
+
+Elementos númericos ou outros tipos de elementos muitas vezes podem ser reconhecidos, declarados ou transformados em caracteres. Nesse caso, cabe ao usuário saber identificar a classe dos elementos e transformá-lo na classe desejada. Para exemplificar, considere incluir no data frame anterior o código de unidade federativa do ibge:
+
+```{r}
+sul$codigo_uf = c(41, 42, 43)
+print(sul)
+```
+
+Note que os números não estão em aspas, indicando que não são caracteres. Abrindo o data frame, o usuário verá facilmente que as duas primeiras colunas estão com os valores alinhados à esquerda, enquanto a última coluna está alinhada à direita. Nesse caso, apenas visualizando esse alinhamento é possível afirmar que as duas primeiras colunas têm elementos textuais. No entanto, o usuário pode checar se as colunas são de fato *strings* usando o comando *is.character()*, indicando o nome do objeto ou elemento no parênteses. Por exemplo, para checar se o código do estado é um elemento textual, proceda conforme a seguir:
+
+```{r}
+is.character(sul$codigo_uf)
+```
+
+Note que o output foi *FALSE*, indicando que não se trata de um elemento textual. Caso o usuário precise dessa coluna como um elemento de texto, então ele pode usar o comando *as.character()*, indicando o nome do objeto ou elemento no parênteses. Nesse caso, o objeto ou elemento indicado será transformado forçadamente em um elemento textual. Para exemplificar, vamos transformar o código do estado em um caracter:
+
+```{r}
+sul$codigo_uf = as.character(sul$codigo_uf)
+```
+
+Checando agora a classe da coluna, nota-se que se trata de um elemento textual:
+
+```{r}
+class(sul$codigo_uf)
+```
+
+Existem operações no âmbito da análise de dados que são usadas com esse tipo de elemento. Por exemplo, as análises de sentimento baseiam-se fundamentalmente em coletas de dados de texto. Um exemplo factível é a mensuração da sensibilidade do mercado financeiro em relação a intensidade do texto da ata do banco central. Esse procedimento é feito pela contagem de palavras pré-definidas na ata. Para esse tipo de operação existem bibliotecas que auxiliam o usuário e que serão vistas posteriormente quando estivermos abordando operações com *strings*.
+
+## Elementos numéricos
+
+Os elementos numéricos são todos os elementos representados na forma de números, sejam eles de quaisquer um dos conjuntos numéricos. Por exemplo, 2 é um elemento numérico do conjunto dos naturais inteiros, ao passo que 2.5 é um elemento numérico do conjunto dos números racionais. É possível checar se um elemento é numérico usando o comando *class()*, no entanto, é mais adequado usar o *is.numeric()*, indicando o nome do elemento em parênteses. Para exemplificar, vamos checar se a coluna *codigo_uf* do data frame de nome *sul* é numérico.
+
+```{r}
+is.numeric(sul$codigo_uf)
+```
+
+Note que o resultado é *FALSE*, indicando que não se trata de um elemento numérico. Caso o usuário precise transformar essa coluna em um elemento numérico, então ele pode usar o comando *as.numeric()*, indicando o nome do elemento em parêntesis:
+
+```{r}
+sul$codigo_uf = as.numeric(sul$codigo_uf)
+```
+
+Agora podemos verificar novamente se a coluna é ou não numérica.
+
+```{r}
+is.numeric(sul$codigo_uf)
+```
+
+Em um data frame, as colunas numéricas sempre estarão alinhadas à direita e o usuário pode checar a classe dessa coluna posicionando o cursor sobre o seu nome no data frame.
+
+Existe, contudo, um problema associado ao uso do comando *as.numeric()*, dado que a transformação de um elemento não numérico para um elemento numérico só funciona perfeitamente caso o objeto não numérico seja composto por números declarados como caracteres, como é o caso da coluna *codigo_uf.* Do contrário, o resultado pode ser composto por *NAs*. Para exemplificar, vamos tentar transformar o nome dos estados em um objeto numérico:
+
+```{r}
+as.numeric(sul$estados)
+```
+
+Por esse motivo, antes de efetuar qualquer operação com um elemento numérico, é fundamental checar a sua classe para garantir que o resultado esteja de acordo com o esperado. Por exemplo, imagine o caso em que seja preciso calcular o pib per capita de um estado, sendo que o pib seja numérico e a população seja um caracter. Nesse caso, se o usuário não conhece a classe da população e não a transforma em um elemento numérico, o cálculo do pib per capita será feito dividindo um número por uma palavra, o que é algo inviável, resultando em um elemento do tipo *NA*.
+
+### Subclasses dos numéricos: inteiros *(integer)*
+
+Como mencionado anteriormente, os elementos numéricos podem estar contidos em quaisquer um dos conjuntos numéricos. Uma subclasse bastante comum na economia são é a subclasse dos inteiros. Essa subclasse abriga os números inteiros positivos ou negativos e se caracteriza por abrigar um *L* após o número. Por exemplo, 10 é um elemento da classe numérica, mas 10L é um elemento da subclasse dos inteiros pertencente à classe dos numéricos.
+
+Para checar se um elemento é inteiro, use o comando *is.integer()*, indicando o elemento no parêntesis. Por exemplo, vamos checar se 10 é inteiro:
+
+```{r}
+is.integer(10)
+```
+
+Note que o resultado é *FALSE*, indicando que 10 não é inteiro. Isso ocore porque os números inteiros devem obrigatoriamente ser sucedidos da letra *L*. Informando corretamente tem-se:
+
+```{r}
+is.integer(10L)
+```
+
+Para transformar um elemento numérico na subclasse dos inteiros, basta usar a função *as.integer()*, informando o elemento no parênteses. Por exemplo, vamos transformar o código do estado no data frame de nome *sul* em inteiro.
+
+```{r}
+sul$codigo_uf = as.integer(sul$codigo_uf)
+print(sul)
+```
+
+Note que visivelmente não há mudanças nas propriedades da coluna modificada, porém agora quando consultarmos se essa coluna pertence ao conjunto dos inteiros, o output é verdadeiro:
+
+```{r}
+is.integer(sul$codigo_uf)
+```
+
+### Subclasses dos numéricos: racionais *(doubles)*
+
+Os números racionais são declarados como *doubles* na linguagem *R*. Esse conjunto abriga também os inteiros e os naturais, isto é, um inteiro sempre será um *double,* assim como um natural sempre será um *double*. Para checar se um número pertence a essa categoria, use a função *is.double()*, indicando o elemento de interesse no parênteses.
+
+```{r}
+is.double(10.5555)
+```
+
+De maneira análoga, um elemento numérico declarado como texto pode ser trannsformado em racional usando a função *as.double()*, indicando o elemento de interesse no parênteses.
+
+```{r}
+as.double("10.5")
+```
+
+Em alguns casos, os números racionais possuem múltiplas casas decimais e é preciso reduzir essas casas decimais arredondando a última casa. Isso pode ser facilmente resolvido usando a função *round()*, que possui o seguinte modo de uso: *round(nome do objeto ou elemento, número de casas decimais)*. Por exemeplo, imagine que queiramos reduzir o número 5.56413 para apenas uma casa decimal. Nesse caso, devemos proceder conforme a seguir:
+
+```{r}
+round(5.564132, 1)
+```
+
+## Elementos lógicos: *(TRUE e FALSE)*
+
+Os elementos lógicos podem assumir dois valores, verdadeiro *(TRUE)* ou falso *(FALSE)*. Sempre que o elemento lógico for verdadeiro, o *R* atribui valor 1 a este elemento, ao passo que sempre que o elemento lógico for falso, o *R* atribui valor 0 a este elemento. Assim, é possível aplicar operações matemáticas aos elementos pertencentes a essa classe. Isso advém da premissa de que as linguagens de programação são baseados em sistemas binários de afirmação e negação comentada no capítulo 1.
+
+Essa classe de elementos é bastante utilizada na economia para representar variáveis binárias onde a categoria de interesse recebe o valor unitário. Por exemplo, imagine uma pesquisa com foco no diferencial de salário por sexo. Nesse tipo de pesquisa é ideal saber se o indivíduo é homem ou mulher. Se a categoria de interesse for o sexo masculino, então os homens recebem valor *TRUE* e as mulheres recebem vaor *FALSE*. Isso equivale a atribuir 1 para os homens e 0 para as mulheres.
+
+Para verificar se um elemento pertence a essa categoria, use a função *is.logical()*, indicando o nome do elemento entre o parênteses. Para exemplificar, vamos criar uma nova coluna no data frame de estados da regiao sul com o nome *parana* que identifica se o estado em questão é ou não o estado do Paraná.
+
+```{r}
+sul$parana = c(1,0,0)
+print(sul)
+```
+
+Agora vamos checar se essa coluna é um elemento lógico.
+
+```{r}
+is.logical(sul$parana)
+```
+
+Note que o output é *FALSE*, indicando que não se trata de um elemento lógico, o que é esperado dado que se trata de um elemento numérico. Para transformar essa coluna em um elemento lógico, basta usar a função *as.logical()*, indicando o nome do elemento de interesse no parênteses.
+
+```{r}
+sul$parana = as.logical(sul$parana)
+print(sul)
+```
+
+Agora vamos checar novamente se essa coluna é um elemento lógico.
+
+```{r}
+is.logical(sul$parana)
+```
+
+Note que o output é *TRUE*, indicando que se trata de um elemento lógico.
+
+## Valores multicategóricos: Fatores (*factors*)
+
+Os *factors* são elementos usados para representar valores multicategóricos. Por exemplo, imagine uma variável que expressa a situação do empregado no mercado de trabalho. Ele pode estar (1) apenas trabalhando, (2) apenas estudando, (3) trabalhando e estudando, (4) nem trabalhando nem estudando porém procurando emprego, ou (5) nem trabalhando nem estudando nem procurando emprego. Note que são cinco possibilidades que agora não podem ser representadas pelos elementos lógicos.
+
+Para declarar um elemento multicategórico é necessário usar o comando *factor()* que tem a seguinte forma de uso: *factor(x = elemento, levels = níveis das categorias)*. Para exemplificar, vamos criar um objeto de nome *emprego* com as possibilidades indicadas no parágrafo anterior e os seus respectivos valores.
+
+```{r}
+emprego = factor(
+  x = c(
+    "apenas trabalhando", 
+    "apenas estudando", 
+    "trabalhando e estudando", 
+    "nem trabalhando nem estudando porém procurando emprego",
+    "nem trabalhando nem estudando nem procurando emprego"
+  ),
+  levels = c(
+    "apenas trabalhando", 
+    "apenas estudando", 
+    "trabalhando e estudando", 
+    "nem trabalhando nem estudando porém procurando emprego",
+    "nem trabalhando nem estudando nem procurando emprego"
+  )
+)
+
+print(emprego)
+```
+
+Será atribuído valor 1 para a primeira categoria indicada no vetor de níveis *(levels)*, 2 para a segunda categoria e assim sucessivamente.
+
+Para checar se um elemento é multicategórico, devs-se usar a função *is.factor(),* indicando o nome do elemento no parênteses.
+
+```{r}
+is.factor(emprego)
+```
+
+## Exercício 1
+
+Considere o seguinte data frame:
+
+```{r}
+set.seed(10)
+dados = data.frame(
+  pessoa = 1:30,
+  idade = sample(8:85,30, replace = T),
+  sexo = sample(c("M", "F"), 30, replace = T),
+  estado_civil = sample(c("Solteiro", "Casado", "Viúvo", "Divorciado"), 30, replace = T),
+  salario = rnorm(30, mean = 1200, sd = 300)
+)
+```
+
+\(1\) Crie uma variável de nome *sexo2* transformando a variável *sexo* em um elemento lógico atribuindo o valor unitário para as mulheres.
+
+\(2\) Crie uma variável de nome *fase_vida* atribuindo os nomes *infância* para as pessoas com menos de 12 anos, *adolescência* para as pessoas com idade entre 12 e 18 anos, *adulta* para as pessoas com idade entre 18 e 65 anos e *velhice* para as pessoas com mais de 65 anos.
+
+\(3\) Crie uma nova variável de nome *fase_vida2* transformando a variável *fase_vida* em um factor ordenando as categorias de acordo com a fase da vida em ordem crescente.
+
+## Exercício 2
+
+Considere a base de dados sobre carros *mtcars*:
+
+```{r}
+carros = mtcars
+```
+
+\(1\) Crie uma coluna de nome *automatico* transformando a coluna *am* em um elemento lógico.
+
+\(2\) Transforme a coluna *cyl* em um factor onde o atributo *x* recebe os valores *"4 cilindros", "6 cilindore"* e *"8 cilindros*" ordenados na forma crescente.
+
+\(3\) Crie uma nova coluna de nome *carro* contendo o nome dos carros indicados nos nomes das linhas do data frame.
+
+\(4\) Verifique a casse da coluna criada na questão.
+
+\(5\) Verifique se a coluna criada nas questões 1 e 2 são *factors*.
+
+\(6\) Verifique se a coluna *mpg* é inteiro e caso não seja transforme-a em inteiro.

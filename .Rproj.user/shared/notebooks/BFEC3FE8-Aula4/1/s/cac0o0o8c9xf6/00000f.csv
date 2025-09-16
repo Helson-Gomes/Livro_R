@@ -1,0 +1,4 @@
+"0","valor_parcela = function(f, j, n){"
+"0","  vp = f*j/(1-(1+j)^(-n))"
+"0","  return(vp)"
+"0","}"

@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "Introdução à Programação e à Ciência de Dados"
+  author: "Prof. Dr. Helson Gomes de Souza"
+  date: "07/07/2025"
+  language: pt-BR
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - aula2.qmd
+    - Aula3.qmd
+    - Aula4.qmd
+    - Aula5.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

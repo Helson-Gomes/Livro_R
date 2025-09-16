@@ -1,0 +1,507 @@
+# Condições, funções e loops
+
+Na programação e na análise de dados, muitas vezes é preciso realizar tarefas repetitivas, isto é, tarefas que devem ser aplicadas várias vezes a diferentes objetos ou elementos. Essas tarefas repetitivas podem ser automatizadas usando funções ou *loops*. Uma função é uma regra que é aplicada a um dado objeto para obter um resultado baseado na regra. Existe um *input* (semelhante ao domínio de uma função matemática) pelo qual a regra é aplicada para gerar um *output* (semelhante à imagem de uma função matemática).
+
+Por sua vez, um *loop* nada mais é do que uma maneira de aplicar a mesma função para os elementos do domínio dessa função automaticamente sem precisar fazer isso aplicando a função para cada elemento do domínio um a um.
+
+Tanto nas funções quanto nos *loops* o usuário pode aplicar condições. Essas condições refletem a lógica binária das linguagens de programação e são baseadas na ideia de "se e caso contrário". Assim, o usuário pode aplicar uma regra indicando que a linguagem de programação retorne um determinado valor ou regra caso uma condição **se** verifique ou retorne um outro valor **caso contrário**.
+
+Nesse capítulo vamos nos debruçar sobre esses temas e entender as principais regras e aplicações das condições, funções e **loops**.
+
+## Condições
+
+Como mencionado na seção introdutória do capítulo, as condições são baseadas numa estrutura de **se** e **caso contrário**. As condições facilitam a aplicação de regras binárias ou multicategóricas que ocorrem quando se necessita de aplicar uma regra para gerar um resultado baseado em duas possibilidades. Por exemplo, imagine que seja preciso verificar se um número é par ou ímpar. Nesse caso existem duas possibilidades (ou o número é par ou é ímpar). O *input* da regra é o número indicado e o *output* (resultado) é o tipo de número (par ou ímpar). Nesse caso, a condição aplicada seria: *"Caso o número seja par, retorne uma afirmativa positiva, do contrário retorne uma negação"*.
+
+### Condição *if*
+
+A condição *if* é ideal para ser aplicada quando o usuário está interessado apenas no *se* e não necessita do *caso contrário*. Por exemplo, no caso da verificação do tipo de número especificada anteriormente, se o usuário apenas quer saber se o número é par e não precisa de um resultado caso o número seja ímpar, então a condição *if* é ideal. Essa condição é bastante utilizada em tarefas que envolvem programação bruta como elaboração de jogos e sites dinâmicos. Porém, ela é bastante útil na análise de dados e na construção de modelos econômicos. A aplicação da condição *if* deve seguir a seguinte forma funcional:
+
+```{r}
+#if(condição){
+# resultado caso a condição seja verdadeira
+#}
+```
+
+Para exemplificar, vamos aplicar esse procedimento para saber se o número 10 é par. Mas como saber a regra para obter o resultado nesse caso? A resposta vem da lógica de aplicação da regra e dos conhecimentos das operações básicas de programação vistas no capítulo 1. Sabe-se que os números pares têm o resto da divisão por 2 igual a zero. Assim, se o resto da divisão de 10 por 2 for zero, então 10 é um número par. Vimos no capítulo 1 que o operador de resto da divisão é *%%*. Assim, a verificação de que 10 é par pode ser exposta da seguinte maneira:
+
+```{r}
+if(10 %% 2 == 0){
+  print("O número é par")
+}
+```
+
+### Condição *ifelse*
+
+Ao usar a condição *if*, o usuário busca uma resposta para um problema que envolve apenas uma condição de afirmação, isto é, "caso seja verdadeiro, me retorne essa resposta". No entanto, na maioria das vezes também é necessário obter uma resposta para a condição de negação. No exemplo anterior, o usuário apenas quer obter uma resposta para o caso em que o resto da divisão por 2 seja nula e não está interessado no caso contrário. Contudo, caso o usuário queira uma resposta para o caso contrário, existem algumas maneiras simples de obtê-la. Uma das maneiras mais simples para especificar tanto a condição de afirmação quanto a condição de negação é usando a condição *ifelse*.
+
+Com a condição *ifelse* o usuário pode especificar qual resposta deve ser retornada caso a condição imposta seja verdadeira ou falsa. Essa condição deve ser expressa da seguinte maneira: *ifelse(condição, resposta caso a condição seja verdadeira, resposta caso a condição seja falsa)*. Para exemplificar, vamos continuar com o exemplo em que queremos saber se o número 10 é par. Agora vamos declarar que caso o resto da divisão por dois não seja zero, a resposta retornada deve indicar que se trata de um número ímpar. Para isso devemos proceder conforme a seguir:
+
+```{r}
+ifelse(10 %%2 == 0, "O número é par", "O número é ímpar")
+```
+
+Note que, como o resto da divisão de dez por dois é zero, a resposta obtida foi aquela indicada para o caso em que a condição é verdadeira.
+
+### Condições *if* e *else*
+
+As condições *if* e *else* são apropriadas para exemplos que contêm apenas uma única condição binária (se e caso contrário). Ao contrário da condição *if* o uso das condições *if* e *else* simultaneamente ocorrem quando o usuário de fato está interessado nos resultados tanto do se quanto do caso contrário. A sua aplicação segue a seguinte forma funcional:
+
+```{r}
+#if(condição){
+#resultado caso a condição seja verdadeira} else{
+#resultado caso a condição seja falsa
+#}
+```
+
+Para exemplificar, agora vamos aplicar esse procedimento para saber se o número 10 é par ou ímpar. Note que agora estamos interessados no *caso contrário*, ou seja, também queremos um resultado para o caso em que 10 não seja par, indicando que apenas a condição *if* já não é mais suficiente para atender os padrões da regra. Agora, a aplicação da regra baseia-se na lógica de que se o resto da divisão de 10 por 2 for zero, então 10 é um número par, do contrário, 10 é um número ímpar. Assim, a verificação de que 10 é par ou ímpar pode ser exposta da seguinte maneira:
+
+```{r}
+if(10 %% 2 == 0){
+  print("O número é par")
+}else{
+  print("O número é ímpar")
+}
+```
+
+### Condição *else if*
+
+Existem casos em que é preciso aplicar não apenas uma única condição de afirmação ou negação, mas sim múltiplas condições. Esses casos são específicos para problemas que envolvem múltiplas categorias. Na existência desse tipo de ocasião, o usuário pode fazer uso das condições *if* e *else* intercalando-as com subcondições de afirmação e negação. Essas subcondições são aplicadas com o uso do *else if* que remete à ideia de "do contrário caso ocorra". Por exemplo, imagine que você seja um economista encarregado de classificar as pessoas de acordo com o grau de pobreza. Suponha que você pode classificar essas pessoas nas seguintes categorias:
+
+-   Extremamente pobre: Se possui renda menor que meio salário mínimo.
+
+-   Pobre: Se possui renda maior ou igual a meio salário mínimo e menor três salários mínimos.
+
+-   Não pobre: Se possui renda maior ou igual a três salários mínimos.
+
+A condição *if* e *else* não é adequada para esse tipo de classificação pois envolvem mais de uma condição de afirmação e negação. Agora o indivíduo pode ser ou não extremamente pobre, ser ou não ser pobre e ser ou não ser não pobre. Agora é preciso usar múltiplas condições de afirmação e negação que podem ser executadas com o *else if*. Essa condição possui a seguinte forma funcional:
+
+```{r}
+# if(condição de afirmação 1){
+#   resposta caso a condição 1 seja verdadeira
+# }else if(condição de afirmação 2){
+#   resposta caso a condição 2 seja verdadeira
+# }else if (condição de afirmação 3){
+#   resposta caso a condição 3 seja verdadeira
+# }...
+# ...
+# else{
+#   resposta caso nenhuma das condições expressas seja verdadeira
+# }
+```
+
+Para exemplificar, vamos criar um objeto de nome num\_*salarios* e atribuir um valor qualquer representando o número de salários mensal que essa suposta pessoa ganha para testarmos a condição de pobreza da pessoa que ganha esse valor.
+
+```{r}
+num_salarios = 2.5
+
+if(num_salarios < 0.5){
+  print("Extremamente pobre")
+}else if(num_salarios >= 0.5 & num_salarios < 3){
+  print("Pobre")
+}else{
+  print("Não pobre")
+}
+```
+
+Note que, como o número de salários está entre 0.5 e 3, a resposta obtida é que a pessoa deve ser classificada como pobre.
+
+## Funções
+
+As funções são maneiras eficientes de programar uma tarefa para obter uma resposta de acordo com uma dada regra. As funções são ideais para aplicar regras para diferentes objetos sem precisar escrever a ordem para cada objeto separadamente. Por exemplo, imagine que você precisa fazer 1000 somas de diferentes números. Você pode somar esses números um a um ou pode automatizar essa tarefa em uma função e aplicar essa função a cada número. Nesse caso, o código só é escrito uma vez em vez de 1000.
+
+Na programação as funções têm a mesma lógica das funções matemáticas. Existem parâmetros de entrada em que uma regra é aplicada para retornar um produto. Por exemplo, considere o caso de uma função afim na matemática:
+
+$$
+y = a + bx
+$$
+
+Nesse caso, os parâmetros de entrada são *a, b* e *x*, ao passo que *y* é o produto e a regra é a soma de *a* com o resultado da multiplicação entre *b* e *x*. Nessa função, é preciso conhecer os valores dos parâmetros de entrada para saber o resultado da regra aplicada. Por exemplo, se $a=b=x=1$, então pela regra *y* deve ser igual a 2 e esse valor de *y* muda conforme os parâmetros mudam.
+
+A lógica é a mesma na programação. O usuário deve informar os parâmetros de entrada e deve indicar qual a regra para que a linguagem de programação calcule o resultado dessa regra no caso em que os parâmetros de entrada tenham os valores informados.
+
+Em R, as funções são objetos que devem receber um nome e ficam armazenadas no ambiente de trabalho. As funções devem ser expressas com o indicativo *function*. Esse indicativo é sucedido de um parênteses onde são indicados os parâmetros de entrada. Após o parênteses, a regra deve ser aplicada entre chaves, mostrando qual deve ser o resultado retornado com o indicativo *input*, isto é:
+
+```{r, eval=FALSE}
+# nome da função = function(nome do parâmetro 1, nome do parâmetro 2,...nome do parâmetro n){
+#   return(regra)
+# }
+```
+
+Por exemplo, vamos considerar o caso da função afim indicada anteriormente. Nesse caso, deve-se proceder conforme a seguir:
+
+```{r}
+afim = function(a, b, x){
+  y = a + b*x
+  return(y)
+}
+```
+
+Agora, vamos considerar o caso em que *a = 1, b = 1* e *x=1*.
+
+```{r}
+afim(a = 1, b = 1, x = 1)
+```
+
+A regra funcionará para quaisquer valores de $a, b$ e $x$. Como um segundo exemplo, vamos programar uma função para saber se um número é par com as condições propostas anteriormente:
+
+```{r}
+par = function(x){
+  if(x %% 2 == 0){
+    return("Esse número é par")
+  }else{
+    return("Esse número é ímpar")
+  }
+}
+```
+
+Agora podemos aplicar essa função a qualquer número e não apenas ao número 10 como vinhamos fazendo. Por exemplo, vamos checar se 1515 é par ou ímpar:
+
+```{r}
+par(x = 1515)
+```
+
+#### Exemplo: Quanto rende o seu dinheiro?
+
+Suponha que você queira saber quanto rende o seus investimentos na renda fixa dadas as seguintes condições:
+
+-   Taxa de juros dada.
+
+-   Investimentos possíveis: CDB, RDB, Tesouro direto, LCI, LCA, CRI, CRA, poupança e debêntures.
+
+-   IOF de 30% sobre o lucro para resgate em investimentos com prazo menor que 1 mês.
+
+-   IRPF de 22.5% sobre o lucro para resgate em investimentos com prazo de até seis meses.
+
+-   IRPF de 20.5% sobre o lucro para resgate em investimentos com prazo entre seis meses e um ano.
+
+-   IRPF de 17.5% sobre o lucro para resgate em investimentos com prazo entre um ano e três anos.
+
+-   IRPF de 15% sobre o lucro para resgate em investimentos com prazo maior que três.
+
+-   IRPF de 0% sobre poupança, LCI, LCA, CRI e CRA.
+
+Para tanto, é preciso calcular o valor futuro do investimento dado o valor inicial investido. Para isso é crucial saber qual o tipo de rendimento para aplicar a regra da função. Se o rendimento é dado com juros compostos, então o valor futuro da aplicação $(VF)$ é:
+
+$$
+VF = VI(1+i)^t
+$$
+
+Em que $VI$ é o valor inicial investido, $i$ é a taxa nominal de juros e $t$ é o tempo para o resgate do investimento. No entanto, se os juros são fixos, o valor futuro da aplicação é:
+
+$$
+VF = VI(1+i*t)
+$$
+
+Assim, os parâmetros de entrada serão a taxa de juros e o tempo para o resgate enquanto a regra deve estar condicionada ao tipo de rendimento. Essas duas equações mostram o valor futuro bruto sem a dedução do imposto de renda. No caso em que se deseja obter o valor futuro líquido, é preciso multiplicar o valor futuro por $(1-IRPF)$ e somar o resultado com o alor inicial do investimento. Uma solução para essa tarefa pode ser feita por meio da seguinte função para aplicação em uma periodicidade anual
+
+```{r}
+invest = function(vi, i, t, tipo_juro, tipo_investimento){
+  # Inicialmente valos modelar o iof
+  if(t < 1/12){
+    iof = 0.3
+  }else{
+    iof = 0
+  }
+  # Agora vamos modelar o irpf
+  if(tipo_investimento != "poupança" | tipo_investimento != "lci" | tipo_investimento!= "lca" | tipo_investimento!= "cri" | tipo_investimento!= "cra"){
+    if(t<= 0.5){
+      irpf = 0.225
+    }else if(t > 0.5 & t <= 1){
+      irpf = 0.205
+    }else if(t > 1 & t <=3){
+      irpf = 0.175
+    }else{
+      irpf = 0.15
+    }
+  }else{
+    irpf = 0
+  }
+  
+  # Agora vamos modelar o valor futuro bruto e o valor futuro líquido
+  if(tipo_juro == "composto"){
+    vfb = vi*(1+i)^t
+    vfl = vi + (vfb - vi)*(1-irpf)
+  }else {
+    vfb = vi*(1+i*t)
+    vfl = vi + (vfb-vi)*(1-irpf)
+  }
+  
+  resultado = c("Valor bruto :", vfb, "<->", "Valor líquido :", vfl)
+  
+  return(resultado)
+  
+}
+```
+
+Para testar, vamos considerar um investimento de R\$ 2.500,00 em uma LCI por cinco anos a uma taxa de juros compostos de 14% ao ano:
+
+```{r}
+invest(vi = 2500, i = 0.14, t = 5, tipo_juro = "composto", tipo_investimento = "lci")
+```
+
+#### Exemplo: Qual o valor da parcela do meu empréstimo?
+
+Suponha que você deseja tomar um empréstimo mas que está em dúvida sobre qual o valor da parcela a depender da quantidade de parcelas que você escolha. Se você toma emprestado um valor $F$ a uma taxa de juros $j$ e deseja pagar em $n$ parcelas utilizando o sistema *Price* de amortização, então o valor de cada parcela $(VP)$ é dado por:
+
+$$
+VP = \frac{F*j}{1-(1+j)^{-n}}
+$$
+
+Nesse caso, os parâmetros de entrada são o valor principal do empréstimo, a taxa de juros e o número de parcelas. A regra a ser aplicada na função é a relação indicada na equação de $VP$ que retornará o valor de cada parcela. Portanto, vamos criar uma função e nomeá-la de *valor_parcela* para aplicar essa regra e conhecermos o valor de cada parcela de um financiamento.
+
+```{r}
+valor_parcela = function(f, j, n){
+  vp = f*j/(1-(1+j)^(-n))
+  return(vp)
+}
+```
+
+Para exemplificar, suponha que você precise de um empréstimo de R\$ 10.000,00 e que a taxa de juros vigente seja de 1.2% ao mês. Se você quer pagar em 48 parcelas, então o valor de cada parcela será:
+
+```{r}
+valor_parcela(f = 10000, j = 0.012, n = 48)
+```
+
+## Loops
+
+Um **loop** (ou laço) é uma estrutura de controle que permite **executar repetidamente um bloco de código** enquanto uma condição for verdadeira ou por um número determinado de vezes. Os Loops são usados para:
+
+-   Repetir tarefas automaticamente (como imprimir uma lista de nomes)
+
+-   Processar grandes volumes de dados
+
+-   Evitar repetição manual de código
+
+Existem várias possibilidades de *loops*, cada uma delas com as suas propriedades e as suas respectivas aplicações. Cabe ao usuário conhecer as necessidades de cada caso e as propriedades de cada loop.
+
+### Loop *for*
+
+Um *loop for* é uma estrutura de repetição que executa um bloco de código um número determinado de vezes. Esse tipo de *loop* é ideal quando o usuário sabe previamente quantas vezes deseja repetir uma ação. Por exemplo, imagine o caso exemplificado anteriormente do valor da parcela de um financiamento. Suponha que o usuário deseja saber o valor da parcela caso ele opte por pagar desde 24 até 48 parcelas. Em vez de calcular a função para cada valor vez após vez é mais prático usar o *loop* do tipo for para aplicar a função criada para o conjunto que abrange os números entre 24 e 48. O *loop for* deve ser usado com a seguinte forma funcional:
+
+```{r, eval=FALSE}
+ for(indexador in conjunto){
+   regra aplicada ao indexador
+ }
+```
+
+O indexador é um índice que indexa os valores do conjunto em que a regra será aplicada, de modo que o nome desse indexador deve ser informado pelo usuário. Por exemplo, vamos imprimir cada $i$-ésimo número do conjunto de números entre 1 e 5:
+
+```{r}
+for(i in 1:5){
+  print(i)
+}
+```
+
+Agora vamos aplicar o *loop for* para o caso em que o usuário queira saber o valor da parcela do financiamento caso ele opte por pagar entre 24 e 48 parcelas:
+
+```{r}
+for(i in 24:48){
+  print(valor_parcela(f = 10000, j = 0.012, n = i))
+}
+```
+
+### Loop *while*
+
+O *loop while* é ideal para ser utilizado quando uma operação deve ser aplicada repetidas vezes até que uma dada condição ocorra. Por exemplo, imagine que você queira calcular $y = 2^n$ em que $n$ são os elementos do conjunto dos números naturais e uponha que você quer fazer isso até que $y$ alcance o valor de 10.000. Nesse caso, enquanto $y < 10.000$ a regra deve ser aplicada, ao passo que quando $y$ atingir o valor de 10.000 a operação é abortada. Nesse caso, o *loop while* é adequado para tal operação e pode ser usado mais eficientemente do que o *loop for*.
+
+A aplicação do *loop while* deve seguir a seguinte forma funcional:
+
+```{r, eval=FALSE}
+ while (condição) {
+   regra
+ }
+```
+
+Por exemplo, no caso da potenciação especificada anteiormente, deve-se proceder conforme a seguir:
+
+```{r}
+n = 0
+y = 2^n
+while (y < 10000) {
+  y = 2^n
+  print(n)
+  n = n +1
+}
+```
+
+Note que foi preciso criar um objeto $n=0$ e adicionar 1 ao final de cada verificação. Em alguns casos isso é um procedimento necessário.
+
+**OBS: Um loop while pode ser infinito caso a condição seja TRUE**. Nesse caso, para parar o loop é preciso executar a função *break*.
+
+#### Exemplo: Quantos bilhetes devo jogar para acertar na lotofácil
+
+A lotofácil é uma loteria da caixa econômica federal que consiste no sorteio de quinze números entre 1 e 25. O apostador pode fazer uma aposta mínima de quinze números ou realizar uma aposta com mais números. No concurso nº 3641, realizado no dia 05/08/2025 as dezenas sorteadas foram 02, 03, 04, 05, 06, 08, 09, 10, 11, 13, 18, 19, 21, 23, 25. Apostando 17 números, quantos sorteios aleatórios devem ser feitos para acertar pontualmente essas dezenas?
+
+Para responder, podemos pedir que o computador faça sorteios aleatórios até acertar exatamente esses números. Em *R*, sorteios aleatórios são realizados com a função *sample*. Assim, podemos criar um *loop while* e pedir que o computador não pare de fazer sorteios aleatórios até que ele acerte os números sorteados no concuros 3641 da lotofácil:
+
+```{r}
+# Primeiro vamos criar um vetor com as dezenas sorteadas
+sorteio = c(2, 3, 4, 5,6, 8,9, 10,11, 13,18, 19, 21,23,25)
+# Agora vamos criar o indexador do loop para contar quantos sorteios foram feitos
+n = 1
+# Agora vamos criar o loop while
+while (TRUE) {
+  # vamos sortear 17 números entre 1 e 25 sem possibilidade de repetição
+  aposta = sample(x = 1:25, size = 17, replace = FALSE)
+  # Agora vamos ordenar a aposta na ordem crescente
+  aposta = sort(aposta)
+  if(FALSE %in% c(sorteio %in% aposta)){
+    n = n +1
+  }else{
+    print(n)
+    break
+  }
+}
+```
+
+## Exercício 1
+
+\(i\) **Tempo restante para a aposentadoria:** Considere que uma pessoa pode se aposentar pelo sistema público de previdência caso obedeça as seguintes condições:
+
+-   Idade mínima de 65 anos e no mínimo 35 anos de contribuição caso seja do sexo masculino.
+
+-   Idade mínima de 62 anos e no mínimo 30 anos de contribuição caso seja do sexo feminino.
+
+-   Idade mínima para começar a trabalhar: 14 anos.
+
+Crie uma função para computar quanto tempo falta para a aposentadoria conforme a idade e o tempo de serviço. Ajuste a função para que a pessoa não possa informar valores irreais para o seu tempo de trabalho e de contribuição para a sua idade atual.
+
+\(ii\) Considere que um homem começou a trabalhar com 28 anos e a partir desse ponto nunca esteve desempregado. Use um *while for* para fazer uma contagem regressiva de quanto tempo falta para ele se aposentar conforme os anos passam. Pare o *loop* quando a contagem regressiva chegar a zero.
+
+\(iii\) Crie uma função para indicar se um número é primo e use um *loop for* para verificar quais os números inteiros entre 1 e 1000 são primos.
+
+## Exercício 2
+
+O código a seguir traz uma versão bastante rústica de um jogo da forca. Nesse jogo, o sistema sorteia uma dentre quatro palavras pré-definidas. O jogador tem cinco chances para acertar a palavra sorteada e deve indicar uma letra que ele julga que esteja presente na palavra em cada chance. A cada chance, se o jogador não acertar a palavra, um degrau a mais da forca é acionado. Na quinta chance, se o jogador não acertar a palavra oculta ele perde o jogo e é "enforcado".
+
+```{r, eval=FALSE}
+desenho = c(
+  "   ===============
+    ||              I              
+    ||              
+    ||
+    ||
+    ||
+    ||              O
+    ||             /|\
+    ||             / \
+    ||             VIVO
+    ||
+   /  \
+  /    \
+  --------------------
+  ",
+  "   ===============
+    ||              I
+    ||              I
+    ||
+    ||
+    ||
+    ||              O
+    ||             /|\
+    ||             / \
+    ||             VIVO
+    ||
+   /  \
+  /    \
+  --------------------
+  ",
+  "   ===============
+    ||              I
+    ||              I
+    ||              I
+    ||
+    ||
+    ||              O
+    ||             /|\
+    ||             / \
+    ||             VIVO
+    ||
+   /  \
+  /    \
+  --------------------
+  ",
+  "   ===============
+    ||              I
+    ||              I
+    ||              I
+    ||              I
+    ||
+    ||              O
+    ||             /|\
+    ||             / \
+    ||             VIVO
+    ||
+   /  \
+  /    \
+  --------------------
+  ",
+  "   ===============
+    ||              I
+    ||              I
+    ||              I
+    ||              I
+    ||              I
+    ||              O
+    ||             /|\
+    ||             / \
+    ||          ENFORCADO
+    ||
+   /  \
+  /    \
+  --------------------
+  
+  Você perdeu a partida
+  "
+)
+
+
+palavras = c("caminhonete", "esquisofrenia", "geladeira", "juventude")
+
+segredo = sample(palavras, 1)
+tracos = rep("__", nchar(segredo))
+letras = c()
+palavras_chutadas = c()
+
+for(i in 1:5){
+  print(tracos)
+  chute = readline("Indique uma letra: ")
+  while(chute %in% letras){
+    cat("Você já escolheu essa letra")
+    chute = readline("Indique uma letra: ")
+  }
+  letras = rbind(letras, chute)
+  for(j in 1:nchar(segredo)){
+    if(chute == substr(segredo, j, j)){
+      tracos[j] = chute
+      print(tracos)
+    }
+  }
+  sabe = readline("Conhece a palavra? ")
+  if(sabe == "sim"){
+    resposta = readline("Indique qual é a palavra: ")
+    while (resposta %in% palavras_chutadas) {
+      cat("Você já chutou essa palavra")
+      resposta = readline("Indique qual é a palavra: ")
+    }
+    palavras_chutadas = rbind(palavras_chutadas, resposta)
+    if(resposta == segredo){
+      cat("\n----------------------------------------------------\n")
+      cat("------------------Resposta correta----------------------\n")
+      cat("------------------Você ganhou o jogo--------------------\n")
+      cat("\n----------------------------------------------------\n")
+      break
+    }else{
+      cat("Resposta errada")
+      cat(desenho[i])
+    }
+  }else{
+    cat(desenho[i])
+  }
+}
+
+```
+
+\(i\) Analise o código e busque entender o papel dos *loops* e das condições no jogo. O código tem alguns erros e alguns bugs propositalmente inseridos, corrija-os caso os encontre.
+
+\(ii\) Insira mais quatro palavras no jogo e aumente o número de chances para seis.

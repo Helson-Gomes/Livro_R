@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Introdução – Introdução à Programação e à Ciência de Dados</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./aula2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introdução à Programação e à Ciência de Dados</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./aula2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Aula3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Classes de elementos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Aula4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Condições, funções e loops</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Aula5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leitura de dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-lógica-de-programação" id="toc-a-lógica-de-programação" class="nav-link active" data-scroll-target="#a-lógica-de-programação"><span class="header-section-number">1.1</span> A lógica de programação</a></li>
+  <li><a href="#como-usar-a-linguagem-de-programação" id="toc-como-usar-a-linguagem-de-programação" class="nav-link" data-scroll-target="#como-usar-a-linguagem-de-programação"><span class="header-section-number">1.2</span> Como usar a linguagem de programação</a></li>
+  <li><a href="#comandos" id="toc-comandos" class="nav-link" data-scroll-target="#comandos"><span class="header-section-number">1.3</span> Comandos</a></li>
+  <li><a href="#bibliotecas" id="toc-bibliotecas" class="nav-link" data-scroll-target="#bibliotecas"><span class="header-section-number">1.4</span> Bibliotecas</a></li>
+  <li><a href="#operações-fundamentais-em-r" id="toc-operações-fundamentais-em-r" class="nav-link" data-scroll-target="#operações-fundamentais-em-r"><span class="header-section-number">1.5</span> Operações fundamentais em R</a>
+  <ul class="collapse">
+  <li><a href="#soma" id="toc-soma" class="nav-link" data-scroll-target="#soma"><span class="header-section-number">1.5.1</span> Soma</a></li>
+  <li><a href="#subtração" id="toc-subtração" class="nav-link" data-scroll-target="#subtração"><span class="header-section-number">1.5.2</span> Subtração</a></li>
+  <li><a href="#multiplicação" id="toc-multiplicação" class="nav-link" data-scroll-target="#multiplicação"><span class="header-section-number">1.5.3</span> Multiplicação</a></li>
+  <li><a href="#divisão" id="toc-divisão" class="nav-link" data-scroll-target="#divisão"><span class="header-section-number">1.5.4</span> Divisão</a></li>
+  <li><a href="#potência" id="toc-potência" class="nav-link" data-scroll-target="#potência"><span class="header-section-number">1.5.5</span> Potência</a></li>
+  <li><a href="#raíz-quadrada" id="toc-raíz-quadrada" class="nav-link" data-scroll-target="#raíz-quadrada"><span class="header-section-number">1.5.6</span> Raíz quadrada</a></li>
+  <li><a href="#logaritmo" id="toc-logaritmo" class="nav-link" data-scroll-target="#logaritmo"><span class="header-section-number">1.5.7</span> Logaritmo</a></li>
+  <li><a href="#logaritmo-natural" id="toc-logaritmo-natural" class="nav-link" data-scroll-target="#logaritmo-natural"><span class="header-section-number">1.5.8</span> Logaritmo natural</a></li>
+  <li><a href="#seno" id="toc-seno" class="nav-link" data-scroll-target="#seno"><span class="header-section-number">1.5.9</span> Seno</a></li>
+  <li><a href="#cosseno" id="toc-cosseno" class="nav-link" data-scroll-target="#cosseno"><span class="header-section-number">1.5.10</span> Cosseno</a></li>
+  <li><a href="#tangente" id="toc-tangente" class="nav-link" data-scroll-target="#tangente"><span class="header-section-number">1.5.11</span> Tangente</a></li>
+  <li><a href="#divisão-inteira" id="toc-divisão-inteira" class="nav-link" data-scroll-target="#divisão-inteira"><span class="header-section-number">1.5.12</span> Divisão inteira</a></li>
+  <li><a href="#resto-da-divisão" id="toc-resto-da-divisão" class="nav-link" data-scroll-target="#resto-da-divisão"><span class="header-section-number">1.5.13</span> Resto da divisão</a></li>
+  </ul></li>
+  <li><a href="#operadores-lógicos" id="toc-operadores-lógicos" class="nav-link" data-scroll-target="#operadores-lógicos"><span class="header-section-number">1.6</span> Operadores lógicos</a>
+  <ul class="collapse">
+  <li><a href="#igualdade" id="toc-igualdade" class="nav-link" data-scroll-target="#igualdade"><span class="header-section-number">1.6.1</span> Igualdade</a></li>
+  <li><a href="#desigualdade-maior-que" id="toc-desigualdade-maior-que" class="nav-link" data-scroll-target="#desigualdade-maior-que"><span class="header-section-number">1.6.2</span> Desigualdade maior que</a></li>
+  <li><a href="#desigualdade-menor-que" id="toc-desigualdade-menor-que" class="nav-link" data-scroll-target="#desigualdade-menor-que"><span class="header-section-number">1.6.3</span> Desigualdade menor que</a></li>
+  <li><a href="#desigualdade-maior-ou-igual" id="toc-desigualdade-maior-ou-igual" class="nav-link" data-scroll-target="#desigualdade-maior-ou-igual"><span class="header-section-number">1.6.4</span> Desigualdade maior ou igual</a></li>
+  <li><a href="#desigualdade-menor-ou-igual" id="toc-desigualdade-menor-ou-igual" class="nav-link" data-scroll-target="#desigualdade-menor-ou-igual"><span class="header-section-number">1.6.5</span> Desigualdade menor ou igual</a></li>
+  <li><a href="#diferente-de" id="toc-diferente-de" class="nav-link" data-scroll-target="#diferente-de"><span class="header-section-number">1.6.6</span> Diferente de</a></li>
+  <li><a href="#operador-e" id="toc-operador-e" class="nav-link" data-scroll-target="#operador-e"><span class="header-section-number">1.6.7</span> Operador “e”</a></li>
+  <li><a href="#operador-ou" id="toc-operador-ou" class="nav-link" data-scroll-target="#operador-ou"><span class="header-section-number">1.6.8</span> Operador “ou”</a></li>
+  </ul></li>
+  <li><a href="#objetos" id="toc-objetos" class="nav-link" data-scroll-target="#objetos"><span class="header-section-number">1.7</span> Objetos</a></li>
+  <li><a href="#tipos-de-objetos" id="toc-tipos-de-objetos" class="nav-link" data-scroll-target="#tipos-de-objetos"><span class="header-section-number">1.8</span> Tipos de objetos</a>
+  <ul class="collapse">
+  <li><a href="#vetores" id="toc-vetores" class="nav-link" data-scroll-target="#vetores"><span class="header-section-number">1.8.1</span> Vetores</a></li>
+  <li><a href="#matrizes" id="toc-matrizes" class="nav-link" data-scroll-target="#matrizes"><span class="header-section-number">1.8.2</span> Matrizes</a></li>
+  <li><a href="#arrays" id="toc-arrays" class="nav-link" data-scroll-target="#arrays"><span class="header-section-number">1.8.3</span> Arrays</a></li>
+  <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas"><span class="header-section-number">1.8.4</span> Listas</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">1.8.5</span> Data frames</a></li>
+  </ul></li>
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1"><span class="header-section-number">1.9</span> Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2"><span class="header-section-number">1.10</span> Exercício 2</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="a-lógica-de-programação" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="a-lógica-de-programação"><span class="header-section-number">1.1</span> A lógica de programação</h2>
+<p>Imagine que o computador é uma empresa que realiza diferentes tarefas e que nessa empresa existem funcionários de várias partes do mundo. Cada funcionário realiza as mesmas tarefas, porém, falando diferentes idiomas. Assim, se você quer que um funcionário americano realize uma tarefa, terá que ordenar que ele a faça em inglês; se você quer que um funcionário italiano realize a mesma tarefa, terá de fazer o pedido para ele falando italiano, e assim sucessivamente. No computador, os funcionários são as linguagens de programação e o idioma é o vocabulário da linguagem (ou a maneira de escrever os comandos em cada linguagem). Resumidamente e exemplificadamente, você pode executar uma tarefa usando R ou pode executar essa mesma tarefa usando Python ou qualquer outra linguagem de programação pois a lógica de comunicação com o computador será a mesma, porém, os comandos para execuar a mesma tarefa podem ser diferentes em cada linguagem. Como consequência, o primeiro passo para dominar as linguagens de programação é desenvolver uma lógica de programação.</p>
+<p>A lógica de programação é um raciocínio sobre como se comunicar com o computador para realizar tarefas. Seguindo o exemplo da empresa citado no parágrafo anterior, se você precisa de um relatório impresso, terá de falar o seguinte <em>“eu preciso que você imprima esse relatório”</em>. Porém, como os funcionários falam diferentes idiomas, você precisa fazer esse pedido em uma linguagem diferente a depender do funcionário responsável pela impressão. A maneira como você faz o pedido (<em>“eu preciso que você imprima esse relatório”)</em> não vai mudar independente do funcionário que receberá a ordem, o que muda é apenas o idioma em que a ordem será feita. No computador, essa maneira como você faz o pedido é a lógica de programação, ela será a mesma para qualquer linguagem de programação, que no caso do exemplo corresponde ao idioma falado.</p>
+<p>O primeiro passo para desenvolver uma lógica de programação é entender as operações fundamentais de uma <strong>linguagem de programação</strong>. Uma linguagem de programação é nada mais do que uma maneira de se comunicar com o computador para ordenar que ele execute tarefas automáticas. As linguagens são configuradas em sistemas binários (negação e afirmação). Cada linguagem de programação possui o seu <strong>vocabulário</strong>, porém, todas as linguagens partem dos mesmos princípios e das mesmas lógicas fundamentais. <strong>Exemplos</strong>: JavaScript, R, Python, Julia, Ruby, Scala…</p>
+</section>
+<section id="como-usar-a-linguagem-de-programação" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="como-usar-a-linguagem-de-programação"><span class="header-section-number">1.2</span> Como usar a linguagem de programação</h2>
+<p>O primeiro paso para se comunicar com o computador por meio de uma linguagem de programação é informar à máquina a sua intenção de usar o vocabulário da linguagem. Em outras palavras, é preciso “instalar” a linguagem em sua máquina. Na analogia da empresa anteriormente mencionada, instalar a linguagem de programação seria como fazer um curso de idiomas e receber um manual de instruções de gramática para falar com os empregados.</p>
+<p>Nesse material, utilizaremos a linguagem R. Seguindo o primeiro passo, a instalação da linguagem deve ser feita antes de qualquer outro procedimento. Os métodos de instalação variam de acordo com o sistema operacional do usuário. Nesse material, vamos supor que o aluno dispõe de uma máquina com sistema operacional windows. Nesse caso, o usuário deve baixar os componentes da linguagem <a href="https://cran.r-project.org/bin/windows/base/">nesse endereço</a> Tendo feito isso, o usuário deve executar o arquivo baixado e instalar normalmente como qualquer instalação convencional no sistema windows.</p>
+<p>O segundo passo é adotar um <strong>ambiente de execução</strong>. Esses ambientes são softwares também conhecidos como <em><strong>ambiente de desenvolvimento integrado</strong> (IDE) -</em> Exemplos: Rstudio, Pycharm, Google Colaboratory, StataMP-. De forma geral, o IDE é uma plataforma onde você escreve as ordens que deseja que o computador execute em uma determinada linguagem. Especificando com outras palavras, o ambiente de execução é um software usado para escrever as ordens ao computador por meio do vocabulário da linguagem. Como vamos usar a linguagem R nesse material, temos que adotar um IDE que execute ordens nessa linguagem. É recomendado que o usuário utilize o Rstudio apesar de existirem diversas outras ferramentas com esse mesmo propósito. Para tanto, é preciso baixar o programa <a href="https://posit.co/download/rstudio-desktop/?cmplz-force-reload=1751898658132">nesse endereço</a> e proceder com com os procedimentos padrões de instalação de softwares no sistema windows.</p>
+<p>É importante ressaltar que uma linguagem de programação não é um software, por exemplo, é errôneo se referir à linguagem R como <em>“software R”</em>, assim como é equivocado se referir à linguagem <em>stata</em> como <em>“software stata”</em>, e assim sucessivamente. Também é importante destacar que os IDEs não são linguagens de programação, eles apenas transferem para o computador uma ordem para ser executado em uma determinada linguagem. Com isso, é errôneo afirmar que uma dada tarefa foi <em>“executada pelo software Rstudio”</em>.</p>
+<p>Ao instalar o Rstudio, o usuário irá se deparar com a tela ilustrada na imagem a seguir. Note que o IDE é formado por quatro painéis, cada um deles com a sua funcionalidade. O painel 1 é conhecido como <em>input</em> ou painel de entrada. Nesse painel o usuário irá abrir e manipular os arquivos de entrada como scripts e códigos de programação em R. Outros arquivos de entrada também são suportados como arquivos <em>html, markdown</em>, dentre outros. Mas essas extensões adicionais não são o foco do curso. Para gerar um arquivo de entrada onde serão escritos os comandos da linguagem R, pressione <em>Ctrl Shift n</em> ou vá na parte superior esquerda, na barra de tarefas do IDE em <em>file, new file, r script</em>.</p>
+<p>O painel 2 é conhecido como <em>console</em>. Nesse painel serão expostos os resultados das tarefas executadas nos comandos escritos no painel 1. O usuário também pode escrever e executar os comandos diretamente no console, com a diferença de que no <em>r script</em> os códigos podem ser salvos para o uso posterior ao contrário do console.</p>
+<p>O painel 3 é conhecido como ambiente de trabalho ou <em>working environment</em>. Ele é dividido em quatro abas que podem ser acessadas separadamente, sendo: o <em>Environment</em> onde são expostos todos os objetos criados, o histórico <em>(history)</em> onde os últimos comandos ficam armazenados numa espécie de breve histórico de comandos, as conecções <em>(Connectione)</em> onde são expostas as ferramentas conectadas a linguagem R e ao Rstudio para executar tarefas, e a aba de tutoriais, onde o usuário pode acessar um breve guia sobre como usar o Rstudio. Versões mais recentes também disponibilizam abas adicionais sobre controle de versionamento no ambiente de trabalho, mas por enquanto esse não é o foco do curso.</p>
+<p>O painel 4 é conhecido como <em>output</em> ou painel de saída. Nele o usuário pode visualizar os produtos gerados com os comandos e navegar pelo diretório de trabalho. O painel é dividido em cinco abas, sendo: a aba de arquivos <em>(files)</em>, onde o usuário pode navegar pela pasta que está usando; a aba <em>plots</em>, onde o usuário pode visualizar gráficos e figuras geradas com os comandos escritos no painel 1; a aba de bibliotecas <em>(packages)</em> onde o usuário pode acessar as bibliotecas instaladas na linguagem; a aba de ajuda <em>(Help)</em>, onde o usuário pode consultar manuais de instrução sobre diferentes comandos e bibliotecas; e por fim a aba de visualização <em>(View)</em>, onde o usuário pode visualizar objetos dinâmicos ou estáticos criados com alguma ferramenta adicional auxiliar à linguagem R como páginas web, arquivos pdf, etc.</p>
+<p><img src="./images/image1.png" style="width:500px; height:450px"></p>
+</section>
+<section id="comandos" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="comandos"><span class="header-section-number">1.3</span> Comandos</h2>
+<p>Os ambientes de execução podem operar em ordens diretas (cliques) ou comunicação agrupada <em>(comandos)</em>. Os ambientes de execução sugeridos nesta disciplina operam com <em>linhas de comando</em>. Nas linhas de comando, o operador (aluno) escreve uma ordem que o ambiente de execução entende como um comando para executar uma tarefa. Esses comandos são escritos individualmente em cada linha, isto é, cada linha escrita só agrupa um único comando. Ao escrever uma linha de comando no Rstudio, você poderá executar essse comando posicionando o cursor na linha (ou selecionando as linhas de interesse) e em seguida pressionando <em>“Ctrl Enter”</em>.</p>
+<p>Alguns comandos já estão pré-programados no vocabulário das linguagens. Porém outros comandos precisam ser elaborados pelo próprio usuário usando os comandos pré-progamados e as demais ferramentas próprias do vocabulário da linguagem. Por exemplo, se você quer somar dois números quaisquer a e b, você pode fazer isso com uma operação de soma que já é automaticamente reconhecida pela linguagem R. Mas se você quer somar <span class="math inline">\(a + b\)</span> apenas se <span class="math inline">\(a &gt; b\)</span>, então você precisa usar a lógica de programação para programar esse comando.</p>
+</section>
+<section id="bibliotecas" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="bibliotecas"><span class="header-section-number">1.4</span> Bibliotecas</h2>
+<p>O usuário pode ordenar que o computador execute uma tarefa por meio de comandos. Além disso, o usuário também pode unir vários comandos em uma função para executar uma tarefa de interesse. Muitas funções já estão disponíveis na própria linguagem nativa, por exemplo, caso o usuário queira gerar um gráfico ele pode usar o comando <em>plot()</em> que é uma função que usa vários comandos nativos da linguagem <em>R</em> para gerar uma figura. Assim como a função <em>plot</em>, muitas outras funções já estão disponíveis e prontas para o acesso no ato da instalação da linguagem. Porém, existem funções que são criadas por terceiros e que precisam ser instaladas para que possam ser usadas. Por exemplo, em vez de elaborar um gráfico com a função <em>plot</em>, o usuário pode usar a função <em>ggplot</em>. No entanto, essa função só pode ser usada caso a biblioteca <em>ggplo2</em> esteja instalada. O usuário pode verificar se uma determinada biblioteca está instalada navegando pelo painel inferior direito, na aba <em>Packages</em>, digitando o nome da biblioteca na guia de busca. Caso a biblioteca esteja instalada, então a busca retornará um indicativo com o nome da biblioteca, do contrário, o resultado da busca será vazio.</p>
+<p>Para instalar uma biblioteca o usuário deve usar o comando <em>install.packages()</em> posicionando no parêntesis o nome da biblioteca entre aspas. Por exemplo, para instalar a biblioteca <em>ggplot2</em>, o usuário deve executar o comando <em>install.packages(“ggplot2”)</em>. Feito isso, a biblioteca estará disponível na lista de bibliotecas instaladas da aba <em>Packages</em> do painel inferior direito. Uma vez instalada, a instalação não precisa ser refeita, exceto em caso de atualização para uma nova versão.</p>
+<p>No entanto, não basta instalar a biblioteca para usufruir de suas funções. Sempre que o Rstudio for reiniciado ou sempre que uma nova seção for iniciada no Rstudio é necessário <strong><em>liberar a biblioteca para o uso</em></strong>. Isso é feito por meio do comando <em>library()</em> ou <em>require()</em> sempre posicionando entre parêntesis o nome da biblioteca desejada, dessa vez, sem aspas. Por exemplo, para liberar a biblioteca <em>ggplot2</em> para o uso, proceda conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="operações-fundamentais-em-r" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="operações-fundamentais-em-r"><span class="header-section-number">1.5</span> Operações fundamentais em R</h2>
+<section id="soma" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="soma"><span class="header-section-number">1.5.1</span> Soma</h3>
+<p>Para efetuar uma soma, você deve utilizar o operador de adição <em>“+”</em>. Por exemplo, para somar <span class="math inline">\(1 + 1\)</span> proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="subtração" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="subtração"><span class="header-section-number">1.5.2</span> Subtração</h3>
+<p>Para efetuar uma subtração, você deve utilizar o traço simples <em>“-”</em> como operador de subtração. Por exemplo, para subtrair <span class="math inline">\(1 - 1\)</span> proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1-1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+</section>
+<section id="multiplicação" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="multiplicação"><span class="header-section-number">1.5.3</span> Multiplicação</h3>
+<p>Para efetuar uma multiplicação, você deve utilizar o asterisco <em>“</em>*” como operador de multiplicação. Por exemplo, para somar <span class="math inline">\(1\)</span> x <span class="math inline">\(1\)</span> proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">*</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</section>
+<section id="divisão" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="divisão"><span class="header-section-number">1.5.4</span> Divisão</h3>
+<p>Para efetuar uma divisão, você deve utilizar a barra simples <em>“</em>/” como operador de divisão. Por exemplo, para dividr 4 por 2, proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="potência" class="level3" data-number="1.5.5">
+<h3 data-number="1.5.5" class="anchored" data-anchor-id="potência"><span class="header-section-number">1.5.5</span> Potência</h3>
+<p>Para efetuar uma potenciação, você deve utilizar o circunflexo <em>“</em>^” ou o duplo asterisco “**” como operador de multiplicação. Por exemplo, para calcular <span class="math inline">\(2^3\)</span> proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<p>O que também pode ser feito da seguinte maneira:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">**</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+</section>
+<section id="raíz-quadrada" class="level3" data-number="1.5.6">
+<h3 data-number="1.5.6" class="anchored" data-anchor-id="raíz-quadrada"><span class="header-section-number">1.5.6</span> Raíz quadrada</h3>
+<p>Para efetuar uma radiciação, você deve utilizar o comando <em>sqrt</em> posisionando o número em prêntesis. Por exemplo, para calcular <span class="math inline">\(\sqrt{16}\)</span> proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+</section>
+<section id="logaritmo" class="level3" data-number="1.5.7">
+<h3 data-number="1.5.7" class="anchored" data-anchor-id="logaritmo"><span class="header-section-number">1.5.7</span> Logaritmo</h3>
+<p>Para calcular o logaritmo de um número, você deve utilizar ocomando <em>log10</em> posisionando o número em prêntesis. Por exemplo, para calcular <span class="math inline">\(log(2)\)</span> proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.30103</code></pre>
+</div>
+</div>
+</section>
+<section id="logaritmo-natural" class="level3" data-number="1.5.8">
+<h3 data-number="1.5.8" class="anchored" data-anchor-id="logaritmo-natural"><span class="header-section-number">1.5.8</span> Logaritmo natural</h3>
+<p>Para calcular o logaritmo natural de um número, você deve utilizar ocomando <em>log</em> posisionando o número em prêntesis. Por exemplo, para calcular <span class="math inline">\(ln(2)\)</span> proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6931472</code></pre>
+</div>
+</div>
+</section>
+<section id="seno" class="level3" data-number="1.5.9">
+<h3 data-number="1.5.9" class="anchored" data-anchor-id="seno"><span class="header-section-number">1.5.9</span> Seno</h3>
+<p>Para calcular o seno de um número, você deve utilizar ocomando <em>sin</em> posisionando o número em prêntesis. Por exemplo, para calcular o seno de 90 proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(<span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8939967</code></pre>
+</div>
+</div>
+</section>
+<section id="cosseno" class="level3" data-number="1.5.10">
+<h3 data-number="1.5.10" class="anchored" data-anchor-id="cosseno"><span class="header-section-number">1.5.10</span> Cosseno</h3>
+<p>Para calcular o cosseno de um número, você deve utilizar ocomando <em>cos</em> posisionando o número em prêntesis. Por exemplo, para calcular o cosseno de 90 proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(<span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.4480736</code></pre>
+</div>
+</div>
+</section>
+<section id="tangente" class="level3" data-number="1.5.11">
+<h3 data-number="1.5.11" class="anchored" data-anchor-id="tangente"><span class="header-section-number">1.5.11</span> Tangente</h3>
+<p>Para calcular a tangente de um número, você deve utilizar ocomando <em>tan</em> posisionando o número em prêntesis. Por exemplo, para calcular a tangente de 90 proceda como a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tan</span>(<span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.9952</code></pre>
+</div>
+</div>
+</section>
+<section id="divisão-inteira" class="level3" data-number="1.5.12">
+<h3 data-number="1.5.12" class="anchored" data-anchor-id="divisão-inteira"><span class="header-section-number">1.5.12</span> Divisão inteira</h3>
+<p>Algumas divisões resultam em números não inteiros, de tal modo que o resultado é composto por um número inteiro aderido de um “resto”. Para calcular a divisão sem o resto você deve usar o operador <em>%/%</em>. Por exemplo, uma divisão inteira de cinco por dois deve resultar em dois e pode ser feita da seguinte maneira:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%/%</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="resto-da-divisão" class="level3" data-number="1.5.13">
+<h3 data-number="1.5.13" class="anchored" data-anchor-id="resto-da-divisão"><span class="header-section-number">1.5.13</span> Resto da divisão</h3>
+<p>Porém, se o usuário estiver interessado em obter apenas o resto da divisão, pode usar o operador <em>%%</em>. No caso do exemplo anterior, o resto da divisão é um e pode ser obtido da seguinte maneira:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%%</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="operadores-lógicos" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="operadores-lógicos"><span class="header-section-number">1.6</span> Operadores lógicos</h2>
+<p>Os operadores lógicos são usados para comparar valores. O principal operador lógico de uma linguagem de programação é o operador de afirmação ou negação. Sempre que houver uma afirmação, a lingaugem retornará um sinal de verdadeiro (TRUE) e sempre que houver uma negação, a lingaugem retornará um sinal de falso (FALSE). Nos comandos, o TRUE pode ser substituído pelo T, enquanto o FALSE pode ser substituído pelo F. A linguagem R atribui o valor zero para as negações e o valor um para as afirmações. Assim, <em>TRUE = 1</em> e <em>FALSE = 0</em> sempre ocorrerá.</p>
+<section id="igualdade" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="igualdade"><span class="header-section-number">1.6.1</span> Igualdade</h3>
+<p>Para checar uma condição de igualdade, você deve usar o operador “<em>==</em>”. Por exemplo, para checar se dois é igual a três, você deve proceder como:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">==</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="desigualdade-maior-que" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="desigualdade-maior-que"><span class="header-section-number">1.6.2</span> Desigualdade maior que</h3>
+<p>Para checar uma condição de desigualdade na forma de maior que, isto é, para verificar se um valor é maior que outro, você deve usar o operador “<em>&gt;</em>”. Por exemplo, para checar se dois é maior que três, você deve proceder como:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="desigualdade-menor-que" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="desigualdade-menor-que"><span class="header-section-number">1.6.3</span> Desigualdade menor que</h3>
+<p>Para checar uma condição de desigualdade na forma de menor que, isto é, para verificar se um valor é menor que outro, você deve usar o operador “<em>&lt;</em>”. Por exemplo, para checar se dois é menor que três, você deve proceder como:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="desigualdade-maior-ou-igual" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="desigualdade-maior-ou-igual"><span class="header-section-number">1.6.4</span> Desigualdade maior ou igual</h3>
+<p>Para checar uma condição de desigualdade na forma de maior ou igual a, isto é, para verificar se um valor é maior ou igual outro, você deve usar o operador “<em>&gt;=</em>”. Por exemplo, para checar se dois é maior ou igual a três, você deve proceder como:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;=</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="desigualdade-menor-ou-igual" class="level3" data-number="1.6.5">
+<h3 data-number="1.6.5" class="anchored" data-anchor-id="desigualdade-menor-ou-igual"><span class="header-section-number">1.6.5</span> Desigualdade menor ou igual</h3>
+<p>Para checar uma condição de desigualdade na forma de menor ou igual a, isto é, para verificar se um valor é menor ou igual outro, você deve usar o operador “<em>&lt;=</em>”. Por exemplo, para checar se dois é menor ou igual a três, você deve proceder como:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&lt;=</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="diferente-de" class="level3" data-number="1.6.6">
+<h3 data-number="1.6.6" class="anchored" data-anchor-id="diferente-de"><span class="header-section-number">1.6.6</span> Diferente de</h3>
+<p>Para checar se um valor é diferente de outro, você deve usar o operador “!=”. Por exemplo, para checar se dois é diferente de três, você deve proceder como:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">!=</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="operador-e" class="level3" data-number="1.6.7">
+<h3 data-number="1.6.7" class="anchored" data-anchor-id="operador-e"><span class="header-section-number">1.6.7</span> Operador “e”</h3>
+<p>Muitas vezes precisamos usar duas operações em conjunto ou até mesmo checar se duas ou mais propriedades ocorrem ao mesmo tempo. Nesse caso, o ideal é utilizar o operador <em>“e”</em> que baseia-se no acontecimento de duas operações simultâneas. Assim, dadas duas operações quaisquer, se as duas ocorrem ao mesmo tempo então o output será <em>TRUE</em>, do contrário o output será <em>FALSE</em>. Por exemplo, esse operador poderia ser usado caso quiséssemos verificar se 2 é menor que 3 e ao mesmo tempo diferente de 4. Em <em>R</em> operador <em>“e”</em> é dado pelo “e comercial” &amp;.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> <span class="dv">2</span> <span class="sc">!=</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="operador-ou" class="level3" data-number="1.6.8">
+<h3 data-number="1.6.8" class="anchored" data-anchor-id="operador-ou"><span class="header-section-number">1.6.8</span> Operador “ou”</h3>
+<p>Em uma situação em que se deseja verificar se pelo menos uma operação ocorre dentre várias operações, então o ideal é utilizar o operador <em>“ou”</em>. Por exemplo, se temos duas operações, a operação 1 e a operação 2 e se precisamos verificar se pelo menos uma das duas operações ocorre, podemos perguntar se a operação 1 OU a operação 2 estão ocorrendo. O output será <em>“TRUE”</em> caso uma das operações ocorra e <em>“FALSE”</em> caso nenhuma das operações ocorra. Em <em>R</em> esse operador é dado pela barra vertical “|”. Por exemplo, suponha que queremos verificar se 2 é menor que 3 pu se 2 é maior que 5. Nesse caso, precisamos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">|</span> <span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="objetos" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="objetos"><span class="header-section-number">1.7</span> Objetos</h2>
+<p>As linguagens de programação geralmente são identificadas ao objeto, isto é, é possível criar um objeto que representa algum ítem ou valor. Em R, os objetos devem ser criados om um indicativo de igualdade “=”. Por exemplo, imagine que precisamos criar um objeto com o nome “idade” contendo a idade de uma pessoa em anos. Este procedimento é feito informando o comando “nome do objeto = valor do objeto” conforme demonstrado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>idade <span class="ot">=</span> <span class="dv">18</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ao executar esse comando, um novo objeto surgirá na aba <em>Environment</em> do painel 3. Esse objeto tem o nome “idade” e recebe um valor de 18. Para visualizar o valor do objeto, o usuário pode usar a função <em>print</em> que imprimirá no painel 2 (console) o valor referente ao objeto mencionado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(idade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18</code></pre>
+</div>
+</div>
+<p>Tendo feito isso, e dado que o objeto de nome <em>idade</em> e valor 18 está no <em>Environment</em>, cada vez que esse objeto for mencionado a linguagem R reconhecerá que se trata do número 18. Para exemplificar, suponha que uma pessoa é considerada idosa a partir dos 60 anos e suponha que você precise descobrir quantos anos ainda restam para que essa pessoa com idade = 18 se torne idosa. Nesse caso, você deve proceder como:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dv">60</span> <span class="sc">-</span> idade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+</div>
+</section>
+<section id="tipos-de-objetos" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="tipos-de-objetos"><span class="header-section-number">1.8</span> Tipos de objetos</h2>
+<p>Os objetos são maneiras de armazenar informações em um dado arranjo. Em R, essas informações podem ser arranjadas em funções, vetores, matrizes, listas, arrays ou quadros de dados (<em>data frames</em>). Cada objeto tem a sua função específica e deve ser usado conforme a necessidade. Por exemplo, uma matriz é ideal para armazenar objetos com duas dimensões (linha e coluna) mas não é adequada para agrupar objetos com três dimensões, nesse caso melhor seria usar um array ou uma lista.</p>
+<section id="vetores" class="level3" data-number="1.8.1">
+<h3 data-number="1.8.1" class="anchored" data-anchor-id="vetores"><span class="header-section-number">1.8.1</span> Vetores</h3>
+<p>Os vetores são objetos que servem para guardar informações unidimensionais, isto é, informações que podem ser escritas em uma única linha ou coluna. Por exemplo, imagine que você trabalhou cinco dias em um emprego e notou em uma planilha o seu salário de cada dia. Suponha que os seus ganhos dia após dia em reais foram 50.00, 52.00, 55.00, 48.00, 60.00. Se você anotou essas informações em uma linha de uma planilha, então você tem um vetor linha. Analogamente, se as informações foram anotadas em uma coluna de uma planilha, tem-se um vetor coluna. Se você chamou essa planilha de “salario”, então isso é o mesmo que:</p>
+<p><span class="math display">\[
+salario = [50.00, 52.00, 55.00,48.00,60.00]
+\]</span></p>
+<p>Para digitar esse vetor em <em>R</em> deve-se usar o operador de vetores <em>c()</em>, sempre colocando os valores dentro do parêntesis separando cada valor por uma vírgula. Lembre-se que o separador decimal da linguagem <em>R</em> é o ponto e que a vírgula é um separador de valores. Com isso, o vetor anterior deve ser escrito como:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>salario <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">50.00</span>, <span class="fl">52.00</span>, <span class="fl">55.00</span>, <span class="fl">48.00</span>, <span class="fl">60.00</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Feito isso, um objeto de nome <em>salario</em> irá aparecer no ambiente de trabalho. Note que o nome do objeto é sucedido do termo <em>num [1:5]</em>, isso indica que se trata de um vetor numérico com cinco elementos. Um detalhe importante a ser mencionado é o fato de que valores não numéricos também podem ser armazenados em vetores, por exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>nomes <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"João"</span>, <span class="st">"Maria"</span>, <span class="st">"José"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note que <strong>os valores não numéricos sempre devem estar entre aspas</strong>. Para checar se um dado objeto é um vetor, o usuário pode usar a função <em>is.vector()</em> indicando o nome do objeto entre parêntesis. Por exemplo, para checar se o objeto <em>salario</em> é um vetor, proceda conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(salario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Caso o elemento de fato seja um vetor, o output obtido será <em>TRUE</em>, do contrário o output será <em>FALSE</em>. Para transformar um determinado objeto em um vetor, o usuário pode usar a função <em>as.vector(),</em> indicando o nome do objeto entre parêntesis. Por exemplo, para transformar uma sequência de 1 a 10 em um vetor, proceda conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>sq <span class="ot">=</span> <span class="fu">as.vector</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="matrizes" class="level3" data-number="1.8.2">
+<h3 data-number="1.8.2" class="anchored" data-anchor-id="matrizes"><span class="header-section-number">1.8.2</span> Matrizes</h3>
+<p>As matrizes são objetos que servem para guardar informações bidimensionais, isto é, informações que podem ser escritas em um múltiplas linhas e múltiplas colunas, desde que o usuário precise realizar operações algébricas com esses valores. Para exemplificar, considere o exemplo anterior do salário. Considere agora que você trabalhou cinco dias da semana não em um mas em dois empregos. Agora você vai atribuir um diasda semana para cada linha e vai anotar os ganhos de cada emprego em colunas diferentes. Suponha agora que os ganhos do emprego 2 foram de 140.00, 160.00, 165.00, 150.00 e 155.00. Isso equivale a:</p>
+<p><span class="math display">\[
+salario = \left[
+\begin{array}{cc}
+Emprego 1 &amp; Emprego 2\\ \hline
+50.00 &amp; 140.00\\
+52.00 &amp; 160.00\\
+55.00 &amp; 165.00\\
+48.00 &amp; 150.00\\
+60.00 &amp; 155.00 \\
+\end{array}
+\right]
+\]</span></p>
+<p>Agora a planilha de ganhos possui dois vetores coluna de cinco elementos cada ou cinco vetores linha de dois elementos cada. Para informar essa planilha como matriz no <em>R</em>, o usuário deve usar a função <em>matrix</em>. Nessa função o usuário deve digitar os elementos da planilha linha por linha em um único vetor e indicar isso com o parâmetro <em>by.row = TRUE.</em> Ou se preferir o usuário pode digitar os elementos da planilha coluna por coluna em um único vetor e indicar isso com o parâmetro <em>by.row = FALSE.</em> O usuário também deve informar o número de linhas da matriz com o parâmetro <em>nrow</em> e o número de colunas com o parâmetro <em>ncol</em>. Para repassar a planilha anterior em <em>R</em> na forma de matriz, proceda conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>salario <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">140</span>,<span class="dv">52</span>,<span class="dv">160</span>,<span class="dv">55</span>,<span class="dv">165</span>,<span class="dv">48</span>,<span class="dv">150</span>,<span class="dv">60</span>,<span class="dv">155</span>),</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">5</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   50  140
+[2,]   52  160
+[3,]   55  165
+[4,]   48  150
+[5,]   60  155</code></pre>
+</div>
+</div>
+<p>Isso é o mesmo que fazer:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>salario <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">52</span>,<span class="dv">55</span>,<span class="dv">48</span>,<span class="dv">60</span>,<span class="dv">140</span>,<span class="dv">160</span>,<span class="dv">165</span>,<span class="dv">150</span>,<span class="dv">155</span>),</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">FALSE</span>, <span class="co"># agrupamento por coluna</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">5</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   50  140
+[2,]   52  160
+[3,]   55  165
+[4,]   48  150
+[5,]   60  155</code></pre>
+</div>
+</div>
+<p>Para dar nomes às linhas de uma matriz, use a função <em>rownames(),</em> indicando o nome da matriz entre o parêntesis e informando os nomes das linhas em um vetor. Por exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(salario) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Seg"</span>, <span class="st">"Ter"</span>, <span class="st">"Quar"</span>, <span class="st">"Qui"</span>, <span class="st">"Sex"</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+Seg    50  140
+Ter    52  160
+Quar   55  165
+Qui    48  150
+Sex    60  155</code></pre>
+</div>
+</div>
+<p>Para dar nomes às colunas de uma matriz, use a função <em>colnames(),</em> indicando o nome da matriz entre o parêntesis e informando os nomes das colunas em um vetor. Por exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(salario) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Emprego 1"</span>,<span class="st">"Emprego 2"</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Emprego 1 Emprego 2
+Seg         50       140
+Ter         52       160
+Quar        55       165
+Qui         48       150
+Sex         60       155</code></pre>
+</div>
+</div>
+<p>Para verificar se um determinado objeto é uma matriz, use a função <em>is.matrix(),</em> indicando o nome do objeto entre o parêntesis, por exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.matrix</span>(salario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Caso o elemento de fato seja uma matriz, o output obtido será <em>TRUE</em>, do contrário o output será <em>FALSE</em>. Para transformar um determinado objeto em uma matriz, o usuário pode usar a função <em>as.matrix(),</em> indicando o nome do objeto entre parêntesis. Por exemplo, para transformar uma sequência de 1 a 10 em uma matriz, proceda conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>sq <span class="ot">=</span> <span class="fu">as.matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]
+ [1,]    1
+ [2,]    2
+ [3,]    3
+ [4,]    4
+ [5,]    5
+ [6,]    6
+ [7,]    7
+ [8,]    8
+ [9,]    9
+[10,]   10</code></pre>
+</div>
+</div>
+<section id="operações-com-matrizes" class="level4" data-number="1.8.2.1">
+<h4 data-number="1.8.2.1" class="anchored" data-anchor-id="operações-com-matrizes"><span class="header-section-number">1.8.2.1</span> Operações com matrizes</h4>
+<section id="soma-de-matrizes" class="level5" data-number="1.8.2.1.1">
+<h5 data-number="1.8.2.1.1" class="anchored" data-anchor-id="soma-de-matrizes"><span class="header-section-number">1.8.2.1.1</span> Soma de matrizes</h5>
+<p>A soma de matrizes em <em>R</em> não apresenta diferenças das operações convencionais de soma, ou seja, é feita usando o operador de soma “+”. Para exemplificar, considere as dias matrizes a seguir:</p>
+<p><span class="math display">\[ matriz1 = \left[ \begin{array}{cc} 0 &amp; 2 \\ 3 &amp; 1 \end{array} \right] \quad \quad \quad \quad matiz2 = \left[ \begin{array}{cc} 5 &amp; 3\\7 &amp; 0 \end{array} \right] \]</span></p>
+<p>Para gerar uma nova matriz de nome <em>matriz3</em> contendo a soma da matriz 1 com a matriz 2, basta proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>matriz1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>matriz2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">0</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>matriz3 <span class="ot">=</span> matriz1 <span class="sc">+</span> matriz2</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    5    5
+[2,]   10    1</code></pre>
+</div>
+</div>
+</section>
+<section id="subtração-de-matrizes" class="level5" data-number="1.8.2.1.2">
+<h5 data-number="1.8.2.1.2" class="anchored" data-anchor-id="subtração-de-matrizes"><span class="header-section-number">1.8.2.1.2</span> Subtração de matrizes</h5>
+<p>De maneira análoga à operação de soma, a subtração de matrizes é feita usando o operador de subtração “-”. Nesse caso, os elementos de cada posição das matries são subtraídos. Para exemplificar, considere subtrair a matriz 1 da matriz 2, procedendo de acordo com o código a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>matriz3 <span class="ot">=</span> matriz1 <span class="sc">-</span> matriz2</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   -5   -1
+[2,]   -4    1</code></pre>
+</div>
+</div>
+<p>É importante ressaltar que a soma e a subtração de matrizes só podem ser feitas com matrizes de mesma dimensão.</p>
+</section>
+<section id="multiplicação-de-matrizes" class="level5" data-number="1.8.2.1.3">
+<h5 data-number="1.8.2.1.3" class="anchored" data-anchor-id="multiplicação-de-matrizes"><span class="header-section-number">1.8.2.1.3</span> Multiplicação de matrizes</h5>
+<p>Na multiplicação, não é correto utilizar o asterisco como operador de multiplicação dado que multiplicar os termos de mesma posição de duas matrizes não é a maneira correta de efetuar o produto de matrizes. Para essa tarefa, o operador de multiplicação agora é <span class="math inline">\(\%*\%\)</span> . Para exemplificar, considere multiplicarr a matriz 1 pela matriz 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>matriz3 <span class="ot">=</span> matriz1 <span class="sc">%*%</span> matriz2</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   14    0
+[2,]   22    9</code></pre>
+</div>
+</div>
+</section>
+<section id="matriz-transposta" class="level5" data-number="1.8.2.1.4">
+<h5 data-number="1.8.2.1.4" class="anchored" data-anchor-id="matriz-transposta"><span class="header-section-number">1.8.2.1.4</span> Matriz transposta</h5>
+<p>A transposta de uma matriz nada mais é do que reorganizar as linhas como colunas e as colunas como linhas. Para obter a transposta de uma matriz em <em>R</em> basta usar a função <em>t()</em>, indicando entre parêntesis o nome da matriz que se deseja transpor. Para exemplificar, considere transpor a matriz 1. Nesse caso, deve-se proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(matriz1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    0    3
+[2,]    2    1</code></pre>
+</div>
+</div>
+</section>
+<section id="matriz-inversa" class="level5" data-number="1.8.2.1.5">
+<h5 data-number="1.8.2.1.5" class="anchored" data-anchor-id="matriz-inversa"><span class="header-section-number">1.8.2.1.5</span> Matriz inversa</h5>
+<p>Uma matriz <span class="math inline">\(M\)</span> pode ser invertida em <em>R</em> para obter <span class="math inline">\(M^{-1}\)</span> usando o comando <em>solve()</em> e indicando dentro do parêntesis a matriz que se deseja inverter. Para exemplificar, considere obter a inversa da matriz 1. Nesse caso, deve-se proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(matriz1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]      [,2]
+[1,] -0.1666667 0.3333333
+[2,]  0.5000000 0.0000000</code></pre>
+</div>
+</div>
+</section>
+<section id="exemplo-de-operações-com-matrizes-o-estimador-de-mínimos-quadrados-ordinários" class="level5" data-number="1.8.2.1.6">
+<h5 data-number="1.8.2.1.6" class="anchored" data-anchor-id="exemplo-de-operações-com-matrizes-o-estimador-de-mínimos-quadrados-ordinários"><span class="header-section-number">1.8.2.1.6</span> Exemplo de operações com matrizes: O estimador de mínimos quadrados ordinários</h5>
+<p>Na estatística, os coeficientes lineares de uma equação linear com múltiplos argumentos podem ser calculados por meio do método de mínimos quadrados ordinários. Se essa equação é:</p>
+<p><span class="math display">\[ y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_n x_n \]</span></p>
+<p>Um termo de erro <span class="math inline">\(\varepsilon\)</span> é adicionado e a relação anterior pode ser escrita matricialmente como:</p>
+<p><span class="math display">\[ \textbf{y} = \textbf{x} \beta + \varepsilon \]</span></p>
+<p>Mininiando a soma dos erros quadráticos, o vetor <span class="math inline">\(\beta\)</span> de parâmetros estimados é:</p>
+<p><span class="math display">\[ \beta = (\textbf{x}^\prime \textbf{x})^{-1}\textbf{x}^\prime \textbf{y} \]</span></p>
+<p>Para exemplificar, considere usar a base natova sobre automóveis <em>mtcars</em> e suponha que estejamos interessados em saber a relação entre o consumo do automóvel (mpg) e as variáveis peso (wt) e número de cilindros (cyl). Nesse caso, a matriz <em>y</em> são os valores da coluna mpg e a matriz x é composta pelas colunas wt e cyl. O vetor de parâmetros estimados pode ser calculado de acordo com o seguinte processo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">matrix</span>(mtcars<span class="sc">$</span>mpg, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="co"># matriz y</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(mtcars)), mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>cyl), <span class="at">ncol =</span> <span class="dv">3</span>) <span class="co"># matriz x</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>tx <span class="ot">=</span> <span class="fu">t</span>(x) <span class="co"># transposta da matriz x</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> <span class="fu">solve</span>(tx<span class="sc">%*%</span>x)<span class="sc">%*%</span>tx<span class="sc">%*%</span>y</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]
+[1,] 39.686261
+[2,] -3.190972
+[3,] -1.507795</code></pre>
+</div>
+</div>
+<p>Isso é o mesmo que fazer:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(mtcars<span class="sc">$</span>mpg <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> mtcars<span class="sc">$</span>wt <span class="sc">+</span> mtcars<span class="sc">$</span>cyl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mtcars$mpg ~ 1 + mtcars$wt + mtcars$cyl)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.2893 -1.5512 -0.4684  1.5743  6.1004 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  39.6863     1.7150  23.141  &lt; 2e-16 ***
+mtcars$wt    -3.1910     0.7569  -4.216 0.000222 ***
+mtcars$cyl   -1.5078     0.4147  -3.636 0.001064 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.568 on 29 degrees of freedom
+Multiple R-squared:  0.8302,    Adjusted R-squared:  0.8185 
+F-statistic: 70.91 on 2 and 29 DF,  p-value: 6.809e-12</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="arrays" class="level3" data-number="1.8.3">
+<h3 data-number="1.8.3" class="anchored" data-anchor-id="arrays"><span class="header-section-number">1.8.3</span> Arrays</h3>
+<p>O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões. Em <em>R</em> um array é definido utilizando a função array(). O usuário deve informar dentro do parêntesis as informações sempre ordenadas coluna a coluna e indicar as dimensões do array com o parâmetro <em>dim</em>. Por exemplo, imagine que queiramos armazenar o consumo de dois bens por duas famílias em três anos, neste caso, teremos que criar um array de dimensão 2 x 2 x 3. Para exemplificar, imagine que esse consumo seja o demonstrado a seguir:</p>
+<p><span class="math display">\[
+\begin{array}{ccc}
+Ano 1 = \left[
+\begin{array}{c|cc}
+&amp; Bem 1 &amp; Bem 2 \\ \hline
+Familia 1 &amp; 0 &amp; 5\\
+Familia 2 &amp; 2 &amp; 3\\
+\end{array}
+\right]
+&amp;
+Ano 2 = \left[
+\begin{array}{c|cc}
+&amp; Bem 1 &amp; Bem 2 \\ \hline
+Familia 1 &amp; 1 &amp; 4\\
+Familia 2 &amp; 3 &amp; 2\\
+\end{array}
+\right]
+&amp;\\
+Ano 3 = \left[
+\begin{array}{c|cc}
+&amp; Bem 1 &amp; Bem 2 \\ \hline
+Familia 1 &amp; 2 &amp; 3\\
+Familia 2 &amp; 2 &amp; 3\\
+\end{array}
+\right]
+\end{array}
+\]</span></p>
+<p>Em <em>R</em> isso equivale a:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>consumo <span class="ot">=</span> <span class="fu">array</span>(</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>, <span class="co"># Ano 1</span></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>, <span class="co"># Ano 2</span></span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span> <span class="co"># ano 3</span></span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(consumo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>, , 1
+
+     [,1] [,2]
+[1,]    0    5
+[2,]    2    3
+
+, , 2
+
+     [,1] [,2]
+[1,]    1    4
+[2,]    3    2
+
+, , 3
+
+     [,1] [,2]
+[1,]    2    3
+[2,]    2    3</code></pre>
+</div>
+</div>
+<p>Para checar se um objeto é um array, use a função <em>is.array()</em>. Caso o objeto de fato seja um array, o output obtido será <em>TRUE</em>, do contrário o output será <em>FALSE</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.array</span>(consumo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="listas" class="level3" data-number="1.8.4">
+<h3 data-number="1.8.4" class="anchored" data-anchor-id="listas"><span class="header-section-number">1.8.4</span> Listas</h3>
+<p>As listas são objetos ideais para guardar informações em múltiplas dimensões, isto é, informações que possuam múltiplas linhas, múltiplas colunas e múltiplas planilhas. As listas podem armazenar diversos outros objetos, incluindo outras listas. Por exemplo, uma lista pode conter um vetor e uma matriz ou múltiplos vetores e múltiplas matrizes. Para criar uma lista, o usuário deve usar a função <em>list()</em> indicando dentro do parêntesis os objetos que irão compor a lista. Por exemplo, vamos criar uma lista contendo os as matrizes de consumo do array anterior e vamos chamar essa lista de <em>lista1</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>ano1 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>ano2 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>ano3 <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb86-9"><a href="#cb86-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-10"><a href="#cb86-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a>lista1 <span class="ot">=</span> <span class="fu">list</span>(ano1, ano2, ano3)</span>
+<span id="cb86-12"><a href="#cb86-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lista1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+     [,1] [,2]
+[1,]    0    5
+[2,]    2    3
+
+[[2]]
+     [,1] [,2]
+[1,]    1    4
+[2,]    3    2
+
+[[3]]
+     [,1] [,2]
+[1,]    2    3
+[2,]    2    3</code></pre>
+</div>
+</div>
+<p>Para checar se um objeto é uma lista, use a função <em>is.list()</em>. Caso o elemento de fato seja uma lista, o output obtido será <em>TRUE</em>, do contrário o output será <em>FALSE</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(lista1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="data-frames" class="level3" data-number="1.8.5">
+<h3 data-number="1.8.5" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">1.8.5</span> Data frames</h3>
+<p>Os data frames - ou quadro de dados - são objetos que possuem utilidade semelhante às matrizes, isto é, são ideais para armazenar informações bidimensionais. No entanto, nos data frames não é possível realizar operações algébricas como nas matrizes. Os data frames são exatamente iguais às planilhas do excel, onde cada coluna é uma variável com valores distribuídos entre as linhas. Essa estrutura de dados é inserida em <em>R</em> usando a função <em>data.frame(),</em> de tal modo que o usuário precisa indicar o nome de cada coluna precedida pelos seus valores em um vetor. Por exemplo, se usarmos o exemplo anterior do salário de dois empregos e quisermos colocar as informações dos ganhos em um data frame de nome <em>salario_diario</em>, devemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>salario_diario <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">emprego1 =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">52</span>,<span class="dv">55</span>,<span class="dv">48</span>,<span class="dv">60</span>),</span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">emprego2 =</span> <span class="fu">c</span>(<span class="dv">140</span>,<span class="dv">160</span>,<span class="dv">165</span>,<span class="dv">150</span>,<span class="dv">155</span>)</span>
+<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-6"><a href="#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  emprego1 emprego2
+1       50      140
+2       52      160
+3       55      165
+4       48      150
+5       60      155</code></pre>
+</div>
+</div>
+<p>Você pode mudar os nomes das colunas dos data frames usando a função <em>colnames()</em>. Por exemplo, se quisermos alterar o nome das colunas para <em>trabalho1</em> e <em>trabalho2</em>, devemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(salario_diario) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"trabalho1"</span>, <span class="st">"trabalho2"</span>)</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  trabalho1 trabalho2
+1        50       140
+2        52       160
+3        55       165
+4        48       150
+5        60       155</code></pre>
+</div>
+</div>
+<p>Já os nomes das linhas podem ser alterados por meio da função <em>rownames()</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(salario_diario) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Seg"</span>, <span class="st">"Ter"</span>, <span class="st">"Quar"</span>, <span class="st">"Qui"</span>, <span class="st">"Sex"</span>)</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     trabalho1 trabalho2
+Seg         50       140
+Ter         52       160
+Quar        55       165
+Qui         48       150
+Sex         60       155</code></pre>
+</div>
+</div>
+<p>Para checar se um objeto é um data frame, o usuário deve usar a função <em>is.data.frame()</em> indicando o nome do objeto dentro do parêntesis. Caso o objeto de fato seja um data frame, o output obtido será <em>TRUE</em>, do contrário o output será <em>FALSE</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(salario_diario)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Assim como em uma planilha excel, as colunas dos data frames podem conter valores numéricos e não numéricos. Maiores detalhes sobre essas possibilidades de valores serão vistos posteriormente quando abordarmos as classes dos elementos.</p>
+</section>
+</section>
+<section id="exercício-1" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="exercício-1"><span class="header-section-number">1.9</span> Exercício 1</h2>
+<p>(1) Crie um objeto de nome <em>valor1</em> com a operação <span class="math inline">\(\left(\frac{5^5}{100}\right)^{0.5}\)</span>.</p>
+<p>(2) Crie um objeto de nome <em>valor2</em> com a operação <span class="math inline">\(\left(\frac{3^8}{100}\right)^{0.5}\)</span>.</p>
+<p>(3) Cheque se <span class="math inline">\(\left(\frac{5^5}{100}\right)^{0.5} \neq \sqrt{\left(\frac{5^5}{100}\right)}\)</span>.</p>
+<p>(4) Cheque se <span class="math inline">\(\left(\frac{3^8}{100}\right)^{0.5} \neq \sqrt{\left(\frac{3^8}{100}\right)}\)</span>.</p>
+<p>(5) Verifique se <span class="math inline">\(\left(\frac{5^5}{100}\right)^{0.5}  &gt;= \left(\frac{3^8}{100}\right)^{0.5}\)</span>.</p>
+<p>(6) Divida <em>valor1</em> por <em>valor2</em> e verifique se o resultado é maior que 1.</p>
+</section>
+<section id="exercício-2" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="exercício-2"><span class="header-section-number">1.10</span> Exercício 2</h2>
+<p>Considere as seguintes planilhas de dados representando os preços das ações das empresas Petrobras, Vale e Itau em uma semana de negociações na bolsa de valores:</p>
+<p><span class="math display">\[
+petrobras = \left[
+\begin{array}{c|ccc}
+Dia &amp; Preco &amp; Maximo &amp; Minimo \\ \hline
+Seg &amp; 34.5 &amp; 34.75 &amp; 33.8\\
+Ter &amp; 34.7 &amp; 35.05 &amp; 34.2\\
+Quar &amp; 34.9 &amp; 35.5 &amp; 34.6\\
+Qui &amp; 34.55 &amp; 34.9 &amp; 34.3\\
+Sex &amp; 34 &amp; 34.55 &amp; 33.6
+\end{array}
+\right]
+\]</span></p>
+<p><span class="math display">\[
+vale = \left[
+\begin{array}{c|ccc}
+Dia &amp; Preco &amp; Maximo &amp; Minimo \\ \hline
+Seg &amp; 55.5 &amp; 55.75 &amp; 55.1\\
+Ter &amp; 56 &amp; 56.6 &amp; 55.5\\
+Quar &amp; 56.5 &amp; 56.75 &amp; 56\\
+Qui &amp; 55.8 &amp; 56 &amp; 55.2\\
+Sex &amp; 55.2 &amp; 55.8 &amp; 55
+\end{array}
+\right]
+\]</span></p>
+<p><span class="math display">\[
+itau = \left[
+\begin{array}{c|ccc}
+Dia &amp; Preco &amp; Maximo &amp; Minimo \\ \hline
+Seg &amp; 28.5 &amp; 28.75 &amp; 28.3\\
+Ter &amp; 28.7 &amp; 29.05 &amp; 28.5\\
+Quar &amp; 28.9 &amp; 29.2 &amp; 28.7\\
+Qui &amp; 28.6 &amp; 28.9 &amp; 28.5\\
+Sex &amp; 28.3 &amp; 28.6 &amp; 28.1
+\end{array}
+\right]
+\]</span></p>
+<ol type="1">
+<li>Repasse essas três planilhas para o <em>R</em> na forma de matrizes, nomeando-as de <em>petrobras</em>, <em>vale</em> e <em>itau</em>, assim como esboçado na representação das planilhas. Dê nomes às linhas e às colunas.</li>
+</ol>
+<p>(2) Agora repasse as planilhas para o <em>R</em> na forma de data frames, nomeando-os de <em>df_petrobras</em>, <em>df_vale</em> e <em>df_itau</em>. Dê nomes às linhas e às colunas.</p>
+<p>(3) Transforme as matrizes <em>petrobras</em>, <em>vale</em> e <em>itau</em> em data frames, nomeando-os de <em>df_petrobras_2</em>, <em>df_vale_2</em> e <em>df_itau_2.</em></p>
+<p>(4) Transforme os data frames <em>df_petrobras</em>, <em>df_vale</em> e <em>df_itau</em> em matrizes, nomeando-as de <em>m_petrobras</em>, <em>m_vale</em> e <em>m_itau.</em></p>
+<p>(5) Cheque se os objetos <em>petrobras</em>, <em>vale</em> e <em>itau</em> são matrizes.</p>
+<p>(6) Cheque se os objetos <em>df_petrobras</em>, <em>df_vale</em> e <em>df_itau</em> são data frames.</p>
+<p>(7) Repasse as três planilhas para o R em um array nomeando-o de <em>preco_acoes</em>.</p>
+<p>(8) Cheque se o objeto criado na questão anterior é um array.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Prefácio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefácio</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./aula2.html" class="pagination-link" aria-label="Indexação e operações indexadas">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

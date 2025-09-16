@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Classes de elementos – Introdução à Programação e à Ciência de Dados</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./aula2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Aula3.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Classes de elementos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introdução à Programação e à Ciência de Dados</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./aula2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Aula3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Classes de elementos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#elementos-textuais-strings" id="toc-elementos-textuais-strings" class="nav-link active" data-scroll-target="#elementos-textuais-strings"><span class="header-section-number">3.1</span> Elementos textuais: (<em>strings</em>)</a></li>
+  <li><a href="#elementos-numéricos" id="toc-elementos-numéricos" class="nav-link" data-scroll-target="#elementos-numéricos"><span class="header-section-number">3.2</span> Elementos numéricos</a>
+  <ul class="collapse">
+  <li><a href="#subclasses-dos-numéricos-inteiros-integer" id="toc-subclasses-dos-numéricos-inteiros-integer" class="nav-link" data-scroll-target="#subclasses-dos-numéricos-inteiros-integer"><span class="header-section-number">3.2.1</span> Subclasses dos numéricos: inteiros <em>(integer)</em></a></li>
+  <li><a href="#subclasses-dos-numéricos-racionais-doubles" id="toc-subclasses-dos-numéricos-racionais-doubles" class="nav-link" data-scroll-target="#subclasses-dos-numéricos-racionais-doubles"><span class="header-section-number">3.2.2</span> Subclasses dos numéricos: racionais <em>(doubles)</em></a></li>
+  </ul></li>
+  <li><a href="#elementos-lógicos-true-e-false" id="toc-elementos-lógicos-true-e-false" class="nav-link" data-scroll-target="#elementos-lógicos-true-e-false"><span class="header-section-number">3.3</span> Elementos lógicos: <em>(TRUE e FALSE)</em></a></li>
+  <li><a href="#valores-multicategóricos-fatores-factors" id="toc-valores-multicategóricos-fatores-factors" class="nav-link" data-scroll-target="#valores-multicategóricos-fatores-factors"><span class="header-section-number">3.4</span> Valores multicategóricos: Fatores (<em>factors</em>)</a></li>
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1"><span class="header-section-number">3.5</span> Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2"><span class="header-section-number">3.6</span> Exercício 2</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Classes de elementos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Os dados podem assumir diversos formatos, por exemplo, números, textos, imagens, etc. A depender da ocasião, o usuário precisará lidar com um tipo de dado específico. Por exemplo, um economista prevendo preços no mercado de ações utilizará objetos numéricos para representar o preço dos ativos. Um técnico em radiologia coleta informações em imagem de um paciente. Um especialista em análise de sentimento em redes sociais coleta os textos das postagens para extrair delas informações úteis. Cada tipo de informação tem uma utilidade e um propósito e cada tipo de informação possui propriedades que o analista de dados precisa conhecer.</p>
+<p>Um objeto criado possui múltiplos elementos e esses elementos podem ser de diferentes tipos. Esses <em>“tipos”</em> de elementos recebem o nome de <em>classe</em>. Existem operações que são aplicadas adequadamente a uma classe de elementos específica, por exemplo, é possível somar dois elementos numéricos mas é estranho pensar em somar duas palavras. Nesse capítulo vamos conhecer as principais classes de dados, suas características e as principais operações que podem ser realizadas com cada classe.</p>
+<section id="elementos-textuais-strings" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="elementos-textuais-strings"><span class="header-section-number">3.1</span> Elementos textuais: (<em>strings</em>)</h2>
+<p>Os elementos textuais sempre devem ser declarados entre aspas, sejam aspas simples ou duplas, do contrário, a linguagem <em>R</em> não reconhecerá esse elemento como texto. A linguagem <em>R</em> não suporta operações matemáticas com elementos textuais, ao contrário de outras linguagens como <em>Python</em> onde operações matemáticas básicas podem ser aplicadas a esses elementos.</p>
+<p>Imagine que seja necessário criar um data frame com o nome dos estados e os nomes das capitais da região Sul do Brasil. Nesse caso, os elemento são textuais e cada nome de estado e capital deve ser informado entre aspas conforme demonstrado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sul <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">estados =</span> <span class="fu">c</span>(<span class="st">"Paraná"</span>, <span class="st">"Santa Cararina"</span>, <span class="st">"Rio Grande do Sul"</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">capital =</span> <span class="fu">c</span>(<span class="st">"Curitiba"</span>, <span class="st">"Florianópolis"</span>, <span class="st">"Porto Alegre"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Sul"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Sul"</code></pre>
+</div>
+</div>
+<p>Caso os elementos não sejam declarados entre aspas, a execução do comando retornará um erro.</p>
+<p>É possível checar qual a classe de um dado elemento ou de um dado objeto por meio do comando <em>class()</em>, informando o nome do objeto entre parêntesis. Por exemplo, é possível checar se o objeto criado anteriormente com o nome <em>sul</em> é um data frame, um vetor, um array, etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sul)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+</div>
+<p>O comando <em>class()</em> também pode ser usado para verificar se um objeto possui ou não uma classe textual. Caso se trate de um objeto textual, então o comando <em>class()</em> retornará o output <em>“character”,</em> indicando que se trata de um caracter. Por exemplo, vamos verificar a classe da coluna de nome <em>estados</em> do objeto de nome <em>sul</em>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sul<span class="sc">$</span>estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<p>Elementos númericos ou outros tipos de elementos muitas vezes podem ser reconhecidos, declarados ou transformados em caracteres. Nesse caso, cabe ao usuário saber identificar a classe dos elementos e transformá-lo na classe desejada. Para exemplificar, considere incluir no data frame anterior o código de unidade federativa do ibge:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sul<span class="sc">$</span>codigo_uf <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">41</span>, <span class="dv">42</span>, <span class="dv">43</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sul)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            estados       capital codigo_uf
+1            Paraná      Curitiba        41
+2    Santa Cararina Florianópolis        42
+3 Rio Grande do Sul  Porto Alegre        43</code></pre>
+</div>
+</div>
+<p>Note que os números não estão em aspas, indicando que não são caracteres. Abrindo o data frame, o usuário verá facilmente que as duas primeiras colunas estão com os valores alinhados à esquerda, enquanto a última coluna está alinhada à direita. Nesse caso, apenas visualizando esse alinhamento é possível afirmar que as duas primeiras colunas têm elementos textuais. No entanto, o usuário pode checar se as colunas são de fato <em>strings</em> usando o comando <em>is.character()</em>, indicando o nome do objeto ou elemento no parênteses. Por exemplo, para checar se o código do estado é um elemento textual, proceda conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(sul<span class="sc">$</span>codigo_uf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Note que o output foi <em>FALSE</em>, indicando que não se trata de um elemento textual. Caso o usuário precise dessa coluna como um elemento de texto, então ele pode usar o comando <em>as.character()</em>, indicando o nome do objeto ou elemento no parênteses. Nesse caso, o objeto ou elemento indicado será transformado forçadamente em um elemento textual. Para exemplificar, vamos transformar o código do estado em um caracter:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sul<span class="sc">$</span>codigo_uf <span class="ot">=</span> <span class="fu">as.character</span>(sul<span class="sc">$</span>codigo_uf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Checando agora a classe da coluna, nota-se que se trata de um elemento textual:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sul<span class="sc">$</span>codigo_uf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<p>Existem operações no âmbito da análise de dados que são usadas com esse tipo de elemento. Por exemplo, as análises de sentimento baseiam-se fundamentalmente em coletas de dados de texto. Um exemplo factível é a mensuração da sensibilidade do mercado financeiro em relação a intensidade do texto da ata do banco central. Esse procedimento é feito pela contagem de palavras pré-definidas na ata. Para esse tipo de operação existem bibliotecas que auxiliam o usuário e que serão vistas posteriormente quando estivermos abordando operações com <em>strings</em>.</p>
+</section>
+<section id="elementos-numéricos" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="elementos-numéricos"><span class="header-section-number">3.2</span> Elementos numéricos</h2>
+<p>Os elementos numéricos são todos os elementos representados na forma de números, sejam eles de quaisquer um dos conjuntos numéricos. Por exemplo, 2 é um elemento numérico do conjunto dos naturais inteiros, ao passo que 2.5 é um elemento numérico do conjunto dos números racionais. É possível checar se um elemento é numérico usando o comando <em>class()</em>, no entanto, é mais adequado usar o <em>is.numeric()</em>, indicando o nome do elemento em parênteses. Para exemplificar, vamos checar se a coluna <em>codigo_uf</em> do data frame de nome <em>sul</em> é numérico.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(sul<span class="sc">$</span>codigo_uf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Note que o resultado é <em>FALSE</em>, indicando que não se trata de um elemento numérico. Caso o usuário precise transformar essa coluna em um elemento numérico, então ele pode usar o comando <em>as.numeric()</em>, indicando o nome do elemento em parêntesis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sul<span class="sc">$</span>codigo_uf <span class="ot">=</span> <span class="fu">as.numeric</span>(sul<span class="sc">$</span>codigo_uf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora podemos verificar novamente se a coluna é ou não numérica.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(sul<span class="sc">$</span>codigo_uf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Em um data frame, as colunas numéricas sempre estarão alinhadas à direita e o usuário pode checar a classe dessa coluna posicionando o cursor sobre o seu nome no data frame.</p>
+<p>Existe, contudo, um problema associado ao uso do comando <em>as.numeric()</em>, dado que a transformação de um elemento não numérico para um elemento numérico só funciona perfeitamente caso o objeto não numérico seja composto por números declarados como caracteres, como é o caso da coluna <em>codigo_uf.</em> Do contrário, o resultado pode ser composto por <em>NAs</em>. Para exemplificar, vamos tentar transformar o nome dos estados em um objeto numérico:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(sul<span class="sc">$</span>estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: NAs introduzidos por coerção</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA NA NA</code></pre>
+</div>
+</div>
+<p>Por esse motivo, antes de efetuar qualquer operação com um elemento numérico, é fundamental checar a sua classe para garantir que o resultado esteja de acordo com o esperado. Por exemplo, imagine o caso em que seja preciso calcular o pib per capita de um estado, sendo que o pib seja numérico e a população seja um caracter. Nesse caso, se o usuário não conhece a classe da população e não a transforma em um elemento numérico, o cálculo do pib per capita será feito dividindo um número por uma palavra, o que é algo inviável, resultando em um elemento do tipo <em>NA</em>.</p>
+<section id="subclasses-dos-numéricos-inteiros-integer" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="subclasses-dos-numéricos-inteiros-integer"><span class="header-section-number">3.2.1</span> Subclasses dos numéricos: inteiros <em>(integer)</em></h3>
+<p>Como mencionado anteriormente, os elementos numéricos podem estar contidos em quaisquer um dos conjuntos numéricos. Uma subclasse bastante comum na economia são é a subclasse dos inteiros. Essa subclasse abriga os números inteiros positivos ou negativos e se caracteriza por abrigar um <em>L</em> após o número. Por exemplo, 10 é um elemento da classe numérica, mas 10L é um elemento da subclasse dos inteiros pertencente à classe dos numéricos.</p>
+<p>Para checar se um elemento é inteiro, use o comando <em>is.integer()</em>, indicando o elemento no parêntesis. Por exemplo, vamos checar se 10 é inteiro:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Note que o resultado é <em>FALSE</em>, indicando que 10 não é inteiro. Isso ocore porque os números inteiros devem obrigatoriamente ser sucedidos da letra <em>L</em>. Informando corretamente tem-se:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(<span class="dv">10</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Para transformar um elemento numérico na subclasse dos inteiros, basta usar a função <em>as.integer()</em>, informando o elemento no parênteses. Por exemplo, vamos transformar o código do estado no data frame de nome <em>sul</em> em inteiro.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sul<span class="sc">$</span>codigo_uf <span class="ot">=</span> <span class="fu">as.integer</span>(sul<span class="sc">$</span>codigo_uf)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sul)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            estados       capital codigo_uf
+1            Paraná      Curitiba        41
+2    Santa Cararina Florianópolis        42
+3 Rio Grande do Sul  Porto Alegre        43</code></pre>
+</div>
+</div>
+<p>Note que visivelmente não há mudanças nas propriedades da coluna modificada, porém agora quando consultarmos se essa coluna pertence ao conjunto dos inteiros, o output é verdadeiro:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(sul<span class="sc">$</span>codigo_uf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="subclasses-dos-numéricos-racionais-doubles" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="subclasses-dos-numéricos-racionais-doubles"><span class="header-section-number">3.2.2</span> Subclasses dos numéricos: racionais <em>(doubles)</em></h3>
+<p>Os números racionais são declarados como <em>doubles</em> na linguagem <em>R</em>. Esse conjunto abriga também os inteiros e os naturais, isto é, um inteiro sempre será um <em>double,</em> assim como um natural sempre será um <em>double</em>. Para checar se um número pertence a essa categoria, use a função <em>is.double()</em>, indicando o elemento de interesse no parênteses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(<span class="fl">10.5555</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>De maneira análoga, um elemento numérico declarado como texto pode ser trannsformado em racional usando a função <em>as.double()</em>, indicando o elemento de interesse no parênteses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.double</span>(<span class="st">"10.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.5</code></pre>
+</div>
+</div>
+<p>Em alguns casos, os números racionais possuem múltiplas casas decimais e é preciso reduzir essas casas decimais arredondando a última casa. Isso pode ser facilmente resolvido usando a função <em>round()</em>, que possui o seguinte modo de uso: <em>round(nome do objeto ou elemento, número de casas decimais)</em>. Por exemeplo, imagine que queiramos reduzir o número 5.56413 para apenas uma casa decimal. Nesse caso, devemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">5.564132</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.6</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="elementos-lógicos-true-e-false" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="elementos-lógicos-true-e-false"><span class="header-section-number">3.3</span> Elementos lógicos: <em>(TRUE e FALSE)</em></h2>
+<p>Os elementos lógicos podem assumir dois valores, verdadeiro <em>(TRUE)</em> ou falso <em>(FALSE)</em>. Sempre que o elemento lógico for verdadeiro, o <em>R</em> atribui valor 1 a este elemento, ao passo que sempre que o elemento lógico for falso, o <em>R</em> atribui valor 0 a este elemento. Assim, é possível aplicar operações matemáticas aos elementos pertencentes a essa classe. Isso advém da premissa de que as linguagens de programação são baseados em sistemas binários de afirmação e negação comentada no capítulo 1.</p>
+<p>Essa classe de elementos é bastante utilizada na economia para representar variáveis binárias onde a categoria de interesse recebe o valor unitário. Por exemplo, imagine uma pesquisa com foco no diferencial de salário por sexo. Nesse tipo de pesquisa é ideal saber se o indivíduo é homem ou mulher. Se a categoria de interesse for o sexo masculino, então os homens recebem valor <em>TRUE</em> e as mulheres recebem vaor <em>FALSE</em>. Isso equivale a atribuir 1 para os homens e 0 para as mulheres.</p>
+<p>Para verificar se um elemento pertence a essa categoria, use a função <em>is.logical()</em>, indicando o nome do elemento entre o parênteses. Para exemplificar, vamos criar uma nova coluna no data frame de estados da regiao sul com o nome <em>parana</em> que identifica se o estado em questão é ou não o estado do Paraná.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sul<span class="sc">$</span>parana <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sul)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            estados       capital codigo_uf parana
+1            Paraná      Curitiba        41      1
+2    Santa Cararina Florianópolis        42      0
+3 Rio Grande do Sul  Porto Alegre        43      0</code></pre>
+</div>
+</div>
+<p>Agora vamos checar se essa coluna é um elemento lógico.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(sul<span class="sc">$</span>parana)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Note que o output é <em>FALSE</em>, indicando que não se trata de um elemento lógico, o que é esperado dado que se trata de um elemento numérico. Para transformar essa coluna em um elemento lógico, basta usar a função <em>as.logical()</em>, indicando o nome do elemento de interesse no parênteses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sul<span class="sc">$</span>parana <span class="ot">=</span> <span class="fu">as.logical</span>(sul<span class="sc">$</span>parana)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sul)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            estados       capital codigo_uf parana
+1            Paraná      Curitiba        41   TRUE
+2    Santa Cararina Florianópolis        42  FALSE
+3 Rio Grande do Sul  Porto Alegre        43  FALSE</code></pre>
+</div>
+</div>
+<p>Agora vamos checar novamente se essa coluna é um elemento lógico.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(sul<span class="sc">$</span>parana)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Note que o output é <em>TRUE</em>, indicando que se trata de um elemento lógico.</p>
+</section>
+<section id="valores-multicategóricos-fatores-factors" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="valores-multicategóricos-fatores-factors"><span class="header-section-number">3.4</span> Valores multicategóricos: Fatores (<em>factors</em>)</h2>
+<p>Os <em>factors</em> são elementos usados para representar valores multicategóricos. Por exemplo, imagine uma variável que expressa a situação do empregado no mercado de trabalho. Ele pode estar (1) apenas trabalhando, (2) apenas estudando, (3) trabalhando e estudando, (4) nem trabalhando nem estudando porém procurando emprego, ou (5) nem trabalhando nem estudando nem procurando emprego. Note que são cinco possibilidades que agora não podem ser representadas pelos elementos lógicos.</p>
+<p>Para declarar um elemento multicategórico é necessário usar o comando <em>factor()</em> que tem a seguinte forma de uso: <em>factor(x = elemento, levels = níveis das categorias)</em>. Para exemplificar, vamos criar um objeto de nome <em>emprego</em> com as possibilidades indicadas no parágrafo anterior e os seus respectivos valores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>emprego <span class="ot">=</span> <span class="fu">factor</span>(</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"apenas trabalhando"</span>, </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"apenas estudando"</span>, </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"trabalhando e estudando"</span>, </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nem trabalhando nem estudando porém procurando emprego"</span>,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nem trabalhando nem estudando nem procurando emprego"</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"apenas trabalhando"</span>, </span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"apenas estudando"</span>, </span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"trabalhando e estudando"</span>, </span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nem trabalhando nem estudando porém procurando emprego"</span>,</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nem trabalhando nem estudando nem procurando emprego"</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(emprego)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] apenas trabalhando                                    
+[2] apenas estudando                                      
+[3] trabalhando e estudando                               
+[4] nem trabalhando nem estudando porém procurando emprego
+[5] nem trabalhando nem estudando nem procurando emprego  
+5 Levels: apenas trabalhando apenas estudando ... nem trabalhando nem estudando nem procurando emprego</code></pre>
+</div>
+</div>
+<p>Será atribuído valor 1 para a primeira categoria indicada no vetor de níveis <em>(levels)</em>, 2 para a segunda categoria e assim sucessivamente.</p>
+<p>Para checar se um elemento é multicategórico, devs-se usar a função <em>is.factor(),</em> indicando o nome do elemento no parênteses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(emprego)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="exercício-1" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="exercício-1"><span class="header-section-number">3.5</span> Exercício 1</h2>
+<p>Considere o seguinte data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pessoa =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">idade =</span> <span class="fu">sample</span>(<span class="dv">8</span><span class="sc">:</span><span class="dv">85</span>,<span class="dv">30</span>, <span class="at">replace =</span> T),</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sexo =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"F"</span>), <span class="dv">30</span>, <span class="at">replace =</span> T),</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">estado_civil =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Solteiro"</span>, <span class="st">"Casado"</span>, <span class="st">"Viúvo"</span>, <span class="st">"Divorciado"</span>), <span class="dv">30</span>, <span class="at">replace =</span> T),</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">salario =</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">1200</span>, <span class="at">sd =</span> <span class="dv">300</span>)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(1) Crie uma variável de nome <em>sexo2</em> transformando a variável <em>sexo</em> em um elemento lógico atribuindo o valor unitário para as mulheres.</p>
+<p>(2) Crie uma variável de nome <em>fase_vida</em> atribuindo os nomes <em>infância</em> para as pessoas com menos de 12 anos, <em>adolescência</em> para as pessoas com idade entre 12 e 18 anos, <em>adulta</em> para as pessoas com idade entre 18 e 65 anos e <em>velhice</em> para as pessoas com mais de 65 anos.</p>
+<p>(3) Crie uma nova variável de nome <em>fase_vida2</em> transformando a variável <em>fase_vida</em> em um factor ordenando as categorias de acordo com a fase da vida em ordem crescente.</p>
+</section>
+<section id="exercício-2" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="exercício-2"><span class="header-section-number">3.6</span> Exercício 2</h2>
+<p>Considere a base de dados sobre carros <em>mtcars</em>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>carros <span class="ot">=</span> mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(1) Crie uma coluna de nome <em>automatico</em> transformando a coluna <em>am</em> em um elemento lógico.</p>
+<p>(2) Transforme a coluna <em>cyl</em> em um factor onde o atributo <em>x</em> recebe os valores <em>“4 cilindros”, “6 cilindore”</em> e <em>“8 cilindros</em>” ordenados na forma crescente.</p>
+<p>(3) Crie uma nova coluna de nome <em>carro</em> contendo o nome dos carros indicados nos nomes das linhas do data frame.</p>
+<p>(4) Verifique a casse da coluna criada na questão.</p>
+<p>(5) Verifique se a coluna criada nas questões 1 e 2 são <em>factors</em>.</p>
+<p>(6) Verifique se a coluna <em>mpg</em> é inteiro e caso não seja transforme-a em inteiro.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./aula2.html" class="pagination-link" aria-label="Indexação e operações indexadas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

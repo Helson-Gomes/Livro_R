@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Indexação e operações indexadas – Introdução à Programação e à Ciência de Dados</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Aula3.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./aula2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introdução à Programação e à Ciência de Dados</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./aula2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Aula3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Classes de elementos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Aula4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Condições, funções e loops</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Aula5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leitura de dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#indexação-de-objetos" id="toc-indexação-de-objetos" class="nav-link active" data-scroll-target="#indexação-de-objetos"><span class="header-section-number">2.1</span> Indexação de objetos</a></li>
+  <li><a href="#adicionando-linhas-a-um-data-frame" id="toc-adicionando-linhas-a-um-data-frame" class="nav-link" data-scroll-target="#adicionando-linhas-a-um-data-frame"><span class="header-section-number">2.2</span> Adicionando linhas a um data frame</a></li>
+  <li><a href="#adicionando-linhas-em-uma-matriz" id="toc-adicionando-linhas-em-uma-matriz" class="nav-link" data-scroll-target="#adicionando-linhas-em-uma-matriz"><span class="header-section-number">2.3</span> Adicionando linhas em uma matriz</a></li>
+  <li><a href="#removendo-linhas-de-um-objeto" id="toc-removendo-linhas-de-um-objeto" class="nav-link" data-scroll-target="#removendo-linhas-de-um-objeto"><span class="header-section-number">2.4</span> Removendo linhas de um objeto</a></li>
+  <li><a href="#adicionando-colunas-em-um-data-frame" id="toc-adicionando-colunas-em-um-data-frame" class="nav-link" data-scroll-target="#adicionando-colunas-em-um-data-frame"><span class="header-section-number">2.5</span> Adicionando colunas em um data frame</a></li>
+  <li><a href="#adicionando-colunas-em-uma-matriz" id="toc-adicionando-colunas-em-uma-matriz" class="nav-link" data-scroll-target="#adicionando-colunas-em-uma-matriz"><span class="header-section-number">2.6</span> Adicionando colunas em uma matriz</a></li>
+  <li><a href="#renomeando-colunas-e-linhas-específicas" id="toc-renomeando-colunas-e-linhas-específicas" class="nav-link" data-scroll-target="#renomeando-colunas-e-linhas-específicas"><span class="header-section-number">2.7</span> Renomeando colunas e linhas específicas</a></li>
+  <li><a href="#operações-com-colunas" id="toc-operações-com-colunas" class="nav-link" data-scroll-target="#operações-com-colunas"><span class="header-section-number">2.8</span> Operações com colunas</a>
+  <ul class="collapse">
+  <li><a href="#criando-uma-nova-coluna-como-recorte-de-uma-coluna-existente" id="toc-criando-uma-nova-coluna-como-recorte-de-uma-coluna-existente" class="nav-link" data-scroll-target="#criando-uma-nova-coluna-como-recorte-de-uma-coluna-existente"><span class="header-section-number">2.8.1</span> Criando uma nova coluna como recorte de uma coluna existente</a></li>
+  <li><a href="#mesclando-colunas" id="toc-mesclando-colunas" class="nav-link" data-scroll-target="#mesclando-colunas"><span class="header-section-number">2.8.2</span> Mesclando colunas</a></li>
+  </ul></li>
+  <li><a href="#reposicionando-linhas-e-colunas" id="toc-reposicionando-linhas-e-colunas" class="nav-link" data-scroll-target="#reposicionando-linhas-e-colunas"><span class="header-section-number">2.9</span> Reposicionando linhas e colunas</a></li>
+  <li><a href="#operações-básicas" id="toc-operações-básicas" class="nav-link" data-scroll-target="#operações-básicas"><span class="header-section-number">2.10</span> Operações básicas</a>
+  <ul class="collapse">
+  <li><a href="#soma-total" id="toc-soma-total" class="nav-link" data-scroll-target="#soma-total"><span class="header-section-number">2.10.1</span> Soma total</a></li>
+  <li><a href="#produto-total" id="toc-produto-total" class="nav-link" data-scroll-target="#produto-total"><span class="header-section-number">2.10.2</span> Produto total</a></li>
+  <li><a href="#média" id="toc-média" class="nav-link" data-scroll-target="#média"><span class="header-section-number">2.10.3</span> Média</a></li>
+  <li><a href="#mínimo" id="toc-mínimo" class="nav-link" data-scroll-target="#mínimo"><span class="header-section-number">2.10.4</span> Mínimo</a></li>
+  <li><a href="#máximo" id="toc-máximo" class="nav-link" data-scroll-target="#máximo"><span class="header-section-number">2.10.5</span> Máximo</a></li>
+  <li><a href="#desvio-padrão" id="toc-desvio-padrão" class="nav-link" data-scroll-target="#desvio-padrão"><span class="header-section-number">2.10.6</span> Desvio padrão</a></li>
+  <li><a href="#número-de-observações" id="toc-número-de-observações" class="nav-link" data-scroll-target="#número-de-observações"><span class="header-section-number">2.10.7</span> Número de observações</a></li>
+  <li><a href="#exemplo-criando-uma-tabela-de-estatísticas-descritivas" id="toc-exemplo-criando-uma-tabela-de-estatísticas-descritivas" class="nav-link" data-scroll-target="#exemplo-criando-uma-tabela-de-estatísticas-descritivas"><span class="header-section-number">2.10.8</span> Exemplo: Criando uma tabela de estatísticas descritivas</a></li>
+  </ul></li>
+  <li><a href="#exercício" id="toc-exercício" class="nav-link" data-scroll-target="#exercício"><span class="header-section-number">2.11</span> Exercício</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Indexação e operações indexadas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Nesse módulo estão expressos os detalhes básicos acerca de operações fundamentais com diferentes tipos de objetos. O módulo ainda apresenta os conceitos e as normas básicas sobre posições de elementos em um objeto (indexação) e também mostra as operações que usam essa indexação e que podem ser úteis na análise de dados.</p>
+<section id="indexação-de-objetos" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="indexação-de-objetos"><span class="header-section-number">2.1</span> Indexação de objetos</h2>
+<p>Os objetos são compostos por elementos e esses elementos ocupam uma posição dentro do objeto. Por exemplo, imagine um vetor <span class="math inline">\(x = [Maria, Paulo, Pedro, Ana]\)</span>. Esse vetor é composto por quatro elementos, maria na posição 1, Paulo na posição 2, Pedro na posição 3 e Ana na posição 4. Agora considere que essas mesmas informações estejam dispostas em uma matriz.</p>
+<p><span class="math display">\[\left[\begin{array}{cc}
+Maria &amp; Paulo\\ Pedro &amp; Ana \end{array}
+\right]
+\]</span></p>
+<p>Agora a posição deve ser visualizada como “linha por coluna”. Maria está na linha 1 e coluna 1 (posição [<em>1, 1])</em>, Paulo está na linha 1 e coluna 2 (posição <em>[1, 2])</em>, Pedro está na linha 2 e coluna 1 (posição [<em>2, 1])</em> e Ana está na linha 2 e coluna 2 (posição [<em>2, 2])</em>. A essa posição dá-se o nome de indexação. A indexação nada mais é do que a posição de um elemento em um conjunto, que nesse caso são os objetos no ambiente de trabalho.</p>
+<p>Para verificar qual elemento está em uma determinada posição do objeto, deve-se informar o nome do objeto precedido da posição entre colchetes, isto é, <em>nome do objeto[posição na linha, posição na coluna]</em>. Por exemplo, na matriz anterior, caso queiramos consultar quem está na linha 1 da coluna 1, devemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nomes <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">"Maria"</span>, <span class="st">"Paulo"</span>, <span class="st">"Pedro"</span>, <span class="st">"Ana"</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nomes[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Maria"</code></pre>
+</div>
+</div>
+<p>A lógica é a mesma em um data frame,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">coluna1 =</span> <span class="fu">c</span>(<span class="st">"Maria"</span>, <span class="st">"Pedro"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">coluna2 =</span> <span class="fu">c</span>(<span class="st">"Paulo"</span>, <span class="st">"Ana"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Maria"</code></pre>
+</div>
+</div>
+<p>Se quisermos nos referir apenas às linhas, então a posição da coluna deve ficar vazia, isto é, <em>nome do objeto[posição na linha,]</em>. Seguindo o exemplo anterior, caso queiramos checar quem está na linha 1 da matriz, devemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nomes[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Maria" "Paulo"</code></pre>
+</div>
+</div>
+<p>A mesma lógica se aplica aos data frames.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  coluna1 coluna2
+1   Maria   Paulo</code></pre>
+</div>
+</div>
+<p>Se quisermos nos referir apenas às colunas, então a posição da linha deve ficar vazia, isto é, <em>nome do objeto[, posição na coluna]</em>. Seguindo o exemplo anterior, caso queiramos checar quem está na coluna 1 da matriz, devemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nomes[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Maria" "Pedro"</code></pre>
+</div>
+</div>
+<p>A mesma lógica se aplica aos data frames.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Maria" "Pedro"</code></pre>
+</div>
+</div>
+<p>A posição das linhas e colunas também pode ser referenciada de acordo com os nomes. Nesse caso, o procedimento é <em>nome do objeto[“nome da linha”, “nome da coluna”]</em>. Para exemplificar, vamos dar nomes às linhas e as colunas da matriz e do data frame usados nos exemplos anteriores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(nomes) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"linha 1"</span>, <span class="st">"linha 2"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(nomes) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"coluna 1"</span>, <span class="st">"coluna 2"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna 1 coluna 2
+linha 1 "Maria"  "Paulo" 
+linha 2 "Pedro"  "Ana"   </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"linha 1"</span>, <span class="st">"linha 2"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna 1 coluna 2
+linha 1 "Maria"  "Paulo" 
+linha 2 "Pedro"  "Ana"   </code></pre>
+</div>
+</div>
+<p>Para checar quem está na linha 1, proceda conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nomes[<span class="st">"linha 1"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>coluna 1 coluna 2 
+ "Maria"  "Paulo" </code></pre>
+</div>
+</div>
+<p>E no data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"linha 1"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna1 coluna2
+linha 1   Maria   Paulo</code></pre>
+</div>
+</div>
+<p>Para checar quem está na coluna 1, proceda conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>nomes[, <span class="st">"coluna 1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>linha 1 linha 2 
+"Maria" "Pedro" </code></pre>
+</div>
+</div>
+<p>E no data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df[, <span class="st">"coluna1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Maria" "Pedro"</code></pre>
+</div>
+</div>
+<p>Nos data frames, a indexação das colunas pode ser mais simplificada devido a possibilidade de referenciar as colunas plo nome usando o cifrão “$”. Nesse caso, o procedimento a se fazer é <em>nome do objeto$nome da coluna</em>. Por exemplo, para se referir a coluna 1 do data frame anterior, deve-se proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>coluna1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Maria" "Pedro"</code></pre>
+</div>
+</div>
+</section>
+<section id="adicionando-linhas-a-um-data-frame" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="adicionando-linhas-a-um-data-frame"><span class="header-section-number">2.2</span> Adicionando linhas a um data frame</h2>
+<p>Tendo comopreendido como funciona a indexação, o próximo passo é aprender como essa indexação pode ser usada para adicionar, excluir ou alterar elementos de um objeto. Caso a intenção seja adicionar uma linha em um data frame, então o procedimento a se fazer é <em>nome do objeto[número de linhas do objeto + 1,]</em>. Para exemplificar, vamos incluir uma linha na data frame de nomes contendo os valores <em>[João, Clara]</em>. Esse procedimento deve ser feito conforme especificado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">3</span>,] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"João"</span>, <span class="st">"Clara"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna1 coluna2
+linha 1   Maria   Paulo
+linha 2   Pedro     Ana
+3          João   Clara</code></pre>
+</div>
+</div>
+</section>
+<section id="adicionando-linhas-em-uma-matriz" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="adicionando-linhas-em-uma-matriz"><span class="header-section-number">2.3</span> Adicionando linhas em uma matriz</h2>
+<p>Para adicionar linhas em uma matriz é preciso usar a função <em>rbind()</em>. Essa função também funciona perfeitamente para data frames. Nesse caso, o procedimento a se fazer é <em>rbind(nome do objeto, vetor com os valores da linha adicionada)</em>. Por exemplo, para adicionar uma linha com os valores <em>[João, Clara]</em> no data frame de nomes, deve-se proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>nomes <span class="ot">=</span> <span class="fu">rbind</span>(nomes, <span class="fu">c</span>(<span class="st">"João"</span>, <span class="st">"Clara"</span>))</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna 1 coluna 2
+linha 1 "Maria"  "Paulo" 
+linha 2 "Pedro"  "Ana"   
+        "João"   "Clara" </code></pre>
+</div>
+</div>
+<p>A mesma lógica se aplica aos data frames:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(df, <span class="fu">c</span>(<span class="st">"João"</span>, <span class="st">"Clara"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna1 coluna2
+linha 1   Maria   Paulo
+linha 2   Pedro     Ana
+3          João   Clara
+4          João   Clara</code></pre>
+</div>
+</div>
+</section>
+<section id="removendo-linhas-de-um-objeto" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="removendo-linhas-de-um-objeto"><span class="header-section-number">2.4</span> Removendo linhas de um objeto</h2>
+<p>A remoção de linhas de um objeto é feita adicionando um sinal de menos antes do número da linha indicado em colchetes. Por exemplo, caso queiramos remover a linha 3 da matriz de nomes, devemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>nomes[<span class="sc">-</span><span class="dv">3</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna 1 coluna 2
+linha 1 "Maria"  "Paulo" 
+linha 2 "Pedro"  "Ana"   </code></pre>
+</div>
+</div>
+<p>A mesma lógica se aplica aos data frames:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df[<span class="sc">-</span><span class="dv">3</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna1 coluna2
+linha 1   Maria   Paulo
+linha 2   Pedro     Ana</code></pre>
+</div>
+</div>
+<p>Caso a intenção seja remover múltiplas linhas, então o número das linhas que serão removidas deve ser indicado em um vetor precedido do sinal de menos dentro do colchetes. Por exemplo, caso queiramos remover as linhas 2 e 3 da matriz de nomes, devemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>nomes[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>coluna 1 coluna 2 
+ "Maria"  "Paulo" </code></pre>
+</div>
+</div>
+<p>A mesma lógica se aplica aos data frames:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna1 coluna2
+linha 1   Maria   Paulo</code></pre>
+</div>
+</div>
+</section>
+<section id="adicionando-colunas-em-um-data-frame" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="adicionando-colunas-em-um-data-frame"><span class="header-section-number">2.5</span> Adicionando colunas em um data frame</h2>
+<p>Existem várias maneiras de adicionar colunas em um data frame. O usuário pode indicar a posição da coluna entre colchetes e em seguida indicar os valores, pode indicar o nome da coluna em colchetes e em seguida indicar os valores, pode usar o sifrão para indicar o nome da coluna criada, …</p>
+<p>Para exemplificar, suponha que queiramos adicionar uma coluna com os valores *[pessoa 1, pessoa 2, pessoa 3] no dtaframe df. Essa tarefa pode ser feita das seguintes maneiras:</p>
+<ul>
+<li>Indicando a posição em colchetes</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="dv">3</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"pessoa 1"</span>, <span class="st">"pessoa 2"</span>, <span class="st">"pessoa 3"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna1 coluna2       V3
+linha 1   Maria   Paulo pessoa 1
+linha 2   Pedro     Ana pessoa 2
+3          João   Clara pessoa 3</code></pre>
+</div>
+</div>
+<ul>
+<li>Indicando o nome da coluna no colchetes.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df[, <span class="st">"coluna3"</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"pessoa 1"</span>, <span class="st">"pessoa 2"</span>, <span class="st">"pessoa 3"</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna1 coluna2  coluna3
+linha 1   Maria   Paulo pessoa 1
+linha 2   Pedro     Ana pessoa 2
+3          João   Clara pessoa 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df[,<span class="sc">-</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Usando o cifrão.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>coluna3 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"pessoa 1"</span>, <span class="st">"pessoa 2"</span>, <span class="st">"pessoa 3"</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna1 coluna2  coluna3
+linha 1   Maria   Paulo pessoa 1
+linha 2   Pedro     Ana pessoa 2
+3          João   Clara pessoa 3</code></pre>
+</div>
+</div>
+</section>
+<section id="adicionando-colunas-em-uma-matriz" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="adicionando-colunas-em-uma-matriz"><span class="header-section-number">2.6</span> Adicionando colunas em uma matriz</h2>
+<p>Para adicionar colunas em uma matriz é preciso usar a função <em>cbind()</em>. Essa função tem a mesma lógica de uso da função <em>rbind()</em> apresentada anteriormente, com a diferença de que a função <em>cbind()</em> posiciona os novos elementos em uma coluna em vez de uma linha. Para exemplificar, vamos adicionar a mesma coluna incluída no data frame <em>df</em> na matriz de nomes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>nomes <span class="ot">=</span> <span class="fu">cbind</span>(nomes, <span class="fu">c</span>(<span class="st">"pessoa 1"</span>, <span class="st">"pessoa 2"</span>, <span class="st">"pessoa 3"</span>))</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna 1 coluna 2           
+linha 1 "Maria"  "Paulo"  "pessoa 1"
+linha 2 "Pedro"  "Ana"    "pessoa 2"
+        "João"   "Clara"  "pessoa 3"</code></pre>
+</div>
+</div>
+<p>A mesma lógica pode ser aplicada aos data frames fazendo <em>df = cbind(df, c(“pessoa 1”, “pessoa 2”, “pessoa 3”))</em>.</p>
+</section>
+<section id="renomeando-colunas-e-linhas-específicas" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="renomeando-colunas-e-linhas-específicas"><span class="header-section-number">2.7</span> Renomeando colunas e linhas específicas</h2>
+<p>Como visto no capítulo anterior, a função <em>colnames()</em> pode ser usada para renomear colunas de uma matriz ou data frame. Porém, caso o objetivo seja renomear uma única coluna específica é possível usar a indexação para realizar essa tarefa. Por exemplo, considere renomear apenas a coluna 3 do data frame de nomes atribuindo a essa coluna o nome <em>“coluna3”</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(nomes)[<span class="dv">3</span>] <span class="ot">=</span> <span class="st">"Coluna3"</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna 1 coluna 2 Coluna3   
+linha 1 "Maria"  "Paulo"  "pessoa 1"
+linha 2 "Pedro"  "Ana"    "pessoa 2"
+        "João"   "Clara"  "pessoa 3"</code></pre>
+</div>
+</div>
+<p>O mesmo pode ser feito para as linhas. Por exemplo, caso queiramos renomear apenas a linha 3 do data frame de nomes, podemos proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(nomes)[<span class="dv">3</span>] <span class="ot">=</span> <span class="st">"linha 3"</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        coluna 1 coluna 2 Coluna3   
+linha 1 "Maria"  "Paulo"  "pessoa 1"
+linha 2 "Pedro"  "Ana"    "pessoa 2"
+linha 3 "João"   "Clara"  "pessoa 3"</code></pre>
+</div>
+</div>
+</section>
+<section id="operações-com-colunas" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="operações-com-colunas"><span class="header-section-number">2.8</span> Operações com colunas</h2>
+<p>Em um data frame novas colunas podem ser geradas por meio de operações com colunas existentes. Para exemplificar, considere um dataframe com informações sobre medidas de alunos de uma academia.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>alunos <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="at">nome =</span> <span class="fu">c</span>(<span class="st">"Aluno 1"</span>, <span class="st">"Aluno 2"</span>, <span class="st">"Aluno 3"</span>),</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="at">peso =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">70</span>, <span class="dv">90</span>),</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="at">altura =</span> <span class="fu">c</span>(<span class="fl">1.60</span>, <span class="fl">1.70</span>, <span class="fl">1.78</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alunos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     nome peso altura
+1 Aluno 1   65   1.60
+2 Aluno 2   70   1.70
+3 Aluno 3   90   1.78</code></pre>
+</div>
+</div>
+<p>Imagine que seja necessário adicionar nesse data frame uma nova coluna com o índice de massa corporal dos alunos (IMC). Sabe-se que:</p>
+<p><span class="math display">\[
+IMC = \frac{Peso}{Altura^2}
+\]</span></p>
+<p>A nova coluna pode ser adicionada indexando a sua posição:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>alunos[,<span class="dv">4</span>] <span class="ot">=</span> alunos[,<span class="dv">2</span>]<span class="sc">/</span>(alunos[,<span class="dv">3</span>]<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alunos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     nome peso altura       V4
+1 Aluno 1   65   1.60 25.39062
+2 Aluno 2   70   1.70 24.22145
+3 Aluno 3   90   1.78 28.40550</code></pre>
+</div>
+</div>
+<p>Indexando o nome da coluna:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>alunos[<span class="st">"imc"</span>] <span class="ot">=</span> alunos[<span class="st">"peso"</span>]<span class="sc">/</span>(alunos[<span class="st">"altura"</span>]<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alunos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     nome peso altura      imc
+1 Aluno 1   65   1.60 25.39062
+2 Aluno 2   70   1.70 24.22145
+3 Aluno 3   90   1.78 28.40550</code></pre>
+</div>
+</div>
+<p>Ou utilizando o cifrão:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>alunos<span class="sc">$</span>imc <span class="ot">=</span> alunos<span class="sc">$</span>peso<span class="sc">/</span>(alunos<span class="sc">$</span>altura<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alunos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     nome peso altura      imc
+1 Aluno 1   65   1.60 25.39062
+2 Aluno 2   70   1.70 24.22145
+3 Aluno 3   90   1.78 28.40550</code></pre>
+</div>
+</div>
+<section id="criando-uma-nova-coluna-como-recorte-de-uma-coluna-existente" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="criando-uma-nova-coluna-como-recorte-de-uma-coluna-existente"><span class="header-section-number">2.8.1</span> Criando uma nova coluna como recorte de uma coluna existente</h3>
+<p>Imagine o caso em que seja preciso criar uma coluna como um recorte de valores de uma coluna existente em um data frame. Falando com outras palavras, imagine que seja preciso adicionar uma coluna contendo uma parte dos valores contidos em outra coluna. Por exemplo, no data frame de alunos da academia, imagine que seja preciso mostrar apenas o número do aluno em uma nova coluna, isto é, em vez de mostrar o termo “Aluno 1” suponha que seja preciso mostrar apenas o número “1”.</p>
+<p>Esse procedimento pode ser feito usando a função <em>substr</em>. Essa função é nativa da linguagem <em>R</em> e serve para desmembrar valores de acordo com a posição dos caracteres desses valores. Exemplificando, o termo “Aluno 1” tem sete caracteres que correspondem a seis letras, um espaço e um número. O número ocupa a sétima posição no termo. Na função substr temos que indicar a posição inicial e a posição final do conjunto de caracteres que queremos desmembrar do valor objetivo. A maneira correta de usar essa função é fazendo <em>substr(nome do elemento, posição inicial, posição final)</em>. Por exemplo, se fizermos <em>substr(“Aluno 1”, 1, 2)</em> o resultado será <em>“Al</em>” que corresponde aos dois primeiros caracteres do termo utilizado.</p>
+<p>No nosso exemplo como o número do aluno inicia e termina na sétima posição, então o correto a se fazer é:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>alunos<span class="sc">$</span>num_aluno <span class="ot">=</span> <span class="fu">substr</span>(alunos<span class="sc">$</span>nome, <span class="dv">7</span>, <span class="dv">7</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alunos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     nome peso altura      imc num_aluno
+1 Aluno 1   65   1.60 25.39062         1
+2 Aluno 2   70   1.70 24.22145         2
+3 Aluno 3   90   1.78 28.40550         3</code></pre>
+</div>
+</div>
+</section>
+<section id="mesclando-colunas" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="mesclando-colunas"><span class="header-section-number">2.8.2</span> Mesclando colunas</h3>
+<p>Em vez de separar valores de uma coluna, imagine o caso em que seja preciso juntar valores. Em <em>R</em> isso pode ser facilmente feito usando a função <em>paste()</em>. Essa função junta múltiplos valores separando-os com um searador indicado pelo usuário. Para usar a função, basta indicar entre parênteses os valores que serão unificados e indicar o separador com o parâmetro <em>“sep”</em>. Por exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>nome <span class="ot">=</span> <span class="st">"João"</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>sobrenome <span class="ot">=</span> <span class="st">"Silva"</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>nome_completo <span class="ot">=</span> <span class="fu">paste</span>(nome, sobrenome, <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nome_completo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "João Silva"</code></pre>
+</div>
+</div>
+<p>Essa função pode ser usada para unir colunas. Para exemploficar, considere o novo data frame com as características dos alunos de uma academia indicado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>alunos2 <span class="ot">=</span> alunos</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>alunos2<span class="sc">$</span>nome <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"João"</span>, <span class="st">"Maria"</span>, <span class="st">"João"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>E imagine que seja preciso criar um código do aluno, unindo o nome e o número do aluno separando o nome e um número por um traço. Esse procedimento pode ser feito conforme indicado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>alunos2<span class="sc">$</span>cod_aluno <span class="ot">=</span> <span class="fu">paste</span>(alunos2<span class="sc">$</span>nome, alunos2<span class="sc">$</span>num_aluno, <span class="at">sep =</span> <span class="st">"-"</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alunos2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   nome peso altura      imc num_aluno cod_aluno
+1  João   65   1.60 25.39062         1    João-1
+2 Maria   70   1.70 24.22145         2   Maria-2
+3  João   90   1.78 28.40550         3    João-3</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="reposicionando-linhas-e-colunas" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="reposicionando-linhas-e-colunas"><span class="header-section-number">2.9</span> Reposicionando linhas e colunas</h2>
+<p>Conhecendo a posição de cada linha e cada coluna, é possível reordená-las de acordo com as necessidades ou preferências do usuário usando operações indexadas. Por exemplo, suponha que seja preciso reordenar as linhas do data frame de alunos para posicionar o aluno 3 na primeira linha, o aluno 2 na segunda linha e o aluno 1 na terceira linha. Esse procedimento pode ser feito conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>alunos <span class="ot">=</span> alunos[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>),]</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alunos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     nome peso altura      imc num_aluno
+3 Aluno 3   90   1.78 28.40550         3
+2 Aluno 2   70   1.70 24.22145         2
+1 Aluno 1   65   1.60 25.39062         1</code></pre>
+</div>
+</div>
+<p>Agora suponha que seja necessário posicionar o nome do aluno na primeira coluna, a altura na segunda coluna, o peso na terceira coluna e o imc na última coluna, isto é, suponha que seja preciso inverter a posição do peso e da altura no data frame. Esse procedimento pode ser feito conforme indicado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>alunos <span class="ot">=</span> alunos[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alunos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     nome altura peso      imc
+3 Aluno 3   1.78   90 28.40550
+2 Aluno 2   1.70   70 24.22145
+1 Aluno 1   1.60   65 25.39062</code></pre>
+</div>
+</div>
+</section>
+<section id="operações-básicas" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="operações-básicas"><span class="header-section-number">2.10</span> Operações básicas</h2>
+<p>Novas linhas e colunas podem ser adicionadas em um data frame usando operações básicas como soma, produto, ou estatísticas básicas. Para demonstrar, considere um data frame contendo a idade de cinco pessoas conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pessoa =</span> <span class="fu">c</span>(<span class="st">"pessoa1"</span>, <span class="st">"pessoa2"</span>, <span class="st">"pessoa3"</span>, <span class="st">"pessoa4"</span>, <span class="st">"pessoa"</span>),</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">idade =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">68</span>,<span class="dv">45</span>,<span class="cn">NA</span>)</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   pessoa idade
+1 pessoa1    25
+2 pessoa2    50
+3 pessoa3    68
+4 pessoa4    45
+5  pessoa    NA</code></pre>
+</div>
+</div>
+<p>Note que há um valor faltante, indicado pelo termo <em>NA</em> que representa a sigla do “não disponível” (do inglês <em>not available</em>). Qualquer operação contendo essa coluna deve indicar que esse valor ausente deve ser ignorado. Isso pode ser feito adicionando a opção <em>na.rm = TRUE</em>.</p>
+<section id="soma-total" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="soma-total"><span class="header-section-number">2.10.1</span> Soma total</h3>
+<p>Suponha que queiramos encontrar o somatório da idade de todas as pessoas contidas no data frame. Isso pode ser facilmente executado usando a função <em>sum()</em>, conforme indicado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(df<span class="sc">$</span>idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 188</code></pre>
+</div>
+</div>
+</section>
+<section id="produto-total" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="produto-total"><span class="header-section-number">2.10.2</span> Produto total</h3>
+<p>Caso o objetivo seja encontrar o produto de todos os valores de uma dada coluna, então o ideal é usar a função <em>prod()</em>, conforme demonstrado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(df<span class="sc">$</span>idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3825000</code></pre>
+</div>
+</div>
+</section>
+<section id="média" class="level3" data-number="2.10.3">
+<h3 data-number="2.10.3" class="anchored" data-anchor-id="média"><span class="header-section-number">2.10.3</span> Média</h3>
+<p>Já a média pode ser obtida com a função <em>mean()</em>, conforme demonstrado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47</code></pre>
+</div>
+</div>
+</section>
+<section id="mínimo" class="level3" data-number="2.10.4">
+<h3 data-number="2.10.4" class="anchored" data-anchor-id="mínimo"><span class="header-section-number">2.10.4</span> Mínimo</h3>
+<p>O valor mínimo de um dado objeto pode ser computado por meio da função <em>min()</em>, conforme demonstrado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(df<span class="sc">$</span>idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+</div>
+</section>
+<section id="máximo" class="level3" data-number="2.10.5">
+<h3 data-number="2.10.5" class="anchored" data-anchor-id="máximo"><span class="header-section-number">2.10.5</span> Máximo</h3>
+<p>O valor máximo de um dado objeto pode ser computado por meio da função <em>max()</em>, conforme demonstrado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(df<span class="sc">$</span>idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 68</code></pre>
+</div>
+</div>
+</section>
+<section id="desvio-padrão" class="level3" data-number="2.10.6">
+<h3 data-number="2.10.6" class="anchored" data-anchor-id="desvio-padrão"><span class="header-section-number">2.10.6</span> Desvio padrão</h3>
+<p>O desvio padrão de um dado objeto pode ser computado por meio da função <em>sd()</em>, conforme demonstrado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(df<span class="sc">$</span>idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17.68238</code></pre>
+</div>
+</div>
+</section>
+<section id="número-de-observações" class="level3" data-number="2.10.7">
+<h3 data-number="2.10.7" class="anchored" data-anchor-id="número-de-observações"><span class="header-section-number">2.10.7</span> Número de observações</h3>
+<p>O número de observações - ou comprimento - de um dado objeto pode ser verificado com o uso da função <em>length()</em>, conforme demonstrado a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df<span class="sc">$</span>idade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>Note que nesse caso é preciso despresar a omissão dos valores <em>NA</em>.</p>
+</section>
+<section id="exemplo-criando-uma-tabela-de-estatísticas-descritivas" class="level3" data-number="2.10.8">
+<h3 data-number="2.10.8" class="anchored" data-anchor-id="exemplo-criando-uma-tabela-de-estatísticas-descritivas"><span class="header-section-number">2.10.8</span> Exemplo: Criando uma tabela de estatísticas descritivas</h3>
+<p>Uma tabela de estatísticas descritivas mostra o perfil básico de um banco de dados e geralmente expressa o número de observações, o valor médio, o desvio padrão, o valor máximo e o valor mínimo de cada variável. Para representar, considere usar o banco de dados nativo do <em>R</em> sobre características das flores (<em>iris).</em> Esse banco de dados possui cinco colunas (<em>Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species</em>) que mostram o comprimento e a largura da pétala e da sépala de cada espécie de flor. Elaborar uma tabela de estatísticas descritivas dessa base de dados seria o mesmo que preencher a seguinte tabela:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 10%">
+<col style="width: 22%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Observações</th>
+<th>Média</th>
+<th>Desvio Padrão</th>
+<th>Mínimo</th>
+<th>Máximo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Sepal.Length</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>Sepal.Width</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><em>Petal.Length</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>Petal.Width</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Para esse propósito, vamos usar a indexação aos nomes das linhas e colunas e vamos usar as estatísticas básicas mostradas anteriormente. O primeiro passo para tal é criar um data frame vazio com os mesmos padrões da tabela anterior:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>est_desc <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Observacoes =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)),</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Media =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)),</span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Desvio_Padrao =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)),</span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Minimo =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)),</span>
+<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Maximo  =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>))</span>
+<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb89-8"><a href="#cb89-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(est_desc) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>, <span class="st">"Petal.Length"</span>, <span class="st">'Petal.Width'</span>)</span>
+<span id="cb89-9"><a href="#cb89-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(est_desc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Observacoes Media Desvio_Padrao Minimo Maximo
+Sepal.Length          NA    NA            NA     NA     NA
+Sepal.Width           NA    NA            NA     NA     NA
+Petal.Length          NA    NA            NA     NA     NA
+Petal.Width           NA    NA            NA     NA     NA</code></pre>
+</div>
+</div>
+<p>O próximo passo é preencher cada célula do data frame com as estatísticas correspondentes. Inicialmente, vamos preencher a coluna referente ao número de observações:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Length"</span>, <span class="st">"Observacoes"</span>] <span class="ot">=</span> <span class="fu">length</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Width"</span>, <span class="st">"Observacoes"</span>] <span class="ot">=</span> <span class="fu">length</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Length"</span>, <span class="st">"Observacoes"</span>] <span class="ot">=</span> <span class="fu">length</span>(iris<span class="sc">$</span>Petal.Length)</span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Width"</span>, <span class="st">"Observacoes"</span>] <span class="ot">=</span> <span class="fu">length</span>(iris<span class="sc">$</span>Petal.Width)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora vamos preencher a coluna da média:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Length"</span>, <span class="st">"Media"</span>] <span class="ot">=</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Width"</span>, <span class="st">"Media"</span>] <span class="ot">=</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Length"</span>, <span class="st">"Media"</span>] <span class="ot">=</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Petal.Length)</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Width"</span>, <span class="st">"Media"</span>] <span class="ot">=</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Petal.Width)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora vamos preencher a coluna do desvio padrão:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Length"</span>, <span class="st">"Desvio_Padrao"</span>] <span class="ot">=</span> <span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Width"</span>, <span class="st">"Desvio_Padrao"</span>] <span class="ot">=</span> <span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Length"</span>, <span class="st">"Desvio_Padrao"</span>] <span class="ot">=</span> <span class="fu">sd</span>(iris<span class="sc">$</span>Petal.Length)</span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Width"</span>, <span class="st">"Desvio_Padrao"</span>] <span class="ot">=</span> <span class="fu">sd</span>(iris<span class="sc">$</span>Petal.Width)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora vamos fazer o mesmo para a coluna do valor mínimo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Length"</span>, <span class="st">"Minimo"</span>] <span class="ot">=</span> <span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Width"</span>, <span class="st">"Minimo"</span>] <span class="ot">=</span> <span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Length"</span>, <span class="st">"Minimo"</span>] <span class="ot">=</span> <span class="fu">min</span>(iris<span class="sc">$</span>Petal.Length)</span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Width"</span>, <span class="st">"Minimo"</span>] <span class="ot">=</span> <span class="fu">min</span>(iris<span class="sc">$</span>Petal.Width)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Por fim, vamos preencher a coluna do valor máximo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Length"</span>, <span class="st">"Maximo"</span>] <span class="ot">=</span> <span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Sepal.Width"</span>, <span class="st">"Maximo"</span>] <span class="ot">=</span> <span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Length"</span>, <span class="st">"Maximo"</span>] <span class="ot">=</span> <span class="fu">max</span>(iris<span class="sc">$</span>Petal.Length)</span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>est_desc[<span class="st">"Petal.Width"</span>, <span class="st">"Maximo"</span>] <span class="ot">=</span> <span class="fu">max</span>(iris<span class="sc">$</span>Petal.Width)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>O resultado desse procedimento é o data frame a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(est_desc, <span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Observacoes Media Desvio_Padrao Minimo Maximo
+Sepal.Length         150 5.843        0.8281    4.3    7.9
+Sepal.Width          150 3.057        0.4359    2.0    4.4
+Petal.Length         150 3.758        1.7653    1.0    6.9
+Petal.Width          150 1.199        0.7622    0.1    2.5</code></pre>
+</div>
+</div>
+<p>Existem maneiras mais rápidas e mais eficientes de preparar uma tabela de estatísticas descritivas, porém, isso exige artifícios que só serão vistos em capítulos posteriores.</p>
+</section>
+</section>
+<section id="exercício" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="exercício"><span class="header-section-number">2.11</span> Exercício</h2>
+<p>Considere usar a base de dados nativa sobre carros <em>mtcars</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(1) Remova o carro Fiat X1-9.</p>
+<p>(2) Usando o nome das linhas e das colunas, encontre o consumo <em>(mpg)</em> do Toyota Corolla.</p>
+<p>(3) Crie uma nova coluna de nome <em>difCorolla</em> mostrando a diferença entre o consumo médio de cada carro e o consumo médio do Toyota Corolla.</p>
+<p>(4) Crie uma nova coluna de nome <em>consumo_peso</em> mostrando o consumo <em>(mpg)</em> dos carros para cada tonelada de peso <em>(wt)</em>.</p>
+<p>(5) Apague os carros de câmbio manual (carros com <em>am = 0</em>).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link" aria-label="Introdução">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Aula3.html" class="pagination-link" aria-label="Classes de elementos">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Classes de elementos</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

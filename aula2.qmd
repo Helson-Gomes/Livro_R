@@ -1,0 +1,480 @@
+# Indexação e operações indexadas
+
+Nesse módulo estão expressos os detalhes básicos acerca de operações fundamentais com diferentes tipos de objetos. O módulo ainda apresenta os conceitos e as normas básicas sobre posições de elementos em um objeto (indexação) e também mostra as operações que usam essa indexação e que podem ser úteis na análise de dados.
+
+## Indexação de objetos
+
+Os objetos são compostos por elementos e esses elementos ocupam uma posição dentro do objeto. Por exemplo, imagine um vetor $x = [Maria, Paulo, Pedro, Ana]$. Esse vetor é composto por quatro elementos, maria na posição 1, Paulo na posição 2, Pedro na posição 3 e Ana na posição 4. Agora considere que essas mesmas informações estejam dispostas em uma matriz.
+
+$$\left[\begin{array}{cc}
+Maria & Paulo\\ Pedro & Ana \end{array}
+\right]
+$$
+
+Agora a posição deve ser visualizada como "linha por coluna". Maria está na linha 1 e coluna 1 (posição \[*1, 1\])*, Paulo está na linha 1 e coluna 2 (posição *\[1, 2\])*, Pedro está na linha 2 e coluna 1 (posição \[*2, 1\])* e Ana está na linha 2 e coluna 2 (posição \[*2, 2\])*. A essa posição dá-se o nome de indexação. A indexação nada mais é do que a posição de um elemento em um conjunto, que nesse caso são os objetos no ambiente de trabalho.
+
+Para verificar qual elemento está em uma determinada posição do objeto, deve-se informar o nome do objeto precedido da posição entre colchetes, isto é, *nome do objeto\[posição na linha, posição na coluna\]*. Por exemplo, na matriz anterior, caso queiramos consultar quem está na linha 1 da coluna 1, devemos proceder conforme a seguir:
+
+```{r}
+nomes = matrix(c("Maria", "Paulo", "Pedro", "Ana"), byrow = TRUE, nrow = 2, ncol = 2)
+nomes[1,1]
+```
+
+A lógica é a mesma em um data frame,
+
+```{r}
+df = data.frame(
+  coluna1 = c("Maria", "Pedro"),
+  coluna2 = c("Paulo", "Ana")
+)
+df[1,1]
+```
+
+Se quisermos nos referir apenas às linhas, então a posição da coluna deve ficar vazia, isto é, *nome do objeto\[posição na linha,\]*. Seguindo o exemplo anterior, caso queiramos checar quem está na linha 1 da matriz, devemos proceder conforme a seguir:
+
+```{r}
+nomes[1,]
+```
+
+A mesma lógica se aplica aos data frames.
+
+```{r}
+df[1,]
+```
+
+Se quisermos nos referir apenas às colunas, então a posição da linha deve ficar vazia, isto é, *nome do objeto\[, posição na coluna\]*. Seguindo o exemplo anterior, caso queiramos checar quem está na coluna 1 da matriz, devemos proceder conforme a seguir:
+
+```{r}
+nomes[,1]
+```
+
+A mesma lógica se aplica aos data frames.
+
+```{r}
+df[,1]
+```
+
+A posição das linhas e colunas também pode ser referenciada de acordo com os nomes. Nesse caso, o procedimento é *nome do objeto\["nome da linha", "nome da coluna"\]*. Para exemplificar, vamos dar nomes às linhas e as colunas da matriz e do data frame usados nos exemplos anteriores.
+
+```{r}
+rownames(nomes) = c("linha 1", "linha 2")
+colnames(nomes) = c("coluna 1", "coluna 2")
+print(nomes)
+```
+
+```{r}
+rownames(df) = c("linha 1", "linha 2")
+print(nomes)
+```
+
+Para checar quem está na linha 1, proceda conforme a seguir:
+
+```{r}
+nomes["linha 1",]
+```
+
+E no data frame:
+
+```{r}
+df["linha 1", ]
+```
+
+Para checar quem está na coluna 1, proceda conforme a seguir:
+
+```{r}
+nomes[, "coluna 1"]
+```
+
+E no data frame:
+
+```{r}
+df[, "coluna1"]
+```
+
+Nos data frames, a indexação das colunas pode ser mais simplificada devido a possibilidade de referenciar as colunas plo nome usando o cifrão "\$". Nesse caso, o procedimento a se fazer é *nome do objeto\$nome da coluna*. Por exemplo, para se referir a coluna 1 do data frame anterior, deve-se proceder conforme a seguir:
+
+```{r}
+df$coluna1
+```
+
+## Adicionando linhas a um data frame
+
+Tendo comopreendido como funciona a indexação, o próximo passo é aprender como essa indexação pode ser usada para adicionar, excluir ou alterar elementos de um objeto. Caso a intenção seja adicionar uma linha em um data frame, então o procedimento a se fazer é *nome do objeto\[número de linhas do objeto + 1,\]*. Para exemplificar, vamos incluir uma linha na data frame de nomes contendo os valores *\[João, Clara\]*. Esse procedimento deve ser feito conforme especificado a seguir:
+
+```{r}
+df[3,] = c("João", "Clara")
+print(df)
+```
+
+## Adicionando linhas em uma matriz
+
+Para adicionar linhas em uma matriz é preciso usar a função *rbind()*. Essa função também funciona perfeitamente para data frames. Nesse caso, o procedimento a se fazer é *rbind(nome do objeto, vetor com os valores da linha adicionada)*. Por exemplo, para adicionar uma linha com os valores *\[João, Clara\]* no data frame de nomes, deve-se proceder conforme a seguir:
+
+```{r}
+nomes = rbind(nomes, c("João", "Clara"))
+print(nomes)
+```
+
+A mesma lógica se aplica aos data frames:
+
+```{r}
+rbind(df, c("João", "Clara"))
+```
+
+## Removendo linhas de um objeto
+
+A remoção de linhas de um objeto é feita adicionando um sinal de menos antes do número da linha indicado em colchetes. Por exemplo, caso queiramos remover a linha 3 da matriz de nomes, devemos proceder conforme a seguir:
+
+```{r}
+nomes[-3,]
+```
+
+A mesma lógica se aplica aos data frames:
+
+```{r}
+df[-3,]
+```
+
+Caso a intenção seja remover múltiplas linhas, então o número das linhas que serão removidas deve ser indicado em um vetor precedido do sinal de menos dentro do colchetes. Por exemplo, caso queiramos remover as linhas 2 e 3 da matriz de nomes, devemos proceder conforme a seguir:
+
+```{r}
+nomes[-c(2,3),]
+```
+
+A mesma lógica se aplica aos data frames:
+
+```{r}
+df[-c(2,3),]
+```
+
+## Adicionando colunas em um data frame
+
+Existem várias maneiras de adicionar colunas em um data frame. O usuário pode indicar a posição da coluna entre colchetes e em seguida indicar os valores, pode indicar o nome da coluna em colchetes e em seguida indicar os valores, pode usar o sifrão para indicar o nome da coluna criada, ...
+
+Para exemplificar, suponha que queiramos adicionar uma coluna com os valores \*\[pessoa 1, pessoa 2, pessoa 3\] no dtaframe df. Essa tarefa pode ser feita das seguintes maneiras:
+
+-   Indicando a posição em colchetes
+
+```{r}
+df[,3] = c("pessoa 1", "pessoa 2", "pessoa 3")
+print(df)
+```
+
+```{r, include=FALSE}
+df=df[,-3]
+```
+
+-   Indicando o nome da coluna no colchetes.
+
+```{r}
+df[, "coluna3"] = c("pessoa 1", "pessoa 2", "pessoa 3")
+print(df)
+```
+
+```{r}
+df=df[,-3]
+```
+
+-   Usando o cifrão.
+
+```{r}
+df$coluna3 = c("pessoa 1", "pessoa 2", "pessoa 3")
+print(df)
+```
+
+## Adicionando colunas em uma matriz
+
+Para adicionar colunas em uma matriz é preciso usar a função *cbind()*. Essa função tem a mesma lógica de uso da função *rbind()* apresentada anteriormente, com a diferença de que a função *cbind()* posiciona os novos elementos em uma coluna em vez de uma linha. Para exemplificar, vamos adicionar a mesma coluna incluída no data frame *df* na matriz de nomes.
+
+```{r}
+nomes = cbind(nomes, c("pessoa 1", "pessoa 2", "pessoa 3"))
+print(nomes)
+```
+
+A mesma lógica pode ser aplicada aos data frames fazendo *df = cbind(df, c("pessoa 1", "pessoa 2", "pessoa 3"))*.
+
+## Renomeando colunas e linhas específicas
+
+Como visto no capítulo anterior, a função *colnames()* pode ser usada para renomear colunas de uma matriz ou data frame. Porém, caso o objetivo seja renomear uma única coluna específica é possível usar a indexação para realizar essa tarefa. Por exemplo, considere renomear apenas a coluna 3 do data frame de nomes atribuindo a essa coluna o nome *"coluna3"*.
+
+```{r}
+colnames(nomes)[3] = "Coluna3"
+print(nomes)
+```
+
+O mesmo pode ser feito para as linhas. Por exemplo, caso queiramos renomear apenas a linha 3 do data frame de nomes, podemos proceder conforme a seguir:
+
+```{r}
+rownames(nomes)[3] = "linha 3"
+print(nomes)
+```
+
+## Operações com colunas
+
+Em um data frame novas colunas podem ser geradas por meio de operações com colunas existentes. Para exemplificar, considere um dataframe com informações sobre medidas de alunos de uma academia.
+
+```{r}
+alunos = data.frame(
+nome = c("Aluno 1", "Aluno 2", "Aluno 3"),
+peso = c(65, 70, 90),
+altura = c(1.60, 1.70, 1.78)
+)
+print(alunos)
+```
+
+Imagine que seja necessário adicionar nesse data frame uma nova coluna com o índice de massa corporal dos alunos (IMC). Sabe-se que:
+
+$$
+IMC = \frac{Peso}{Altura^2}
+$$
+
+A nova coluna pode ser adicionada indexando a sua posição:
+
+```{r}
+alunos[,4] = alunos[,2]/(alunos[,3]^2)
+print(alunos)
+```
+
+```{r, include=FALSE}
+alunos = alunos[,-4]
+```
+
+Indexando o nome da coluna:
+
+```{r}
+alunos["imc"] = alunos["peso"]/(alunos["altura"]^2)
+print(alunos)
+```
+
+```{r, include=FALSE}
+aluno = alunos[,-4]
+```
+
+Ou utilizando o cifrão:
+
+```{r}
+alunos$imc = alunos$peso/(alunos$altura^2)
+print(alunos)
+```
+
+### Criando uma nova coluna como recorte de uma coluna existente
+
+Imagine o caso em que seja preciso criar uma coluna como um recorte de valores de uma coluna existente em um data frame. Falando com outras palavras, imagine que seja preciso adicionar uma coluna contendo uma parte dos valores contidos em outra coluna. Por exemplo, no data frame de alunos da academia, imagine que seja preciso mostrar apenas o número do aluno em uma nova coluna, isto é, em vez de mostrar o termo "Aluno 1" suponha que seja preciso mostrar apenas o número "1".
+
+Esse procedimento pode ser feito usando a função *substr*. Essa função é nativa da linguagem *R* e serve para desmembrar valores de acordo com a posição dos caracteres desses valores. Exemplificando, o termo "Aluno 1" tem sete caracteres que correspondem a seis letras, um espaço e um número. O número ocupa a sétima posição no termo. Na função substr temos que indicar a posição inicial e a posição final do conjunto de caracteres que queremos desmembrar do valor objetivo. A maneira correta de usar essa função é fazendo *substr(nome do elemento, posição inicial, posição final)*. Por exemplo, se fizermos *substr("Aluno 1", 1, 2)* o resultado será *"Al*" que corresponde aos dois primeiros caracteres do termo utilizado.
+
+No nosso exemplo como o número do aluno inicia e termina na sétima posição, então o correto a se fazer é:
+
+```{r}
+alunos$num_aluno = substr(alunos$nome, 7, 7)
+print(alunos)
+```
+
+### Mesclando colunas
+
+Em vez de separar valores de uma coluna, imagine o caso em que seja preciso juntar valores. Em *R* isso pode ser facilmente feito usando a função *paste()*. Essa função junta múltiplos valores separando-os com um searador indicado pelo usuário. Para usar a função, basta indicar entre parênteses os valores que serão unificados e indicar o separador com o parâmetro *"sep"*. Por exemplo:
+
+```{r}
+nome = "João"
+sobrenome = "Silva"
+nome_completo = paste(nome, sobrenome, sep = " ")
+print(nome_completo)
+```
+
+Essa função pode ser usada para unir colunas. Para exemploficar, considere o novo data frame com as características dos alunos de uma academia indicado a seguir:
+
+```{r}
+alunos2 = alunos
+alunos2$nome = c("João", "Maria", "João")
+```
+
+E imagine que seja preciso criar um código do aluno, unindo o nome e o número do aluno separando o nome e um número por um traço. Esse procedimento pode ser feito conforme indicado a seguir:
+
+```{r}
+alunos2$cod_aluno = paste(alunos2$nome, alunos2$num_aluno, sep = "-")
+print(alunos2)
+```
+
+## Reposicionando linhas e colunas
+
+Conhecendo a posição de cada linha e cada coluna, é possível reordená-las de acordo com as necessidades ou preferências do usuário usando operações indexadas. Por exemplo, suponha que seja preciso reordenar as linhas do data frame de alunos para posicionar o aluno 3 na primeira linha, o aluno 2 na segunda linha e o aluno 1 na terceira linha. Esse procedimento pode ser feito conforme a seguir:
+
+```{r}
+alunos = alunos[c(3,2,1),]
+print(alunos)
+```
+
+Agora suponha que seja necessário posicionar o nome do aluno na primeira coluna, a altura na segunda coluna, o peso na terceira coluna e o imc na última coluna, isto é, suponha que seja preciso inverter a posição do peso e da altura no data frame. Esse procedimento pode ser feito conforme indicado a seguir:
+
+```{r}
+alunos = alunos[, c(1,3,2,4)]
+print(alunos)
+```
+
+## Operações básicas
+
+Novas linhas e colunas podem ser adicionadas em um data frame usando operações básicas como soma, produto, ou estatísticas básicas. Para demonstrar, considere um data frame contendo a idade de cinco pessoas conforme a seguir:
+
+```{r}
+df = data.frame(
+  pessoa = c("pessoa1", "pessoa2", "pessoa3", "pessoa4", "pessoa"),
+  idade = c(25, 50, 68,45,NA)
+)
+print(df)
+```
+
+Note que há um valor faltante, indicado pelo termo *NA* que representa a sigla do "não disponível" (do inglês *not available*). Qualquer operação contendo essa coluna deve indicar que esse valor ausente deve ser ignorado. Isso pode ser feito adicionando a opção *na.rm = TRUE*.
+
+### Soma total
+
+Suponha que queiramos encontrar o somatório da idade de todas as pessoas contidas no data frame. Isso pode ser facilmente executado usando a função *sum()*, conforme indicado a seguir:
+
+```{r}
+sum(df$idade, na.rm = TRUE)
+```
+
+### Produto total
+
+Caso o objetivo seja encontrar o produto de todos os valores de uma dada coluna, então o ideal é usar a função *prod()*, conforme demonstrado a seguir:
+
+```{r}
+prod(df$idade, na.rm = TRUE)
+```
+
+### Média
+
+Já a média pode ser obtida com a função *mean()*, conforme demonstrado a seguir:
+
+```{r}
+mean(df$idade, na.rm = TRUE)
+```
+
+### Mínimo
+
+O valor mínimo de um dado objeto pode ser computado por meio da função *min()*, conforme demonstrado a seguir:
+
+```{r}
+min(df$idade, na.rm = TRUE)
+```
+
+### Máximo
+
+O valor máximo de um dado objeto pode ser computado por meio da função *max()*, conforme demonstrado a seguir:
+
+```{r}
+max(df$idade, na.rm = TRUE)
+```
+
+### Desvio padrão
+
+O desvio padrão de um dado objeto pode ser computado por meio da função *sd()*, conforme demonstrado a seguir:
+
+```{r}
+sd(df$idade, na.rm = TRUE)
+```
+
+### Número de observações
+
+O número de observações - ou comprimento - de um dado objeto pode ser verificado com o uso da função *length()*, conforme demonstrado a seguir:
+
+```{r}
+length(df$idade)
+```
+
+Note que nesse caso é preciso despresar a omissão dos valores *NA*.
+
+### Exemplo: Criando uma tabela de estatísticas descritivas
+
+Uma tabela de estatísticas descritivas mostra o perfil básico de um banco de dados e geralmente expressa o número de observações, o valor médio, o desvio padrão, o valor máximo e o valor mínimo de cada variável. Para representar, considere usar o banco de dados nativo do *R* sobre características das flores (*iris).* Esse banco de dados possui cinco colunas (*Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species*) que mostram o comprimento e a largura da pétala e da sépala de cada espécie de flor. Elaborar uma tabela de estatísticas descritivas dessa base de dados seria o mesmo que preencher a seguinte tabela:
+
+|                | Observações | Média | Desvio Padrão | Mínimo | Máximo |
+|----------------|-------------|-------|---------------|--------|--------|
+| *Sepal.Length* |             |       |               |        |        |
+| *Sepal.Width*  |             |       |               |        |        |
+| *Petal.Length* |             |       |               |        |        |
+| *Petal.Width*  |             |       |               |        |        |
+
+Para esse propósito, vamos usar a indexação aos nomes das linhas e colunas e vamos usar as estatísticas básicas mostradas anteriormente. O primeiro passo para tal é criar um data frame vazio com os mesmos padrões da tabela anterior:
+
+```{r}
+est_desc = data.frame(
+  Observacoes = c(rep(NA, 4)),
+  Media = c(rep(NA, 4)),
+  Desvio_Padrao = c(rep(NA, 4)),
+  Minimo = c(rep(NA, 4)),
+  Maximo  = c(rep(NA, 4))
+)
+rownames(est_desc) = c("Sepal.Length", "Sepal.Width", "Petal.Length", 'Petal.Width')
+print(est_desc)
+```
+
+O próximo passo é preencher cada célula do data frame com as estatísticas correspondentes. Inicialmente, vamos preencher a coluna referente ao número de observações:
+
+```{r}
+est_desc["Sepal.Length", "Observacoes"] = length(iris$Sepal.Length)
+est_desc["Sepal.Width", "Observacoes"] = length(iris$Sepal.Width)
+est_desc["Petal.Length", "Observacoes"] = length(iris$Petal.Length)
+est_desc["Petal.Width", "Observacoes"] = length(iris$Petal.Width)
+```
+
+Agora vamos preencher a coluna da média:
+
+```{r}
+est_desc["Sepal.Length", "Media"] = mean(iris$Sepal.Length)
+est_desc["Sepal.Width", "Media"] = mean(iris$Sepal.Width)
+est_desc["Petal.Length", "Media"] = mean(iris$Petal.Length)
+est_desc["Petal.Width", "Media"] = mean(iris$Petal.Width)
+```
+
+Agora vamos preencher a coluna do desvio padrão:
+
+```{r}
+est_desc["Sepal.Length", "Desvio_Padrao"] = sd(iris$Sepal.Length)
+est_desc["Sepal.Width", "Desvio_Padrao"] = sd(iris$Sepal.Width)
+est_desc["Petal.Length", "Desvio_Padrao"] = sd(iris$Petal.Length)
+est_desc["Petal.Width", "Desvio_Padrao"] = sd(iris$Petal.Width)
+```
+
+Agora vamos fazer o mesmo para a coluna do valor mínimo:
+
+```{r}
+est_desc["Sepal.Length", "Minimo"] = min(iris$Sepal.Length)
+est_desc["Sepal.Width", "Minimo"] = min(iris$Sepal.Width)
+est_desc["Petal.Length", "Minimo"] = min(iris$Petal.Length)
+est_desc["Petal.Width", "Minimo"] = min(iris$Petal.Width)
+```
+
+Por fim, vamos preencher a coluna do valor máximo:
+
+```{r}
+est_desc["Sepal.Length", "Maximo"] = max(iris$Sepal.Length)
+est_desc["Sepal.Width", "Maximo"] = max(iris$Sepal.Width)
+est_desc["Petal.Length", "Maximo"] = max(iris$Petal.Length)
+est_desc["Petal.Width", "Maximo"] = max(iris$Petal.Width)
+```
+
+O resultado desse procedimento é o data frame a seguir:
+
+```{r}
+print(est_desc, digits = 4)
+```
+
+Existem maneiras mais rápidas e mais eficientes de preparar uma tabela de estatísticas descritivas, porém, isso exige artifícios que só serão vistos em capítulos posteriores.
+
+## Exercício
+
+Considere usar a base de dados nativa sobre carros *mtcars*.
+
+```{r}
+df = mtcars
+```
+
+\(1\) Remova o carro Fiat X1-9.
+
+\(2\) Usando o nome das linhas e das colunas, encontre o consumo *(mpg)* do Toyota Corolla.
+
+\(3\) Crie uma nova coluna de nome *difCorolla* mostrando a diferença entre o consumo médio de cada carro e o consumo médio do Toyota Corolla.
+
+\(4\) Crie uma nova coluna de nome *consumo_peso* mostrando o consumo *(mpg)* dos carros para cada tonelada de peso *(wt)*.
+
+\(5\) Apague os carros de câmbio manual (carros com *am = 0*).
