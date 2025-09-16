@@ -704,26 +704,10 @@ Geodetic CRS:  SIRGAS 2000
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"https://drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&amp;export=download"</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Country_Name Country_Code gdp_variation  ano lig_country cpi_index  exports
-1    Argentina          ARG    -2.0008610 2019    ARG-2019        NA 17.92488
-2    Australia          AUS     2.1715451 2019    AUS-2019  1.610768 24.15968
-3       Brazil          BRA     1.2207778 2019    BRA-2019  3.732976 14.12292
-4       Canada          CAN     1.9084319 2019    CAN-2019  1.949269 32.35270
-5        China          CHN     5.9505008 2019    CHN-2019  2.899234 18.40999
-6      Germany          DEU     0.9878933 2019    DEU-2019  1.445660 42.38630
-   imports       tax id
-1 14.70574 13.164229  1
-2 22.02782  3.100100  2
-3 14.76734  1.992125  3
-4 33.81879  1.292463  4
-5 17.48010  1.850598  5
-6 36.74744        NA  6</code></pre>
-</div>
 </div>
 <p>Caso o arquivo estivesse presente na sua máquina em vez de um endereço url, bastaria proceder de acordo com a seguinte especificação:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"Endereço da pasta onde o arquivo está armazenado/nome do arquivo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"Endereço da pasta onde o arquivo está armazenado/nome do arquivo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Abaixo segue uma lista de funções com o mesmo layout de uso para importar arquivos de outras linguagens.</p>
 <ul>
@@ -734,11 +718,11 @@ Geodetic CRS:  SIRGAS 2000
 </ul>
 <p>Além de importar os arquivos, também é possível salvar os arquivos presentes no ambiente de trabalho em uma extensão Stata. Por exemplo, para salvar o data frame <em>mtcars</em> na extensão <em>.dta</em>, use a função <em>write.dta</em>, procedendo conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(mtcars, <span class="at">file =</span> <span class="st">"mtcars.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(mtcars, <span class="at">file =</span> <span class="st">"mtcars.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O arquivo <em>mtcars.dta</em> será salvo na pasta em que o diretório de trabalho está fixado. No geral, a funçãos <em>write.dta</em> segue as seguintes especificações de uso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(nome do data frame no diretório de trabalho, <span class="at">file =</span> <span class="st">"Endereço da pasta/nome do arquivo salvo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(nome do data frame no diretório de trabalho, <span class="at">file =</span> <span class="st">"Endereço da pasta/nome do arquivo salvo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

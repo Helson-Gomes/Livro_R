@@ -436,7 +436,7 @@ library(foreign)
 
 Para abrir arquivos com a extensão *.dta* é necessário usar a função *read.dta()*, indicando dentro do parêntesis e entre aspas o nome do arquivo que se deseja abrir. Para exemplificar, considere importar o arquivo stata disponível no link drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&export=download. Nesse caso, deve-se proceder conforme a seguir:
 
-```{r}
+```{r, eval=FALSE}
 dt = read.dta("https://drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&export=download")
 head(dt)
 ```
