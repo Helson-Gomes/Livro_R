@@ -96,7 +96,7 @@ read.csv(
 
 Para exemplificar, considere a planilha de registros fictícios de clientes disponível no endereço <https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download>. A planilha possui 100 linhas, cada uma delas correspondendo às informações de um cliente específico. Caso o usuário baixe esse arquivo em sua máquina e abra esse arquivo em um editor de texto, notará que as colunas estão delimitadas por uma vírgula. Vamos importar esse arquivo no formato de um data frame nomeando-o de *"clientes"*.
 
-```{r}
+```{r, eval=FALSE}
 clientes = read.csv(
   file = "https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download",
   header = TRUE, # indicando que a primeira linha contém o nome das colunas
@@ -111,7 +111,7 @@ Caso esse arquivo esteja em uma pasta do seu computador em vez de um link url, e
 
 Agora considere essa mesma planilha disponível no endereço [https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&export=download](https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&export=downloa). Note que se replicarmos o script anterior alterando o endereço para esse link um erro será reportado. Isso ocorre porque nesse caso há um cabeçalho na planilha, isto é, existem linhas na parte superior da planilha que não possuem as mesmas especificações textuais do restante do csv e devem ser desconsideradas no ato da importação. Em outras palavras, as linhas do cabeçalho precisam ser *"puladas"*. Isso é feito por meio do parâmetro *skip* dentro da função *read.csv*. Esse parâmetro recebe a quantidade de linhas que precisam ser puladas. Como o cabeçalho desse exemplo possui duas linhas, então deve-se adicionar *skip = 2* no comando, ou seja:
 
-```{r}
+```{r, eval=FALSE}
 clientes = read.csv(
   file = "https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&export=download",
   header = TRUE, # indicando que a primeira linha contém o nome das colunas
@@ -164,7 +164,7 @@ read.xlsx(
 
 Para demonstrar, considere que precisamos importar uma planilha com os valores nominais do PIB dos estados do Brasil desde 2002 até 2021 e que essa tabela está disponível no endereço <https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&export=download>. As primeiras três linhas da planilha compõem o cabeçalho e devem ser desconsideradas, isto é, a planilha só inicia de fato na linha 4. Assim, a importação deve ser feita conforme a seguir:
 
-```{r}
+```{r, eval=FALSE}
 pib = read.xlsx(
   xlsxFile = "https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&export=download",
   startRow = 4,
@@ -205,7 +205,7 @@ read_xls(
 
 Para exemplificar, considere a mesma planilha do PIB dos estados especificada no exemplo anterior, porém, no formato *.xls*, disponível no link <https://drive.google.com/uc?id=141Tws9jifN8Lk4OpuyHpc9dATED9eZKC&export=download>. Inicialmente, vamos criar uma pasta temporária e baixar essa planilha nessa pasta. Porém, o usuário pode baixar o arquivo em uma pasta do seu computador sem a necessidade de realização desse passo:
 
-```{r}
+```{r, eval=FALSE}
 url <- "https://drive.google.com/uc?id=141Tws9jifN8Lk4OpuyHpc9dATED9eZKC&export=download"
 destfile <- tempfile(fileext = ".xls") # criando a pasta e nomeando-a de destfile
 download.file(url, destfile, mode = "wb") # baixando o xls na pasta criada
@@ -213,7 +213,7 @@ download.file(url, destfile, mode = "wb") # baixando o xls na pasta criada
 
 Tendo criado a basta e baixado o arquivo nela, o próximo passo é ler esse arquivo. Para tanto, deve-se proceder conforme a seguir:
 
-```{r}
+```{r, eval=FALSE}
 pib = read_xls(
   path = destfile,
   skip = 3,
@@ -287,7 +287,7 @@ Ao abrir o dicionário, o usuário irá se deparar com os detalhes técnicos da 
 
 Para demonstrar o processo de importação, vamos importar as quatro primeiras colunas da pesquisa: Ano, Trimestre, UF e Capital. Os procedimentos estão demonstrados a seguir:
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 #setwd("Z:\\URCA\\2024.1\\Intr.Prog.Dados\\Aula_VI")
 
 tp = tempfile()
@@ -314,7 +314,7 @@ pnad2024 = read_fwf(
 )
 ```
 
-```{r}
+```{r, eval=FALSE}
 head(pnad2024)
 ```
 
