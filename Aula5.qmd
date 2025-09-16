@@ -126,3 +126,50 @@ head(clientes) # mostra as primeiras linhas da planilha
 O usuário pode testar que quando *skip \< 2*, o erro será reportado mesmo assim, ao passo que quando *skip \> 2*, a importação funciona, porém, ajustes precisam ser feitos para que o nome das colunas apareça de maneira correta no data frame.
 
 É importante ressaltar que a função *read.csv* possui vários outros parâmetros além desses aqui especificados. O usuário pode checar as demais possibilidades de uso de parâmetros da função executando o comando *?read.csv*.
+
+## Arquivos excel (.xlsx)
+
+Os arquivos gerados no excel têm linhas e colunas bem definidas e por isso costumam ser maiores do que os arquivos em formato *.csv*. Ao contrário dos arquivos *.csv* que são usados para armazenar texto, os arquivos do excel podem guardar informações de diversos formatos com grande utilidade. Esses arquivos remetem à ideia central de um data frame (quadro de dados), onde as linhas representam os indivíduos observados e as colunas mostram as características desses indivíduos.
+
+Existem várias maneiras de importar arquivos *.xlsx* para a linguagem *R*, porém, esse material recomenda o uso da biblioteca *openxlsx*. Essa biblioteca foi criada especialmente para abrir arquivos com esse formato em *R* e as suas especificações de uso podem ser acessadas em <https://cran.r-project.org/web/packages/openxlsx/openxlsx.pdf>.
+
+Como vamos utilizar uma biblioteca não nativa, o primeiro passo para possibilitar o uso é fazer a instalação da biblioteca. O usuário pode consultar se a biblioteca já está instalada na sua máquina acessando no Rstudio a aba *Packages* e procurando pelo nome da biblioteca na guia de busca. Ou pode checar se a biblioteca está instalada usando o seguinte comando:
+
+```{r, eval=FALSE}
+"openxlsx" %in% installed.packages()
+```
+
+Se o output for *FALSE*, significa que a biblioteca precisa ser instalada. Nesse caso, deve-se usar a função *install.packages()*, indicando dentro do parênteses e entre aspas o nome da biblioteca que se deseja instalar. Nesse caso, deve-se proceder conforme a seguir:
+
+```{r, eval=FALSE}
+install.packages("openxlsx")
+```
+
+Tendo instalado a biblioteca, o próximo passo é liberá-la para o uso. Isso é feito por meio da função *library()*, indicando dentro do parênteses e entre aspas o nome da biblioteca que se deseja liberar para o uso. Nesse caso, deve-se proceder conforme a seguir:
+
+```{r}
+library(openxlsx)
+```
+
+Para abrir um arquivo com extensão *.xlsx* com a biblioteca *openxlsx*, deve-se usar a função *read.xlsx*. O usuário pode consultar as instruções de uso dessa função executando o comando *?openxlsx*. Basicamente, essa função tem a seguinte estrutura de uso:
+
+```{r, eval=FALSE}
+read.xlsx(
+  xlsxFile = "endereço do arquivo/nome do arquivo.xlsx",
+  startRow = "Número da linha em que começa a planilha",
+  sheet = "Número ou nome da planilha contida no arquivo",
+  colNames = "TRUE se a primeira linha mostra os nomes das colunas e FALSE caso contrário"
+)
+```
+
+Para demonstrar, considere que precisamos importar uma planilha com os valores nominais do PIB dos estados do Brasil desde 2002 até 2021 e que essa tabela está disponível no endereço <https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&export=download>. As primeiras três linhas da planilha compõem o cabeçalho e devem ser desconsideradas, isto é, a planilha só inicia de fato na linha 4. Assim, a importação deve ser feita conforme a seguir:
+
+```{r, eval=FALSE}
+pib = read.xlsx(
+  xlsxFile = "https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&export=download",
+  startRow = 4,
+  colNames = TRUE,
+  sheet = 1
+)
+head(pib)
+```
