@@ -340,7 +340,7 @@ install.packages("sf")
 
 Tendo instalado a biblioteca, o usuário deve liberá-la para o uso, procedendo conforme a seguir:
 
-```{r}
+```{r, eval=FALSE}
 library(sf)
 ```
 
@@ -360,7 +360,7 @@ head(estados)
 ```
 
 ```{r, echo=FALSE}
-estados = read_sf("Files/BR_UF_2024.shp")
+estados = sf::read_sf("Files/BR_UF_2024.shp")
 head(estados)
 ```
 
@@ -368,6 +368,7 @@ Esse procedimento vai gerar um arquivo com as seguintes especificações:
 
 ```{r, echo=FALSE}
 library(ggplot2)
+library(sf)
 ggplot(estados) +
   geom_sf() +
   theme_void()

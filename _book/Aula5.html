@@ -571,22 +571,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Tendo instalado a biblioteca, o usuário deve liberá-la para o uso, procedendo conforme a seguir:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'sf' was built under R version 4.1.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.10.2, GDAL 3.4.1, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
-</div>
 </div>
 <p>Em seguida, escolha uma pasta do seu computador para baixar os arquivos shapefiles e fixe o diretório de uso para essa pasta específica usando a função <em>setwd()</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"endereço da pasta escolhida"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"endereço da pasta escolhida"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para exemplificar, vamos importar o shapefile de estados do Brasil, disponibilizado pelo IBGE e que pode ser baixado clicando <a href="https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_UF_2024.zip">aqui</a>. Baixe o arquivo na pasta selecionada e em seguida extraia os arquivos da pasta <em>.zip</em> usando um gerenciador de arquivos compactados. Tendo baixado e descompactado os arquivos, busque pelo pelo arquivo com extensão <em>.shp</em>. Note que o arquivo é nomeado de <em>BR_UF_2024.shp</em>.</p>
 <p>Para abrir o shapefile em <em>R</em> usando a biblioteca <em>sf</em>, vamos usar a função <em>read-sf()</em>, indicando dentro do parênteses e entre aspas o nome do arquivo com a extensão <em>.shp</em>. Para tanto, vamos criar um objeto de nome <em>estados</em> que armazenará o shapefile importado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>estados <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"BR_UF_2024.shp"</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>estados <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"BR_UF_2024.shp"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -609,6 +603,12 @@ Geodetic CRS:  SIRGAS 2000
 </div>
 <p>Esse procedimento vai gerar um arquivo com as seguintes especificações:</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'sf' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.10.2, GDAL 3.4.1, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
