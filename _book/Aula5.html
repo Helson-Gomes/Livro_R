@@ -639,35 +639,14 @@ Geodetic CRS:  SIRGAS 2000
 </ul>
 <p>Para exemplificar, vamos criar um objeto de nome <em>meso</em> que armazenará o shapefile de mesorregiões brasileiras usando a função <em>read_meso_region</em>. Esse procedimento pode ser feito conforme delimitado a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>meso <span class="ot">=</span> <span class="fu">read_meso_region</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Using year/date 2010</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(meso)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 6 features and 5 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: -73.99045 ymin: -13.6937 xmax: -58.10585 ymax: -1.930623
-Geodetic CRS:  SIRGAS 2000
-  code_state abbrev_state name_state code_meso           name_meso
-1         11           RO   Rondônia      1101     Madeira-Guaporé
-2         11           RO   Rondônia      1102   Leste Rondoniense
-3         12           AC       Acre      1201       Vale Do Juruá
-4         12           AC       Acre      1202        Vale Do Acre
-5         13           AM   Amazônas      1304      Sul Amazonense
-6         13           AM   Amazônas      1302 Sudoeste Amazonense
-                            geom
-1 MULTIPOLYGON (((-63.32721 -...
-2 MULTIPOLYGON (((-62.22055 -...
-3 MULTIPOLYGON (((-73.18253 -...
-4 MULTIPOLYGON (((-69.44261 -...
-5 MULTIPOLYGON (((-58.84164 -...
-6 MULTIPOLYGON (((-66.34498 -...</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>meso <span class="ot">=</span> <span class="fu">read_meso_region</span>()</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(meso)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Esse procedimento vai gerar um arquivo com as seguintes especificações:</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Using year/date 2010</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -684,21 +663,21 @@ Geodetic CRS:  SIRGAS 2000
 <p>Vez ou outra, um economista que usa uma linguagem de programação precisa usar arquivos salvos com extensões nativas de outras linguagens de programação. Por exemplo, é comum que os usuários da linguagem <em>R</em> precisem abrir arquivos gerados na linguagem <em>stata</em>. Como proceder nesse caso? A solução indicada nesse material é que o economista use a biblioteca <em>foreign</em>. Essa biblioteca possui uma série de funções que possibilitam importar para a lingagem <em>R</em> uma série de arquivos provenientes de outras linguagens.</p>
 <p>Assim como nos casos anteriores onde o uso de uma biblioteca externa foi necessário, neste caso é preciso que o usuário instale a biblioteca (caso ainda não tenha instalado) e libere-a para o uso.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"foreign"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"foreign"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="arquivos-stata-.dta" class="level3" data-number="5.8.1">
 <h3 data-number="5.8.1" class="anchored" data-anchor-id="arquivos-stata-.dta"><span class="header-section-number">5.8.1</span> Arquivos Stata (.dta)</h3>
 <p>Para abrir arquivos com a extensão <em>.dta</em> é necessário usar a função <em>read.dta()</em>, indicando dentro do parêntesis e entre aspas o nome do arquivo que se deseja abrir. Para exemplificar, considere importar o arquivo stata disponível no link drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&amp;export=download. Nesse caso, deve-se proceder conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"https://drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&amp;export=download"</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"https://drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&amp;export=download"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Caso o arquivo estivesse presente na sua máquina em vez de um endereço url, bastaria proceder de acordo com a seguinte especificação:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"Endereço da pasta onde o arquivo está armazenado/nome do arquivo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"Endereço da pasta onde o arquivo está armazenado/nome do arquivo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Abaixo segue uma lista de funções com o mesmo layout de uso para importar arquivos de outras linguagens.</p>
 <ul>
@@ -709,11 +688,11 @@ Geodetic CRS:  SIRGAS 2000
 </ul>
 <p>Além de importar os arquivos, também é possível salvar os arquivos presentes no ambiente de trabalho em uma extensão Stata. Por exemplo, para salvar o data frame <em>mtcars</em> na extensão <em>.dta</em>, use a função <em>write.dta</em>, procedendo conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(mtcars, <span class="at">file =</span> <span class="st">"mtcars.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(mtcars, <span class="at">file =</span> <span class="st">"mtcars.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O arquivo <em>mtcars.dta</em> será salvo na pasta em que o diretório de trabalho está fixado. No geral, a funçãos <em>write.dta</em> segue as seguintes especificações de uso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(nome do data frame no diretório de trabalho, <span class="at">file =</span> <span class="st">"Endereço da pasta/nome do arquivo salvo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(nome do data frame no diretório de trabalho, <span class="at">file =</span> <span class="st">"Endereço da pasta/nome do arquivo salvo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

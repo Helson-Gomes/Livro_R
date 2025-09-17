@@ -383,7 +383,7 @@ Estudaremos como gerar mapas a partir desses arquivos nos próximos capítulos.
 install.packages("geobr")
 ```
 
-```{r}
+```{r, eval=FALSE}
 library(geobr)
 ```
 
@@ -403,7 +403,7 @@ As principais funções da biblioteca *geobr* que podem ser bastante úteis para
 
 Para exemplificar, vamos criar um objeto de nome *meso* que armazenará o shapefile de mesorregiões brasileiras usando a função *read_meso_region*. Esse procedimento pode ser feito conforme delimitado a seguir:
 
-```{r}
+```{r, eval=FALSE}
 meso = read_meso_region()
 head(meso)
 ```
@@ -411,6 +411,7 @@ head(meso)
 Esse procedimento vai gerar um arquivo com as seguintes especificações:
 
 ```{r, echo=FALSE}
+meso = geobr::read_meso_region()
 ggplot(meso) +
   geom_sf() +
   theme_void()
@@ -428,7 +429,7 @@ Assim como nos casos anteriores onde o uso de uma biblioteca externa foi necess�
 install.packages("foreign")
 ```
 
-```{r}
+```{r, eval=FALSE}
 library(foreign)
 ```
 
