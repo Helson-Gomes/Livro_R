@@ -1,9 +1,5 @@
 # Leitura de dados
 
-```{r, echo =FALSE}
-renv::init()
-```
-
 Tendo visto os fundamentos básicos da programação em *R*, o próximo passo é aprender a efetuar a leitura de informações para o uso posterior na linguagem. Os dados são a estrutura básica das mais variadas ferramentas interativas geradas pela programação e também consistem na ferramenta fundamental para as constatações científicas empíricas, seja na economia, seja em qualquer outra ciência.
 
 Os dados são armazenados em diversos tipos de arquivo, cada um deles com as suas respectivas propriedades e usuabilidade. Cada tipo de arquivo possui características que precisam ser levadas em consideração, seja na hora de elaborar uma base de dados do zero, seja na hora de ler uma base de dados pronta. Cabe ao usuário conhecer cada uma dessas propriedades e estar pronto para lidar com as particularidades dos mais variados tipos de arquivos.
@@ -398,16 +394,7 @@ meso = read_meso_region()
 head(meso)
 ```
 
-Esse procedimento vai gerar um arquivo com as seguintes especificações:
-
-```{r, echo=FALSE}
-library(geobr)
-library(ggplot2)
-meso = read_meso_region()
-ggplot(meso) +
-  geom_sf() +
-  theme_void()
-```
+Esse procedimento vai gerar um arquivo com as mesmas especificações de um data frame gerado pela biblioteca *sf*, porém, com as delimitações espaciais das mesorregiões do Brasil.
 
 ## Dados de outras linguagens
 

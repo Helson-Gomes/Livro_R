@@ -236,85 +236,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>- Copying packages into the project library ... [5/65] [6/65] [7/65] [8/65] [9/65] [10/65] [11/65] [12/65] [13/65] [14/65] [15/65] [16/65] [17/65] [18/65] [19/65] [20/65] [21/65] [22/65] [23/65] [24/65] [25/65] [26/65] [27/65] [28/65] [29/65] [30/65] [31/65] [32/65] [33/65] [34/65] [35/65] [36/65] [37/65] [38/65] [39/65] [40/65] [41/65] [42/65] [43/65] [44/65] [45/65] [46/65] [47/65] [48/65] [49/65] [50/65] [51/65] [52/65] [53/65] [54/65] [55/65] [56/65] [57/65] [58/65] [59/65] [60/65] [61/65] [62/65] [63/65] [64/65] [65/65] Done!
-The following package(s) will be updated in the lockfile:
-
-# CRAN -----------------------------------------------------------------------
-- base64enc      [* -&gt; 0.1-3]
-- bslib          [* -&gt; 0.3.1]
-- class          [* -&gt; 7.3-19]
-- classInt       [* -&gt; 0.4-9]
-- cli            [* -&gt; 3.6.1]
-- colorspace     [* -&gt; 2.0-3]
-- curl           [* -&gt; 5.2.3]
-- data.table     [* -&gt; 1.14.8]
-- DBI            [* -&gt; 1.2.3]
-- digest         [* -&gt; 0.6.31]
-- dplyr          [* -&gt; 1.1.2]
-- e1071          [* -&gt; 1.7-13]
-- ellipsis       [* -&gt; 0.3.2]
-- evaluate       [* -&gt; 1.0.1]
-- fansi          [* -&gt; 1.0.4]
-- farver         [* -&gt; 2.1.1]
-- fastmap        [* -&gt; 1.1.1]
-- fs             [* -&gt; 1.5.2]
-- generics       [* -&gt; 0.1.3]
-- geobr          [* -&gt; 1.9.1]
-- ggplot2        [* -&gt; 3.5.1]
-- glue           [* -&gt; 1.6.2]
-- gtable         [* -&gt; 0.3.6]
-- highr          [* -&gt; 0.11]
-- htmltools      [* -&gt; 0.5.5]
-- isoband        [* -&gt; 0.2.7]
-- jquerylib      [* -&gt; 0.1.4]
-- jsonlite       [* -&gt; 1.8.4]
-- KernSmooth     [* -&gt; 2.23-20]
-- knitr          [* -&gt; 1.39]
-- labeling       [* -&gt; 0.4.3]
-- lattice        [* -&gt; 0.20-44]
-- lifecycle      [* -&gt; 1.0.4]
-- magrittr       [* -&gt; 2.0.3]
-- MASS           [* -&gt; 7.3-54]
-- Matrix         [* -&gt; 1.3-4]
-- mgcv           [* -&gt; 1.8-36]
-- munsell        [* -&gt; 0.5.1]
-- nlme           [* -&gt; 3.1-152]
-- pillar         [* -&gt; 1.9.0]
-- pkgconfig      [* -&gt; 2.0.3]
-- proxy          [* -&gt; 0.4-27]
-- R6             [* -&gt; 2.5.1]
-- rappdirs       [* -&gt; 0.3.3]
-- RColorBrewer   [* -&gt; 1.1-3]
-- Rcpp           [* -&gt; 1.0.14]
-- renv           [* -&gt; 1.1.4]
-- rlang          [* -&gt; 1.1.0]
-- rmarkdown      [* -&gt; 2.14]
-- s2             [* -&gt; 1.1.2]
-- sass           [* -&gt; 0.4.5]
-- scales         [* -&gt; 1.3.0]
-- sf             [* -&gt; 1.0-12]
-- stringi        [* -&gt; 1.7.12]
-- stringr        [* -&gt; 1.5.1]
-- tibble         [* -&gt; 3.2.1]
-- tidyselect     [* -&gt; 1.2.0]
-- tinytex        [* -&gt; 0.40]
-- units          [* -&gt; 0.8-1]
-- utf8           [* -&gt; 1.2.3]
-- vctrs          [* -&gt; 0.6.1]
-- viridisLite    [* -&gt; 0.4.2]
-- withr          [* -&gt; 3.0.2]
-- wk             [* -&gt; 0.7.2]
-- xfun           [* -&gt; 0.39]
-- yaml           [* -&gt; 2.3.7]
-
-The version of R recorded in the lockfile will be updated:
-- R              [* -&gt; 4.1.1]
-
-- Lockfile written to "Z:/URCA/2024.1/Intr.Prog.Dados/Livro/renv.lock".</code></pre>
-</div>
-</div>
 <p>Tendo visto os fundamentos básicos da programação em <em>R</em>, o próximo passo é aprender a efetuar a leitura de informações para o uso posterior na linguagem. Os dados são a estrutura básica das mais variadas ferramentas interativas geradas pela programação e também consistem na ferramenta fundamental para as constatações científicas empíricas, seja na economia, seja em qualquer outra ciência.</p>
 <p>Os dados são armazenados em diversos tipos de arquivo, cada um deles com as suas respectivas propriedades e usuabilidade. Cada tipo de arquivo possui características que precisam ser levadas em consideração, seja na hora de elaborar uma base de dados do zero, seja na hora de ler uma base de dados pronta. Cabe ao usuário conhecer cada uma dessas propriedades e estar pronto para lidar com as particularidades dos mais variados tipos de arquivos.</p>
 <p>Nesse capítulo, iremos conhecer as propriedades dos principais tipos de arquivos comumente utilizados para armazenar informações. Também aprenderemos sobre os principais tipos de dados e os seus possíveis usos. Por fim, serão expostas as principais técnicas que possibilitam a importação e a leitura de bases de dados previamente prontas para a linguagem <em>R</em>. O objetivo principal desse capítulo é repassar ao estudante o conhecimento necessário para que ele possa dominar a leitura de bases de dados em <em>R</em> por meio do domínio de técnicas de importação dos mais variados tipos de arquivo.</p>
@@ -328,29 +249,29 @@ The version of R recorded in the lockfile will be updated:
 <h2 data-number="5.2" class="anchored" data-anchor-id="arquivos-nativos-da-linguagem-r"><span class="header-section-number">5.2</span> Arquivos nativos da linguagem <em>R</em></h2>
 <p>A linguagem <em>R</em> possui duas extensões de arquivos nativas, a extensão <em>.Rdata</em> e a extensão <em>.Rds</em>. Quando o usuário possui múltiplos objetos no seu ambiente de trabalho e deseja salvar todos esses objetos em um único arquivo, então o ideal é usar a extensão <em>.Rdata</em>. Esse procedimento também é conhecido como “salvar objetos como imagem”. Nesse caso, o usuário pode salvar o seu ambiente de trabalho completo ou parte dele em um único arquivo que poderá ser usado posteriormente. Para demonstrar, vamos importar três bases de dados nativas para o ambiente de trabalho:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>base1 <span class="ot">=</span> mtcars</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>base2 <span class="ot">=</span> CO2</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>base3 <span class="ot">=</span> ChickWeight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>base1 <span class="ot">=</span> mtcars</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>base2 <span class="ot">=</span> CO2</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>base3 <span class="ot">=</span> ChickWeight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Imagine que seja necessário salvar todo o ambiente de trabalho com as três bases de dados incluídas nele em um único arquivo. Nesse caso, salvar como uma imagem <em>.Rdata</em> pode ser a melhor alternativa. Para tanto, o primeiro passo é informar à linguagem em qual pasta da sua máquina os arquivos devem ser salvos. Isso é feito indicando um diretório de trabalho por meio do comando <em>setwd()</em>, indicando dentro do parênteses a pasta de interesse entre aspas. <strong>Nota: no sistema Windows as barras à esquerda devem sempre ser substituídas por barras duplas na fixação do diretório de trabalho</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"Endereço da pasta em que os arquivos serão salvos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"Endereço da pasta em que os arquivos serão salvos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Após fixar o diretório de trabalho, o próximo passo é salvar o diretório de trabalho como imagem <em>.Rdata</em>. Para tanto, deve-se usar o comando <em>save.image()</em> e indicar o nome pelo qual o arquivo será salvo sucedido do indicativo do formato <em>.Rdata</em>. Por exemplo, imagine que queiramos salvar todo o ambiente de trabalho com o nome <em>bases_de_dados</em>. Nesse caso, deve-se proceder da seguinte maneira:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="st">"bases_de_dados.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="st">"bases_de_dados.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Uma vez que o arquivo está salvo no seu diretório de trabalho com a extensão <em>.Rdata</em>, para importá-lo para a linguagem <em>R</em> basta usar o comando <em>load()</em> indicando no parênteses e entre aspas o nome do arquivo que será importado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"bases_de_dados.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"bases_de_dados.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Já a extensão <em>.rds</em> é aplicada quando o usuário quer salvar um único arquivo do ambiente de trabalho no diretório da sua máquina. Diferente da extensão <em>.Rdata</em>, na extensão <em>.rds</em> o salvamento dos arquivos ocorre com o comando <em>saveRDS()</em>, onde dentro do parênteses deve ser indicado o nome do objeto que está no ambiente de trabalho e que será salvo, sucedido do nome pelo qual o usuário deseja salvar o arquivo. Por exemplo, imagine que queiramos salvar o objeto de nome <em>base1</em> com o nome <em>base1.rds</em>. Nesse caso, devemos proceder conforme indicado a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(base1, <span class="at">file =</span> <span class="st">"base1.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(base1, <span class="at">file =</span> <span class="st">"base1.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Uma vez que o objeto está salvo com a extensão <em>.rds</em> na sua máquina, para importá-lo para a linguagem <em>R</em> basta usar o comando <em>readRDS()</em>, indicando no parênteses e entre aspas o nome do arquivo de interesse. Por exemplo, para ler o arquivo salvo com o nome <em>base1.rds</em> deve-se proceder conforme indicado a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readRDS</span>(<span class="st">"base1.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readRDS</span>(<span class="st">"base1.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="arquivos-em-formato-.csv" class="level2" data-number="5.3">
@@ -423,37 +344,37 @@ The version of R recorded in the lockfile will be updated:
 <p>Como esse separador de colunas éconhecido, então fica fácil reconhecer as informações armazenadas nesse arquivo de texto.</p>
 <p>Em <em>R</em>, a leitura de arquivos no formato <em>.csv</em> pode ser feita de diferentes maneiras. Uma das formas mais comuns de executar essa tarefa é por meio do uso da função <em>read.csv</em> que é uma função nativa e não necessita de instalação. O uso da função deve obedecer a seguinte forma funcional:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Endereço/nome do arquivo.csv"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># TRUE se a primeira linha indica o nome das colunas e FALSE caso contrário</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span> <span class="co"># aqui o separador de colunas deve ser indicado entre aspas</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Endereço/nome do arquivo.csv"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># TRUE se a primeira linha indica o nome das colunas e FALSE caso contrário</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span> <span class="co"># aqui o separador de colunas deve ser indicado entre aspas</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="exemplo-importando-dados-via-link-url" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="exemplo-importando-dados-via-link-url"><span class="header-section-number">5.3.1</span> Exemplo: Importando dados via link url</h3>
 <p>Para exemplificar, considere a planilha de registros fictícios de clientes disponível no endereço <a href="https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&amp;export=download" class="uri">https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&amp;export=download</a>. A planilha possui 100 linhas, cada uma delas correspondendo às informações de um cliente específico. Caso o usuário baixe esse arquivo em sua máquina e abra esse arquivo em um editor de texto, notará que as colunas estão delimitadas por uma vírgula. Vamos importar esse arquivo no formato de um data frame nomeando-o de <em>“clientes”</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clientes <span class="ot">=</span> <span class="fu">read.csv</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&amp;export=download"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># indicando que a primeira linha contém o nome das colunas</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span>, <span class="co"># indicando que as colunas estão separadas por vírgula</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec =</span> <span class="st">"."</span> <span class="co">#indicando que o separador decimal é o ponto</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clientes) <span class="co"># mostra as primeiras linhas da planilha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>clientes <span class="ot">=</span> <span class="fu">read.csv</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&amp;export=download"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># indicando que a primeira linha contém o nome das colunas</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span>, <span class="co"># indicando que as colunas estão separadas por vírgula</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec =</span> <span class="st">"."</span> <span class="co">#indicando que o separador decimal é o ponto</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clientes) <span class="co"># mostra as primeiras linhas da planilha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Caso esse arquivo esteja em uma pasta do seu computador em vez de um link url, etão no parâmetro <em>file</em> você deverá proceder como <em>file = Endereço da pasta que contém o arquivo/nome do arquivo.csv”</em>.</p>
 <p>Agora considere essa mesma planilha disponível no endereço <a href="https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&amp;export=downloa">https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&amp;export=download</a>. Note que se replicarmos o script anterior alterando o endereço para esse link um erro será reportado. Isso ocorre porque nesse caso há um cabeçalho na planilha, isto é, existem linhas na parte superior da planilha que não possuem as mesmas especificações textuais do restante do csv e devem ser desconsideradas no ato da importação. Em outras palavras, as linhas do cabeçalho precisam ser <em>“puladas”</em>. Isso é feito por meio do parâmetro <em>skip</em> dentro da função <em>read.csv</em>. Esse parâmetro recebe a quantidade de linhas que precisam ser puladas. Como o cabeçalho desse exemplo possui duas linhas, então deve-se adicionar <em>skip = 2</em> no comando, ou seja:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clientes <span class="ot">=</span> <span class="fu">read.csv</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&amp;export=download"</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># indicando que a primeira linha contém o nome das colunas</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span>, <span class="co"># indicando que as colunas estão separadas por vírgula</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec =</span> <span class="st">"."</span>, <span class="co">#indicando que o separador decimal é o ponto</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">2</span> <span class="co"># Pula as duas primeiras linhas da planilha</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clientes) <span class="co"># mostra as primeiras linhas da planilha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clientes <span class="ot">=</span> <span class="fu">read.csv</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"https://drive.google.com/uc?id=1vPCLNpy6LEhHDvQlHtFBu5L2QzB5bTnv&amp;export=download"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="co"># indicando que a primeira linha contém o nome das colunas</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span>, <span class="co"># indicando que as colunas estão separadas por vírgula</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec =</span> <span class="st">"."</span>, <span class="co">#indicando que o separador decimal é o ponto</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">2</span> <span class="co"># Pula as duas primeiras linhas da planilha</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clientes) <span class="co"># mostra as primeiras linhas da planilha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O usuário pode testar que quando <em>skip &lt; 2</em>, o erro será reportado mesmo assim, ao passo que quando <em>skip &gt; 2</em>, a importação funciona, porém, ajustes precisam ser feitos para que o nome das colunas apareça de maneira correta no data frame.</p>
 <p>É importante ressaltar que a função <em>read.csv</em> possui vários outros parâmetros além desses aqui especificados. O usuário pode checar as demais possibilidades de uso de parâmetros da função executando o comando <em>?read.csv</em>.</p>
@@ -465,34 +386,34 @@ The version of R recorded in the lockfile will be updated:
 <p>Existem várias maneiras de importar arquivos <em>.xlsx</em> para a linguagem <em>R</em>, porém, esse material recomenda o uso da biblioteca <em>openxlsx</em>. Essa biblioteca foi criada especialmente para abrir arquivos com esse formato em <em>R</em> e as suas especificações de uso podem ser acessadas em <a href="https://cran.r-project.org/web/packages/openxlsx/openxlsx.pdf" class="uri">https://cran.r-project.org/web/packages/openxlsx/openxlsx.pdf</a>.</p>
 <p>Como vamos utilizar uma biblioteca não nativa, o primeiro passo para possibilitar o uso é fazer a instalação da biblioteca. O usuário pode consultar se a biblioteca já está instalada na sua máquina acessando no Rstudio a aba <em>Packages</em> e procurando pelo nome da biblioteca na guia de busca. Ou pode checar se a biblioteca está instalada usando o seguinte comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="st">"openxlsx"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="st">"openxlsx"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Se o output for <em>FALSE</em>, significa que a biblioteca precisa ser instalada. Nesse caso, deve-se usar a função <em>install.packages()</em>, indicando dentro do parênteses e entre aspas o nome da biblioteca que se deseja instalar. Nesse caso, deve-se proceder conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"openxlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"openxlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Tendo instalado a biblioteca, o próximo passo é liberá-la para o uso. Isso é feito por meio da função <em>library()</em>, indicando dentro do parênteses e entre aspas o nome da biblioteca que se deseja liberar para o uso. Nesse caso, deve-se proceder conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para abrir um arquivo com extensão <em>.xlsx</em> com a biblioteca <em>openxlsx</em>, deve-se usar a função <em>read.xlsx</em>. O usuário pode consultar as instruções de uso dessa função executando o comando <em>?openxlsx</em>. Basicamente, essa função tem a seguinte estrutura de uso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlsxFile =</span> <span class="st">"endereço do arquivo/nome do arquivo.xlsx"</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="st">"Número da linha em que começa a planilha"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Número ou nome da planilha contida no arquivo"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="st">"TRUE se a primeira linha mostra os nomes das colunas e FALSE caso contrário"</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlsxFile =</span> <span class="st">"endereço do arquivo/nome do arquivo.xlsx"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="st">"Número da linha em que começa a planilha"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Número ou nome da planilha contida no arquivo"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="st">"TRUE se a primeira linha mostra os nomes das colunas e FALSE caso contrário"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para demonstrar, considere que precisamos importar uma planilha com os valores nominais do PIB dos estados do Brasil desde 2002 até 2021 e que essa tabela está disponível no endereço <a href="https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&amp;export=download" class="uri">https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&amp;export=download</a>. As primeiras três linhas da planilha compõem o cabeçalho e devem ser desconsideradas, isto é, a planilha só inicia de fato na linha 4. Assim, a importação deve ser feita conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pib <span class="ot">=</span> <span class="fu">read.xlsx</span>(</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlsxFile =</span> <span class="st">"https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&amp;export=download"</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="dv">4</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pib <span class="ot">=</span> <span class="fu">read.xlsx</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlsxFile =</span> <span class="st">"https://drive.google.com/uc?id=1d9dyf5gh4GIdP2YX77b-Q0paAzar0O6b&amp;export=download"</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="dv">4</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="arquivos-excel-.xls" class="level2" data-number="5.5">
@@ -501,37 +422,37 @@ The version of R recorded in the lockfile will be updated:
 <p>Assim como no caso dos arquivos <em>.xlsx</em>, recomenda-se o uso de uma biblioteca para a importação dos arquivos <em>.xls</em> para a linguagem <em>R</em>. Nesse caso, recomenda-se a biblioteca <em>readxl</em>, a qual possui suas suas especificações de uso detalhadas em <a href="https://cran.r-project.org/web/packages/readxl/readxl.pdf" class="uri">https://cran.r-project.org/web/packages/readxl/readxl.pdf</a> e instruções exemplificadas de uso em <a href="https://readxl.tidyverse.org/" class="uri">https://readxl.tidyverse.org/</a>.</p>
 <p>Os passos são os mesmos indicados na biblioteca utilizada para abrir arquivos <em>.xlsx</em>, ou seja, deve-se verificar se a biblioteca está previamente instalada e proceder com a instalação caso não esteja. Tendo feito a instalação, deve-se liberar a biblioteca para o uso conforme especificado a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para importar aquivos na extensão <em>.xls</em>, recomenda-se o uso da função <em>read_xls()</em>. Um detalhe importante a ser esclarecido é que no caso da biblioteca <em>readxl</em>, <strong>não é possível importar arquivos diretamente da url,</strong> nesse caso, é preciso baixar o arquivo na sua máquina e em seguida usar o endereço da pasta em que o arquivo foi baixado em vez da url. Outra saída é baixar o arquivo em uma pasta temporária criada pelo <em>R</em> e em seguida realizar a importação a partir dessa pasta, que é o que será feito aqui.</p>
 <p>Basicamente, a função <em>read_xls()</em> possui a seguinte especificação de uso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_xls</span>(</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"endereço/nome do arquivo.xls"</span>,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"número da planilha"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="st">"TRUE se a primeira linha mostra os nomes das colunas e FALSE caso contrário"</span>,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="st">"número de linhas que devem ser puladas"</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_xls</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"endereço/nome do arquivo.xls"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"número da planilha"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="st">"TRUE se a primeira linha mostra os nomes das colunas e FALSE caso contrário"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="st">"número de linhas que devem ser puladas"</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para exemplificar, considere a mesma planilha do PIB dos estados especificada no exemplo anterior, porém, no formato <em>.xls</em>, disponível no link <a href="https://drive.google.com/uc?id=141Tws9jifN8Lk4OpuyHpc9dATED9eZKC&amp;export=download" class="uri">https://drive.google.com/uc?id=141Tws9jifN8Lk4OpuyHpc9dATED9eZKC&amp;export=download</a>. Inicialmente, vamos criar uma pasta temporária e baixar essa planilha nessa pasta. Porém, o usuário pode baixar o arquivo em uma pasta do seu computador sem a necessidade de realização desse passo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://drive.google.com/uc?id=141Tws9jifN8Lk4OpuyHpc9dATED9eZKC&amp;export=download"</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>destfile <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".xls"</span>) <span class="co"># criando a pasta e nomeando-a de destfile</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(url, destfile, <span class="at">mode =</span> <span class="st">"wb"</span>) <span class="co"># baixando o xls na pasta criada</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://drive.google.com/uc?id=141Tws9jifN8Lk4OpuyHpc9dATED9eZKC&amp;export=download"</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>destfile <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".xls"</span>) <span class="co"># criando a pasta e nomeando-a de destfile</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(url, destfile, <span class="at">mode =</span> <span class="st">"wb"</span>) <span class="co"># baixando o xls na pasta criada</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Tendo criado a basta e baixado o arquivo nela, o próximo passo é ler esse arquivo. Para tanto, deve-se proceder conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pib <span class="ot">=</span> <span class="fu">read_xls</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> destfile,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">3</span>,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pib <span class="ot">=</span> <span class="fu">read_xls</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> destfile,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="dados-em-coluna-fixa" class="level2" data-number="5.6">
@@ -598,40 +519,40 @@ The version of R recorded in the lockfile will be updated:
 <p>Esse tipo de estrutura é comumente utilizada pelo IBGE em suas pesquisas pela capacidade de armazenar mais informações em menos espaço no computador. Como exemplo, a Pesquisa Nacional Por Amostra de Domicílios Contínua (PNAD-Contínua) utiliza essa estrutura de armazenamento de dados.</p>
 <p>Para importar esse tipo de arquivo na forma de um data frame no <em>R</em> também é recomendado utilizar uma biblioteca externa. O presente material recomenda o uso da biblioteca <em>readr</em>. Os passos são os mesmos indicados nas bibliotecas anteriores, ou seja, deve-se verificar se a biblioteca está previamente instalada e proceder com a instalação caso não esteja. Tendo feito a instalação, deve-se liberar a biblioteca para o uso conforme especificado a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para ler os arquivos em coluna fixa, recomenda-se o uso da função <em>read_fwf(),</em> a qual possui a seguinte esttrutura de uso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_fwf</span>(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"Endereço/nome do arquivo.extensão do arquivo"</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fwf_cols</span>(</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    nome da <span class="at">coluna =</span> <span class="fu">c</span>(posição inicial, posição final)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_fwf</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"Endereço/nome do arquivo.extensão do arquivo"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fwf_cols</span>(</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    nome da <span class="at">coluna =</span> <span class="fu">c</span>(posição inicial, posição final)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para exemplificar, vamos usar os dados da PNAD-Contínua trimestral referente ao segundo trimestre de 2024. Para tanto, defina um diretório no computador e crie uma pasta com um dado nome. Aqui, vamos nomeá-la de <em>pnad2024</em>. Em seguida, fixe o diretório de trabalho nessa pasta com a função <em>setwd()</em> conforme especificado a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"D:/pnad2024"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"D:/pnad2024"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Em seguida, acesse o endereço <a href="https://www.ibge.gov.br/estatisticas/downloads-estatisticas.html?caminho=Trabalho_e_Rendimento/Pesquisa_Nacional_por_Amostra_de_Domicilios_continua/Trimestral/Microdados/2024" class="uri">https://www.ibge.gov.br/estatisticas/downloads-estatisticas.html?caminho=Trabalho_e_Rendimento/Pesquisa_Nacional_por_Amostra_de_Domicilios_continua/Trimestral/Microdados/2024</a> e baixe o arquivo nomeado <em>PNADC_022024.zip</em> na pasta criada anteriormente. Clique com o botão direito no arquivo baixado e escolha a opçao “extrair aqui” (Obs: é preciso ter um programa de gerenciamento de arquivos compactados instalado na sua máquina).</p>
 <p>Para ter acesso ao dicionário indicando os detalhes sobre a posição e o tamanho das colunas, acesse o endereço <a href="https://www.ibge.gov.br/estatisticas/downloads-estatisticas.html?caminho=Trabalho_e_Rendimento/Pesquisa_Nacional_por_Amostra_de_Domicilios_continua/Trimestral/Microdados/Documentacao" class="uri">https://www.ibge.gov.br/estatisticas/downloads-estatisticas.html?caminho=Trabalho_e_Rendimento/Pesquisa_Nacional_por_Amostra_de_Domicilios_continua/Trimestral/Microdados/Documentacao</a> e baixe o arquivo de nome <em>Dicionario_e_input_20221031.zip</em>. Em seguida, clique com o botão direito sobre esse arquivo e escolha a opção “extrair aqui”. O dicionário é o arquivo de nome <em>dicionario_PNADC_microdados_trimestral.xls</em>.</p>
 <p>Ao abrir o dicionário, o usuário irá se deparar com os detalhes técnicos da pesquisa, incluindo o nome das colunas, a descrição da coluna e o significado dos valores. A primeira coluna do dicionário a posição inicial de cada coluna enquanto a segunda coluna do dicionário mostra o tamanho. Para saber a posição inicial, basta fazer <em>posição inicial + tamanho - 1</em>. Por exemplo, a posição final da coluna <em>trimestre de referência</em> é 5 + 1 - 1 = 5.</p>
 <p>Para demonstrar o processo de importação, vamos importar as quatro primeiras colunas da pesquisa: Ano, Trimestre, UF e Capital. Os procedimentos estão demonstrados a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pnad2024 <span class="ot">=</span> <span class="fu">read_fwf</span>(</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"PNADC_022024.txt"</span>,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fwf_cols</span>(</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Ano =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>),</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Trimestre =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>),</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">UF =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pnad2024 <span class="ot">=</span> <span class="fu">read_fwf</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"PNADC_022024.txt"</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fwf_cols</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Ano =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Trimestre =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">UF =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pnad2024)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pnad2024)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="dados-geográficos" class="level2" data-number="5.7">
@@ -645,21 +566,21 @@ The version of R recorded in the lockfile will be updated:
 <p>Uma das maneiras mais eficientes de importar shapefiles para a linguagem <em>R</em> é usando a biblioteca <em>sf</em>. Essa biblioteca disponibiliza uma série de funções bastante úteis na manipulação e no gerenciamento de dados georreferenciados. A título de recomendação, caso o usuário desse material queira se especializar em gerenciamento de dados espaciais, recomenda-se o guia elaborado por Pebesma e Bivand (2025) disponibilizado gratuitamente <a href="https://r-spatial.org/book/">aqui</a>.</p>
 <p>O primeiro passo para a utilização da biblioteca <em>sf</em> é a instalação (caso a biblioteca não esteja previamente instalada). Para tanto, deve-se proceder conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Tendo instalado a biblioteca, o usuário deve liberá-la para o uso, procedendo conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Em seguida, escolha uma pasta do seu computador para baixar os arquivos shapefiles e fixe o diretório de uso para essa pasta específica usando a função <em>setwd()</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"endereço da pasta escolhida"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"endereço da pasta escolhida"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para exemplificar, vamos importar o shapefile de estados do Brasil, disponibilizado pelo IBGE e que pode ser baixado clicando <a href="https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_UF_2024.zip">aqui</a>. Baixe o arquivo na pasta selecionada e em seguida extraia os arquivos da pasta <em>.zip</em> usando um gerenciador de arquivos compactados. Tendo baixado e descompactado os arquivos, busque pelo pelo arquivo com extensão <em>.shp</em>. Note que o arquivo é nomeado de <em>BR_UF_2024.shp</em>.</p>
 <p>Para abrir o shapefile em <em>R</em> usando a biblioteca <em>sf</em>, vamos usar a função <em>read-sf()</em>, indicando dentro do parênteses e entre aspas o nome do arquivo com a extensão <em>.shp</em>. Para tanto, vamos criar um objeto de nome <em>estados</em> que armazenará o shapefile importado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>estados <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"BR_UF_2024.shp"</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>estados <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"BR_UF_2024.shp"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Esse procedimento vai gerar um data frame onde a última coluna possui as delimitações geográficas de cada indivíduo. Essas delimitações servirão para gerar figuras como mapas e dispersões espaciais. Estudaremos como gerar mapas a partir desses arquivos nos próximos capítulos.</p>
 </section>
@@ -667,10 +588,10 @@ The version of R recorded in the lockfile will be updated:
 <h3 data-number="5.7.2" class="anchored" data-anchor-id="geobr-uma-ferramenta-para-importar-shapefiles-brasileiros"><span class="header-section-number">5.7.2</span> <em>geobr</em>, uma ferramenta para importar shapefiles brasileiros</h3>
 <p><em>geobr</em> é uma biblioteca em <em>R</em> desenvolvida para permitir acesso rápido e fácil a um variado conjunto de shapefiles e dados espaciais brasileiros. A biblioteca possui uma série de funções que facilita a importação de shapefiles disponibilizados por fontes confiáveis. O guia de utilização da biblioteca pode ser acessado clicando <a href="https://www.rdocumentation.org/packages/geobr/versions/1.9.1">aqui</a>. Assim como a biblioteca <em>sf</em>, o usuário precisa efetuar a instalação (caso ainda não a tenha feito) e a liberação para o uso antes de executar qualquer uma das funções da biblioteca.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"geobr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"geobr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As principais funções da biblioteca <em>geobr</em> que podem ser bastante úteis para um economista que trabalha com dados espaciais são:</p>
 <ul>
@@ -683,25 +604,10 @@ The version of R recorded in the lockfile will be updated:
 </ul>
 <p>Para exemplificar, vamos criar um objeto de nome <em>meso</em> que armazenará o shapefile de mesorregiões brasileiras usando a função <em>read_meso_region</em>. Esse procedimento pode ser feito conforme delimitado a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>meso <span class="ot">=</span> <span class="fu">read_meso_region</span>()</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(meso)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>meso <span class="ot">=</span> <span class="fu">read_meso_region</span>()</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(meso)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Esse procedimento vai gerar um arquivo com as seguintes especificações:</p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required namespace: sf</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Using year/date 2010</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Aula5_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Esse procedimento vai gerar um arquivo com as mesmas especificações de um data frame gerado pela biblioteca <em>sf</em>, porém, com as delimitações espaciais das mesorregiões do Brasil.</p>
 </section>
 </section>
 <section id="dados-de-outras-linguagens" class="level2" data-number="5.8">
@@ -710,21 +616,21 @@ The version of R recorded in the lockfile will be updated:
 <p>Vez ou outra, um economista que usa uma linguagem de programação precisa usar arquivos salvos com extensões nativas de outras linguagens de programação. Por exemplo, é comum que os usuários da linguagem <em>R</em> precisem abrir arquivos gerados na linguagem <em>stata</em>. Como proceder nesse caso? A solução indicada nesse material é que o economista use a biblioteca <em>foreign</em>. Essa biblioteca possui uma série de funções que possibilitam importar para a lingagem <em>R</em> uma série de arquivos provenientes de outras linguagens.</p>
 <p>Assim como nos casos anteriores onde o uso de uma biblioteca externa foi necessário, neste caso é preciso que o usuário instale a biblioteca (caso ainda não tenha instalado) e libere-a para o uso.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"foreign"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"foreign"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="arquivos-stata-.dta" class="level3" data-number="5.8.1">
 <h3 data-number="5.8.1" class="anchored" data-anchor-id="arquivos-stata-.dta"><span class="header-section-number">5.8.1</span> Arquivos Stata (.dta)</h3>
 <p>Para abrir arquivos com a extensão <em>.dta</em> é necessário usar a função <em>read.dta()</em>, indicando dentro do parêntesis e entre aspas o nome do arquivo que se deseja abrir. Para exemplificar, considere importar o arquivo stata disponível no link drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&amp;export=download. Nesse caso, deve-se proceder conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"https://drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&amp;export=download"</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"https://drive.google.com/uc?id=176sePIlFsqMH9mrtueX9RtHJZmZtWd-0&amp;export=download"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Caso o arquivo estivesse presente na sua máquina em vez de um endereço url, bastaria proceder de acordo com a seguinte especificação:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"Endereço da pasta onde o arquivo está armazenado/nome do arquivo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">read.dta</span>(<span class="st">"Endereço da pasta onde o arquivo está armazenado/nome do arquivo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Abaixo segue uma lista de funções com o mesmo layout de uso para importar arquivos de outras linguagens.</p>
 <ul>
@@ -735,11 +641,11 @@ The version of R recorded in the lockfile will be updated:
 </ul>
 <p>Além de importar os arquivos, também é possível salvar os arquivos presentes no ambiente de trabalho em uma extensão Stata. Por exemplo, para salvar o data frame <em>mtcars</em> na extensão <em>.dta</em>, use a função <em>write.dta</em>, procedendo conforme a seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(mtcars, <span class="at">file =</span> <span class="st">"mtcars.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(mtcars, <span class="at">file =</span> <span class="st">"mtcars.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O arquivo <em>mtcars.dta</em> será salvo na pasta em que o diretório de trabalho está fixado. No geral, a funçãos <em>write.dta</em> segue as seguintes especificações de uso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(nome do data frame no diretório de trabalho, <span class="at">file =</span> <span class="st">"Endereço da pasta/nome do arquivo salvo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dta</span>(nome do data frame no diretório de trabalho, <span class="at">file =</span> <span class="st">"Endereço da pasta/nome do arquivo salvo.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
