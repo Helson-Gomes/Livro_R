@@ -317,3 +317,44 @@ pnad2024 = read_fwf(
 ```{r, eval=FALSE}
 head(pnad2024)
 ```
+
+## Dados geográficos
+
+Dados geográficos - ou em outra notação, dados georreferenciados - são uma categoria de informações em que uma das dimensões observadas está associada a uma dada localização geográfica. Essas informações podem ser dispostas de várias maneiras, por exemplo, cada indivíduo pode estar associado a um ponto de coordenadas geográficas em um plano cartesiano, da mesma forma que em vez de um ponto específico, os indivíduos podem estar associados a um polígono ou a uma área delimitada dentro do plano cartesiano.
+
+Os dados georreferenciados podem ser disponibilizadas em várias extensões de arquivos a depender do tipo de informação que esses arquivos carregam. Por exemplo, dados climáticos como a temperatuda da atmosfera no decorrer do dia geralmente são armazenados em um arquivo de imagem georreferenciada com extensão *.tif*. No entanto, nesse material vamos direcionar os nossos esforços para dominar a importação de um tipo de arquivo, os **shapefiles**.
+
+Shapefiles são tabelas de dados em que cada linha da tabela carrega uma informação correspondente a um ponto ou polígono no espaço. Por exemplo, imagine um mapa que mostra o PIB dos municípios brasileiros. Esse mapa provém de um shapefile onde cada linha representa um município que é uma polígono definido no espaço. Um shapefile geralmente depende da construção de quatro arquivos, sendo os dois principais com extensão *.dbf* e *.shp*. O arquivo com extensão *.dbf* carrega a planilha com as informações associadas aos indivíduos referenciados no espaço, os quais estão "desenhados" no arquivo com extensão *.shp*. Os demais arquivos do shapefile interligam essas duas extensões para que cada linha do *.dbf* seja corretamente associada a um indivíduo no arquivo *.shp*.
+
+Apesas de existirem maneiras bastante simples de construir um shapefile, os economistas geralmente usam arquivos prontos que são elaborados por institutos de pesquisa ou órgãos competentes com a devida confiança. Como exemplo, o IBGE disponibiliza uma série de shapefiles em seu sistema de malhas cartográficas disponíveis [aqui](https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html). O IPEA também disponibiliza um sistema semelhante que pode ser acessado clicando [aqui](https://portalantigo.ipea.gov.br/ipeageo/malhas.html).
+
+### Abrindo shapefiles via *sf*
+
+Uma das maneiras mais eficientes de importar shapefiles para a linguagem *R* é usando a biblioteca *sf*. Essa biblioteca disponibiliza uma série de funções bastante úteis na manipulação e no gerenciamento de dados georreferenciados. A título de recomendação, caso o usuário desse material queira se especializar em gerenciamento de dados espaciais, recomenda-se o guia elaborado por Pebesma e Bivand (2025) disponibilizado gratuitamente [aqui](https://r-spatial.org/book/).
+
+O primeiro passo para a utilização da biblioteca *sf* é a instalação (caso a biblioteca não esteja previamente instalada). Para tanto, deve-se proceder conforme a seguir:
+
+```{r, eval=FALSE}
+install.packages("sf")
+```
+
+Tendo instalado a biblioteca, o usuário deve liberá-la para o uso, procedendo conforme a seguir:
+
+```{r, eval=FALSE}
+library(sf)
+```
+
+Em seguida, escolha uma pasta do seu computador para baixar os arquivos shapefiles e fixe o diretório de uso para essa pasta específica usando a função *setwd()*.
+
+```{r, eval=FALSE}
+setwd("endereço da pasta escolhida")
+```
+
+Para exemplificar, vamos importar o shapefile de estados do Brasil, disponibilizado pelo IBGE e que pode ser baixado clicando [aqui](https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_UF_2024.zip). Baixe o arquivo na pasta selecionada e em seguida extraia os arquivos da pasta *.zip* usando um gerenciador de arquivos compactados. Tendo baixado e descompactado os arquivos, busque pelo pelo arquivo com extensão *.shp*. Note que o arquivo é nomeado de *BR_UF_2024.shp*.
+
+Para abrir o shapefile em *R* usando a biblioteca *sf*, vamos usar a função *read-sf()*, indicando dentro do parênteses e entre aspas o nome do arquivo com a extensão *.shp*. Para tanto, vamos criar um objeto de nome *estados* que armazenará o shapefile importado.
+
+```{r, eval=FALSE}
+estados = read_sf("BR_UF_2024.shp")
+head(estados)
+```

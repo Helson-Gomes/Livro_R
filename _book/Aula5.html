@@ -201,6 +201,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#arquivos-excel-.xlsx" id="toc-arquivos-excel-.xlsx" class="nav-link" data-scroll-target="#arquivos-excel-.xlsx"><span class="header-section-number">5.4</span> Arquivos excel (.xlsx)</a></li>
   <li><a href="#arquivos-excel-.xls" id="toc-arquivos-excel-.xls" class="nav-link" data-scroll-target="#arquivos-excel-.xls"><span class="header-section-number">5.5</span> Arquivos excel (.xls)</a></li>
   <li><a href="#dados-em-coluna-fixa" id="toc-dados-em-coluna-fixa" class="nav-link" data-scroll-target="#dados-em-coluna-fixa"><span class="header-section-number">5.6</span> Dados em coluna fixa</a></li>
+  <li><a href="#dados-geográficos" id="toc-dados-geográficos" class="nav-link" data-scroll-target="#dados-geográficos"><span class="header-section-number">5.7</span> Dados geográficos</a>
+  <ul class="collapse">
+  <li><a href="#abrindo-shapefiles-via-sf" id="toc-abrindo-shapefiles-via-sf" class="nav-link" data-scroll-target="#abrindo-shapefiles-via-sf"><span class="header-section-number">5.7.1</span> Abrindo shapefiles via <em>sf</em></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -544,8 +548,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pnad2024)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="dados-geográficos" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="dados-geográficos"><span class="header-section-number">5.7</span> Dados geográficos</h2>
+<p>Dados geográficos - ou em outra notação, dados georreferenciados - são uma categoria de informações em que uma das dimensões observadas está associada a uma dada localização geográfica. Essas informações podem ser dispostas de várias maneiras, por exemplo, cada indivíduo pode estar associado a um ponto de coordenadas geográficas em um plano cartesiano, da mesma forma que em vez de um ponto específico, os indivíduos podem estar associados a um polígono ou a uma área delimitada dentro do plano cartesiano.</p>
+<p>Os dados georreferenciados podem ser disponibilizadas em várias extensões de arquivos a depender do tipo de informação que esses arquivos carregam. Por exemplo, dados climáticos como a temperatuda da atmosfera no decorrer do dia geralmente são armazenados em um arquivo de imagem georreferenciada com extensão <em>.tif</em>. No entanto, nesse material vamos direcionar os nossos esforços para dominar a importação de um tipo de arquivo, os <strong>shapefiles</strong>.</p>
+<p>Shapefiles são tabelas de dados em que cada linha da tabela carrega uma informação correspondente a um ponto ou polígono no espaço. Por exemplo, imagine um mapa que mostra o PIB dos municípios brasileiros. Esse mapa provém de um shapefile onde cada linha representa um município que é uma polígono definido no espaço. Um shapefile geralmente depende da construção de quatro arquivos, sendo os dois principais com extensão <em>.dbf</em> e <em>.shp</em>. O arquivo com extensão <em>.dbf</em> carrega a planilha com as informações associadas aos indivíduos referenciados no espaço, os quais estão “desenhados” no arquivo com extensão <em>.shp</em>. Os demais arquivos do shapefile interligam essas duas extensões para que cada linha do <em>.dbf</em> seja corretamente associada a um indivíduo no arquivo <em>.shp</em>.</p>
+<p>Apesas de existirem maneiras bastante simples de construir um shapefile, os economistas geralmente usam arquivos prontos que são elaborados por institutos de pesquisa ou órgãos competentes com a devida confiança. Como exemplo, o IBGE disponibiliza uma série de shapefiles em seu sistema de malhas cartográficas disponíveis <a href="https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html">aqui</a>. O IPEA também disponibiliza um sistema semelhante que pode ser acessado clicando <a href="https://portalantigo.ipea.gov.br/ipeageo/malhas.html">aqui</a>.</p>
+<section id="abrindo-shapefiles-via-sf" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="abrindo-shapefiles-via-sf"><span class="header-section-number">5.7.1</span> Abrindo shapefiles via <em>sf</em></h3>
+<p>Uma das maneiras mais eficientes de importar shapefiles para a linguagem <em>R</em> é usando a biblioteca <em>sf</em>. Essa biblioteca disponibiliza uma série de funções bastante úteis na manipulação e no gerenciamento de dados georreferenciados. A título de recomendação, caso o usuário desse material queira se especializar em gerenciamento de dados espaciais, recomenda-se o guia elaborado por Pebesma e Bivand (2025) disponibilizado gratuitamente <a href="https://r-spatial.org/book/">aqui</a>.</p>
+<p>O primeiro passo para a utilização da biblioteca <em>sf</em> é a instalação (caso a biblioteca não esteja previamente instalada). Para tanto, deve-se proceder conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Tendo instalado a biblioteca, o usuário deve liberá-la para o uso, procedendo conforme a seguir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Em seguida, escolha uma pasta do seu computador para baixar os arquivos shapefiles e fixe o diretório de uso para essa pasta específica usando a função <em>setwd()</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"endereço da pasta escolhida"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Para exemplificar, vamos importar o shapefile de estados do Brasil, disponibilizado pelo IBGE e que pode ser baixado clicando <a href="https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_UF_2024.zip">aqui</a>. Baixe o arquivo na pasta selecionada e em seguida extraia os arquivos da pasta <em>.zip</em> usando um gerenciador de arquivos compactados. Tendo baixado e descompactado os arquivos, busque pelo pelo arquivo com extensão <em>.shp</em>. Note que o arquivo é nomeado de <em>BR_UF_2024.shp</em>.</p>
+<p>Para abrir o shapefile em <em>R</em> usando a biblioteca <em>sf</em>, vamos usar a função <em>read-sf()</em>, indicando dentro do parênteses e entre aspas o nome do arquivo com a extensão <em>.shp</em>. Para tanto, vamos criar um objeto de nome <em>estados</em> que armazenará o shapefile importado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>estados <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"BR_UF_2024.shp"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
