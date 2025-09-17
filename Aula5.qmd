@@ -358,3 +358,20 @@ Para abrir o shapefile em *R* usando a biblioteca *sf*, vamos usar a função *r
 estados = read_sf("BR_UF_2024.shp")
 head(estados)
 ```
+
+```{r, echo=FALSE}
+estados = sf::read_sf("Files/BR_UF_2024.shp")
+head(estados)
+```
+
+Esse procedimento vai gerar um arquivo com as seguintes especificações:
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(sf)
+ggplot(estados) +
+  geom_sf() +
+  theme_void()
+```
+
+Estudaremos como gerar mapas a partir desses arquivos nos próximos capítulos.

@@ -576,6 +576,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>estados <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"BR_UF_2024.shp"</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 7 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -73.98681 ymin: -25.358 xmax: -28.84764 ymax: 2.632361
+Geodetic CRS:  SIRGAS 2000
+# A tibble: 6 x 8
+  CD_UF NM_UF          SIGLA_UF CD_REGIA NM_REGIA SIGLA_RG AREA_KM2
+  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;
+1 35    São Paulo      SP       3        Sudeste  SE        248219.
+2 15    Pará           PA       1        Norte    N        1245829.
+3 32    Espírito Santo ES       3        Sudeste  SE         46074.
+4 12    Acre           AC       1        Norte    N         164083.
+5 13    Amazonas       AM       1        Norte    N        1558706.
+6 33    Rio de Janeiro RJ       3        Sudeste  SE         43750.
+# i 1 more variable: geometry &lt;MULTIPOLYGON [°]&gt;</code></pre>
+</div>
+</div>
+<p>Esse procedimento vai gerar um arquivo com as seguintes especificações:</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'sf' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.10.2, GDAL 3.4.1, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Aula5_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Estudaremos como gerar mapas a partir desses arquivos nos próximos capítulos.</p>
 
 
 </section>
