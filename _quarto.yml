@@ -13,6 +13,7 @@ book:
     - Aula3.qmd
     - Aula4.qmd
     - Aula5.qmd
+    - Aula6.qmd
     - references.qmd
 
 bibliography: references.bib
